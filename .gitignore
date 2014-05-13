@@ -1,0 +1,10 @@
+*~
+.idea/
+.idea_modules/
+.DS_Store
+.cache
+.classpath
+.project
+target/
+logs/
+report/
