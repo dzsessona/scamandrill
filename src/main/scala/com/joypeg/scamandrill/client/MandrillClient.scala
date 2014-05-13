@@ -1,13 +1,13 @@
 package com.joypeg.scamandrill.client
 
-import scala.concurrent.Future
-import com.joypeg.scamandrill.models.MPing2Response
-
 trait MandrillClient {
 
-  def ping2(apiKey: String): Future[MPing2Response]
+  def ping(apiKey: String): Any
+
+  def ping2(apiKey: String): Any
 
   object Endpoints extends Enumeration {
+    val ping  = Value("ping",  "/users/ping.json")
     val ping2 = Value("ping2", "/users/ping2.json")
 
     class MyVal(val endpoint: String) extends Val(nextId, endpoint)
