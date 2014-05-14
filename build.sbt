@@ -23,7 +23,8 @@ libraryDependencies ++= {
     "com.typesafe.akka"   %%  "akka-testkit"     % akkaV,
     "com.typesafe"        %   "config"           % "1.2.1",
     "ch.qos.logback"      %   "logback-classic"  % "1.0.6",
-    "org.specs2"          %%  "specs2"           % "2.2.3"    % "test"
+    "org.specs2"          %%  "specs2"           % "2.2.3"    % "test",
+    "org.scalatest"       %%  "scalatest"        % "2.1.6"    % "test->*"
   )
 }
 

@@ -1,18 +1,21 @@
 package com.joypeg.scamandrill.client
 
-import spray.http.HttpEntity
 import akka.actor.ActorSystem
-import com.joypeg.scamandrill.models.MandrillResponse
+import akka.pattern.ask
+import akka.io.IO
 import scala.concurrent.Future
+import scala.concurrent.duration._
 import spray.client.pipelining._
-import spray.http.HttpRequest
-import spray.http.HttpResponse
+import spray.http.{HttpRequest, HttpResponse, HttpEntity}
+import spray.can.Http
+import spray.util._
+import com.joypeg.scamandrill.models.MandrillResponse
 
 trait ScamandrillSendReceive {
 
   type Entity = Either[Throwable, HttpEntity]
 
-  implicit val system: ActorSystem = ActorSystem("scamandrill")
+  implicit lazy val system: ActorSystem = ActorSystem("scamandrill")
   import system.dispatcher
 
   def executeQuery[S <: MandrillResponse](endpoint: String, reqBody: Entity)(handler:(HttpResponse => S)): Future[S] = {
@@ -24,5 +27,10 @@ trait ScamandrillSendReceive {
       ok => ok ~> handler,
       ko => ko
     )
+  }
+
+  def shutdown(): Unit = {
+    IO(Http).ask(Http.CloseAll)(1.second).await
+    system.shutdown()
   }
 }

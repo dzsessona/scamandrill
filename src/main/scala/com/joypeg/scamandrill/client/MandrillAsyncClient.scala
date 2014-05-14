@@ -10,13 +10,14 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
   import spray.httpx.SprayJsonSupport._
   import com.joypeg.scamandrill.models.MandrillJsonProtocol._
 
-  override def ping(apiKey: String = "Su9Twr4SZKU6aoWRQy4DIA"): Future[MPingResponse] = {
+  override def ping(apiKey: String = configApiKey): Future[MPingResponse] = {
     executeQuery[MPingResponse](Endpoints.ping.endpoint, marshal(MPing(apiKey)))(unmarshal[String].andThen(MPingResponse))
   }
 
-  override def ping2(apiKey: String = "Su9Twr4SZKU6aoWRQy4DIA"): Future[MPingResponse] = {
+  override def ping2(apiKey: String = configApiKey): Future[MPingResponse] = {
     executeQuery[MPingResponse](Endpoints.ping2.endpoint, marshal(MPing(apiKey)))(unmarshal[MPingResponse])
   }
 
+  override def shutdownSystem(): Unit = shutdown()
 
 }

@@ -2,9 +2,13 @@ package com.joypeg.scamandrill.client
 
 trait MandrillClient {
 
+  lazy val configApiKey: String = "Su9Twr4SZKU6aoWRQy4DIA"
+
   def ping(apiKey: String): Any
 
   def ping2(apiKey: String): Any
+
+  def shutdownSystem(): Unit
 
   object Endpoints extends Enumeration {
     val ping  = Value("ping",  "/users/ping.json")
