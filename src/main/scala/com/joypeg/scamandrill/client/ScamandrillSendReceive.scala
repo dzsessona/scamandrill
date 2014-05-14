@@ -18,7 +18,8 @@ trait ScamandrillSendReceive {
   implicit lazy val system: ActorSystem = ActorSystem("scamandrill")
   import system.dispatcher
 
-  def executeQuery[S <: MandrillResponse](endpoint: String, reqBody: Entity)(handler:(HttpResponse => S)): Future[S] = {
+  //<: MandrillResponse
+  def executeQuery[S ](endpoint: String, reqBody: Entity)(handler:(HttpResponse => S)): Future[S] = {
 
     val pipeline: HttpRequest => Future[HttpResponse] = sendReceive
     val query = Post(s"https://mandrillapp.com/api/1.0$endpoint", reqBody)

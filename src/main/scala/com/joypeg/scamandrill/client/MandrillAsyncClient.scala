@@ -18,6 +18,18 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[MPingResponse](Endpoints.ping2.endpoint, marshal(MPing(apiKey)))(unmarshal[MPingResponse])
   }
 
+  override def senders(apiKey: String = configApiKey): Future[List[MSenderDataResponse]] = {
+    executeQuery[List[MSenderDataResponse]](Endpoints.senders.endpoint, marshal(MPing(apiKey)))(unmarshal[List[MSenderDataResponse]])
+  }
+
+  override def info(apiKey: String = configApiKey): Future[MInfoResponse] = {
+    executeQuery[MInfoResponse](Endpoints.info.endpoint, marshal(MPing(apiKey)))(unmarshal[MInfoResponse])
+  }
+
+  override def send(msg: MSendMsg): Future[List[MSendResponse]] = {
+    executeQuery[List[MSendResponse]](Endpoints.send.endpoint, marshal(msg))(unmarshal[List[MSendResponse]])
+  }
+
   override def shutdownSystem(): Unit = shutdown()
 
 }
