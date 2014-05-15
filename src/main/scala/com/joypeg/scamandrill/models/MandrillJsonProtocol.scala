@@ -12,7 +12,7 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
   implicit val MStatJson              = jsonFormat10(MStat)
   implicit val MStatsJson             = jsonFormat6(MStats)
   implicit val MInfoResponseJson      = jsonFormat7(MInfoResponse)
-  //implicit val MSendMessageJson       = jsonFormat5(MSendMessage)
+
   implicit val MAttachmetOrImageJson  = jsonFormat3(MAttachmetOrImage)
   implicit val MVarsJson              = jsonFormat2(MVars)
   implicit val MMergeVarsJson         = jsonFormat2(MMergeVars)
@@ -72,6 +72,7 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
       }.recover{ case e: Exception => deserializationError("MSendMessage expected")}.get
     }
   }
+  implicit val MSendMessageJson       = jsonFormat5(MSendMessage)
 }
 
 trait MandrillResponse

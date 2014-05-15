@@ -24,7 +24,7 @@ object MandrillBlockingClient extends MandrillClient {
     Await.result(MandrillAsyncClient.info(apiKey), 5 seconds)
   }
 
-  override def send(msg: MSendMsg): Try[List[MSendResponse]] = Try {
+  override def send(msg: MSendMessage): Try[List[MSendResponse]] = Try {
     Await.result(MandrillAsyncClient.send(msg), 5 seconds)
   }
 

@@ -26,7 +26,7 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[MInfoResponse](Endpoints.info.endpoint, marshal(MPing(apiKey)))(unmarshal[MInfoResponse])
   }
 
-  override def send(msg: MSendMsg): Future[List[MSendResponse]] = {
+  override def send(msg: MSendMessage): Future[List[MSendResponse]] = {
     executeQuery[List[MSendResponse]](Endpoints.send.endpoint, marshal(msg))(unmarshal[List[MSendResponse]])
   }
 

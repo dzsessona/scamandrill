@@ -2,8 +2,7 @@ package com.joypeg.scamandrill.models
 
 import org.scalatest.{Matchers, FlatSpec}
 
-class MandrillJsonProtocolTest extends FlatSpec with Matchers {
-
+object MandrillJsonProtocolTest {
   val msg = new MSendMsg(
     html = "<h1>test</h1>",
     text = "test",
@@ -34,6 +33,11 @@ class MandrillJsonProtocolTest extends FlatSpec with Matchers {
     attachments = List.empty,
     images = List.empty
   )
+}
+
+class MandrillJsonProtocolTest extends FlatSpec with Matchers {
+
+  import MandrillJsonProtocolTest._
 
   "MSendMessageJsonFormat" should "marshall and unmarshall a MSendMessage" in {
     import MandrillJsonProtocol._

@@ -1,6 +1,6 @@
 package com.joypeg.scamandrill.client
 
-import com.joypeg.scamandrill.models.{MSendMsg, MSendMessage}
+import com.joypeg.scamandrill.models.MSendMessage
 
 trait MandrillClient {
 
@@ -14,7 +14,7 @@ trait MandrillClient {
 
   def info(apiKey: String = configApiKey): Any
 
-  def send(msg: MSendMsg): Any
+  def send(msg: MSendMessage): Any
 
   def shutdownSystem(): Unit
 
