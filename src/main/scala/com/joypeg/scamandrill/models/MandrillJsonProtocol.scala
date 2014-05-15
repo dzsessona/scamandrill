@@ -75,8 +75,19 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
       }.recover{ case e: Exception => deserializationError("MSendMessage expected")}.get
     }
   }
-  implicit val MSendMessageJson         = jsonFormat5(MSendMessage)
-  implicit val MSendTemplateMessageJson = jsonFormat7(MSendTemplateMessage)
+  implicit val MSendMessageJson           = jsonFormat5(MSendMessage)
+  implicit val MSendTemplateMessageJson   = jsonFormat7(MSendTemplateMessage)
+  implicit val MSearchJson                = jsonFormat8(MSearch)
+  implicit val MClickDetailsJson          = jsonFormat5(MClickDetails)
+  implicit val MOpenDetailJson            = jsonFormat4(MOpenDetail)
+  implicit val MSearchResponseJson        = jsonFormat12(MSearchResponse)
+  implicit val MSearchTimeSeriesJson      = jsonFormat6(MSearchTimeSeries)
+  implicit val MSearchTimeSeriesResponseJ = jsonFormat11(MSearchTimeSeriesResponse)
+  implicit val MMessageInfoJson           = jsonFormat2(MMessageInfo)
+  implicit val MSmtpEventJson             = jsonFormat3(MSmtpEvent)
+  implicit val MMessageInfoResponseJson   = jsonFormat13(MMessageInfoResponse)
+  implicit val MToResponseJson            = jsonFormat2(MToResponse)
+  implicit val MContentResponseJson       = jsonFormat10(MContentResponse)
 }
 
 trait MandrillResponse

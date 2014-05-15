@@ -25,7 +25,9 @@ trait ScamandrillSendReceive {
     val query = Post(s"https://mandrillapp.com/api/1.0$endpoint", reqBody)
 
     pipeline(query).transform(
-      ok => ok ~> handler,
+      ok => {
+        println("response: " + ok)
+        ok ~> handler},
       ko => ko
     )
   }

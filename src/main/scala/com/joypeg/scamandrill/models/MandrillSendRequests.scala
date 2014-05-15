@@ -1,12 +1,12 @@
 package com.joypeg.scamandrill.models
 
-case class MSendMessage(key: String = "6gRGtx4kJBq4nURbiKrTdA",
+case class MSendMessage(key: String = DefaultConfig.defaultKeyFromConfig,
                         message: MSendMsg,
                         async: Boolean = false,
                         ip_pool: Option[String] = None,
                         send_at: Option[String] = None) extends MandrillRequest
 
-case class MSendTemplateMessage(key: String = "6gRGtx4kJBq4nURbiKrTdA",
+case class MSendTemplateMessage(key: String = DefaultConfig.defaultKeyFromConfig,
                                 template_name: String,
                                 template_content: List[MVars],
                                 message: MSendMsg,
@@ -85,3 +85,22 @@ case class MMergeVars(rcpt: String, vars: List[MVars])
 case class MVars(name: String, content: String)
 
 case class MTo(email: String, name: Option[String] = None, `type`: String = "to")
+
+case class MSearch(key: String = DefaultConfig.defaultKeyFromConfig,
+                   query: String,
+                   date_from: String,
+                   date_to: String,
+                   tags: List[String] = List.empty,
+                   senders: List[String] = List.empty,
+                   api_keys: List[String] = List.empty,
+                   limit: Int = 100) extends MandrillRequest
+
+case class MSearchTimeSeries(key: String = DefaultConfig.defaultKeyFromConfig,
+                             query: String,
+                             date_from: String,
+                             date_to: String,
+                             tags: List[String] = List.empty,
+                             senders: List[String] = List.empty) extends MandrillResponse
+
+case class MMessageInfo(key: String = DefaultConfig.defaultKeyFromConfig, id: String) extends MandrillResponse
+
