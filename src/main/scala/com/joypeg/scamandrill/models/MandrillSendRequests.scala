@@ -100,11 +100,11 @@ case class MSearchTimeSeries(key: String = DefaultConfig.defaultKeyFromConfig,
                              date_from: String,
                              date_to: String,
                              tags: List[String] = List.empty,
-                             senders: List[String] = List.empty) extends MandrillResponse
+                             senders: List[String] = List.empty) extends MandrillRequest
 
-case class MMessageInfo(key: String = DefaultConfig.defaultKeyFromConfig, id: String) extends MandrillResponse
+case class MMessageInfo(key: String = DefaultConfig.defaultKeyFromConfig, id: String) extends MandrillRequest
 
-case class MParse(key: String = DefaultConfig.defaultKeyFromConfig, raw_message: String) extends MandrillResponse
+case class MParse(key: String = DefaultConfig.defaultKeyFromConfig, raw_message: String) extends MandrillRequest
 
 case class MSendRaw(key: String = DefaultConfig.defaultKeyFromConfig,
                     raw_message: String,
@@ -116,8 +116,8 @@ case class MSendRaw(key: String = DefaultConfig.defaultKeyFromConfig,
                     send_at: Option[String] = None,
                     return_path_domain: Option[String] = None)
 
-case class MListSchedule(key: String = DefaultConfig.defaultKeyFromConfig, to: String)
-case class MCancelSchedule(key: String = DefaultConfig.defaultKeyFromConfig, id: String)
-case class MReSchedule(key: String = DefaultConfig.defaultKeyFromConfig, id: String,  send_at: String)
+case class MListSchedule(key: String = DefaultConfig.defaultKeyFromConfig, to: String) extends MandrillRequest
+case class MCancelSchedule(key: String = DefaultConfig.defaultKeyFromConfig, id: String) extends MandrillRequest
+case class MReSchedule(key: String = DefaultConfig.defaultKeyFromConfig, id: String,  send_at: String) extends MandrillRequest
 
 

@@ -36,7 +36,7 @@ object MandrillBlockingClient extends MandrillClient {
     Await.result(MandrillAsyncClient.search(q), 5 seconds)
   }
 
-  override def searchTimeSeries(q: MSearchTimeSeries): Try[List[MSearchTimeSeriesResponse]] = Try {
+  override def searchTimeSeries(q: MSearchTimeSeries): Try[List[MTimeSeriesResponse]] = Try {
     Await.result(MandrillAsyncClient.searchTimeSeries(q), 5 seconds)
   }
 
@@ -66,6 +66,26 @@ object MandrillBlockingClient extends MandrillClient {
 
   override def reSchedule(sc: MReSchedule): Try[MScheduleResponse] = Try {
     Await.result(MandrillAsyncClient.reSchedule(sc), 5 seconds)
+  }
+
+  override def tagList(tag: MTag): Try[List[MTagResponse]] = Try {
+    Await.result(MandrillAsyncClient.tagList(tag), 5 seconds)
+  }
+
+  override def tagDelete(tag: MTagRequest): Try[MTagResponse] = Try {
+    Await.result(MandrillAsyncClient.tagDelete(tag), 5 seconds)
+  }
+
+  override def tagInfo(tag: MTagRequest): Try[MTagInfoResponse] = Try {
+    Await.result(MandrillAsyncClient.tagInfo(tag), 5 seconds)
+  }
+
+  override def tagTimeSeries(tag: MTagRequest): Try[List[MTimeSeriesResponse]] = Try {
+    Await.result(MandrillAsyncClient.tagTimeSeries(tag), 5 seconds)
+  }
+
+  override def tagAllTimeSeries(tag: MTag): Try[List[MTimeSeriesResponse]] = Try {
+    Await.result(MandrillAsyncClient.tagAllTimeSeries(tag), 5 seconds)
   }
 
   override def shutdownSystem(): Unit = MandrillAsyncClient.shutdownSystem()

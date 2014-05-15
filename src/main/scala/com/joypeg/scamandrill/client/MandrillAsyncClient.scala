@@ -38,8 +38,8 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[List[MSearchResponse]](Endpoints.search.endpoint, marshal(q))(unmarshal[List[MSearchResponse]])
   }
 
-  override def searchTimeSeries(q: MSearchTimeSeries): Future[List[MSearchTimeSeriesResponse]] = {
-    executeQuery[List[MSearchTimeSeriesResponse]](Endpoints.searchTimeS.endpoint, marshal(q))(unmarshal[List[MSearchTimeSeriesResponse]])
+  override def searchTimeSeries(q: MSearchTimeSeries): Future[List[MTimeSeriesResponse]] = {
+    executeQuery[List[MTimeSeriesResponse]](Endpoints.searchTimeS.endpoint, marshal(q))(unmarshal[List[MTimeSeriesResponse]])
   }
 
   override def messageInfo(q: MMessageInfo): Future[MMessageInfoResponse] = {
@@ -68,6 +68,26 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
 
   override def reSchedule(sc: MReSchedule): Future[MScheduleResponse] = {
     executeQuery[MScheduleResponse](Endpoints.reschedule.endpoint, marshal(sc))(unmarshal[MScheduleResponse])
+  }
+
+  override def tagList(tag: MTag): Future[List[MTagResponse]] = {
+    executeQuery[List[MTagResponse]](Endpoints.taglist.endpoint, marshal(tag))(unmarshal[List[MTagResponse]])
+  }
+
+  override def tagDelete(tag: MTagRequest): Future[MTagResponse] = {
+    executeQuery[MTagResponse](Endpoints.tagdelete.endpoint, marshal(tag))(unmarshal[MTagResponse])
+  }
+
+  override def tagInfo(tag: MTagRequest): Future[MTagInfoResponse] = {
+    executeQuery[MTagInfoResponse](Endpoints.taginfo.endpoint, marshal(tag))(unmarshal[MTagInfoResponse])
+  }
+
+  override def tagTimeSeries(tag: MTagRequest): Future[List[MTimeSeriesResponse]] = {
+    executeQuery[List[MTimeSeriesResponse]](Endpoints.tagtimeseries.endpoint, marshal(tag))(unmarshal[List[MTimeSeriesResponse]])
+  }
+
+  override def tagAllTimeSeries(tag: MTag): Future[List[MTimeSeriesResponse]] = {
+    executeQuery[List[MTimeSeriesResponse]](Endpoints.tagalltime.endpoint, marshal(tag))(unmarshal[List[MTimeSeriesResponse]])
   }
 
   override def shutdownSystem(): Unit = shutdown()

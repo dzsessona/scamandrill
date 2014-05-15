@@ -30,17 +30,17 @@ case class MMessageInfoResponse(ts: Int,
 
 case class MSmtpEvent(ts: Int, `type`: String, diag: String)
 
-case class MSearchTimeSeriesResponse(time: String,
-                                     sent: Int,
-                                     hard_bounces: Int,
-                                     soft_bounces: Int,
-                                     rejects: Int,
-                                     complaints: Int,
-                                     unsubs: Int,
-                                     opens: Int,
-                                     unique_opens: Int,
-                                     clicks: Int,
-                                     unique_clicks: Int)
+case class MTimeSeriesResponse(time: String,
+                               sent: Int,
+                               hard_bounces: Int,
+                               soft_bounces: Int,
+                               rejects: Int,
+                               complaints: Int,
+                               unsubs: Int,
+                               opens: Int,
+                               unique_opens: Int,
+                               clicks: Int,
+                               unique_clicks: Int)
 
 case class MOpenDetail(ts: Int, ip: String, location: String, ua: String)
 

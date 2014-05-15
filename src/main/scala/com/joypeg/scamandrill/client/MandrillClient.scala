@@ -34,6 +34,16 @@ trait MandrillClient {
 
   def reSchedule(sc: MReSchedule): Any
 
+  def tagList(tag: MTag): Any
+
+  def tagDelete(tag: MTagRequest): Any
+
+  def tagInfo(tag: MTagRequest): Any
+
+  def tagTimeSeries(tag: MTagRequest): Any
+
+  def tagAllTimeSeries(tag: MTag): Any
+
   def shutdownSystem(): Unit
 
   object Endpoints extends Enumeration {
@@ -52,6 +62,11 @@ trait MandrillClient {
     val listSchedule =  Value("sclist",       "/messages/list-scheduled.json")
     val cancelSchedule =Value("sccanc",       "/messages/cancel-scheduled.json")
     val reschedule =    Value("scre",         "/messages/reschedule.json")
+    val taglist =       Value("taglist",      "/tags/list.json")
+    val tagdelete =     Value("tagdelete",    "/tags/delete.json")
+    val taginfo =       Value("taginfo",      "/tags/info.json")
+    val tagtimeseries = Value("tagts",        "/tags/time-series.json")
+    val tagalltime =    Value("tagallts",     "/tags/all-time-series.json")
 
     class MyVal(val endpoint: String) extends Val(nextId, endpoint)
     private[MandrillClient] final def Value(name: String, endpoint: String): MyVal = new MyVal(endpoint)
