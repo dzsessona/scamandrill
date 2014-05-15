@@ -99,6 +99,12 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
   implicit val MTagRequestJson            = jsonFormat2(MTagRequest)
   implicit val MTagResponseJson           = jsonFormat12(MTagResponse)
   implicit val MTagInfoResponseJson       = jsonFormat10(MTagInfoResponse)
+  implicit val MRejectAddJson             = jsonFormat4(MRejectAdd)
+  implicit val MRejectListJson            = jsonFormat4(MRejectList)
+  implicit val MRejectDeleteJson          = jsonFormat3(MRejectDelete)
+  implicit val MRejectAddResponseJson     = jsonFormat2(MRejectAddResponse)
+  implicit val MRejectDeleteResponseJson  = jsonFormat3(MRejectDeleteResponse)
+  implicit val MRejectListResponseJson    = jsonFormat9(MRejectListResponse)
 }
 
 trait MandrillResponse

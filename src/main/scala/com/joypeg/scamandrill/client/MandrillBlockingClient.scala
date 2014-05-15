@@ -100,5 +100,21 @@ object MandrillBlockingClient extends MandrillClient {
     Await.result(MandrillAsyncClient.tagAllTimeSeries(tag), 5 seconds)
   }
 
+  /////////////////////////////////////////////////////////////////
+  //REJECT calls https://mandrillapp.com/api/docs/rejects.JSON.html
+  /////////////////////////////////////////////////////////////////
+
+  override def rejectAdd(reject: MRejectAdd): Try[MRejectAddResponse] = Try {
+    Await.result(MandrillAsyncClient.rejectAdd(reject), 5 seconds)
+  }
+
+  override def rejectDelete(reject: MRejectDeleteResponse): Try[MRejectDeleteResponse] = Try {
+    Await.result(MandrillAsyncClient.rejectDelete(reject), 5 seconds)
+  }
+
+  override def rejectList(reject: MRejectListResponse): Try[MRejectListResponse] = Try {
+    Await.result(MandrillAsyncClient.rejectList(reject), 5 seconds)
+  }
+
   override def shutdownSystem(): Unit = MandrillAsyncClient.shutdownSystem()
 }

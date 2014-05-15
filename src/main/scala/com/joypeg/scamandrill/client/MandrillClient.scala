@@ -56,6 +56,24 @@ trait MandrillClient {
 
   def tagAllTimeSeries(tag: MTag): Any
 
+  /////////////////////////////////////////////////////////////////
+  //REJECT calls https://mandrillapp.com/api/docs/rejects.JSON.html
+  /////////////////////////////////////////////////////////////////
+
+  def rejectAdd(reject: MRejectAdd): Any
+
+  def rejectDelete(reject: MRejectDeleteResponse): Any
+
+  def rejectList(reject: MRejectListResponse): Any
+
+  /**
+   * implicit val MRejectAddJson             = jsonFormat4(MRejectAdd)
+  implicit val MRejectListJson            = jsonFormat4(MRejectList)
+  implicit val MRejectDeleteJson          = jsonFormat3(MRejectDelete)
+  implicit val MRejectAddResponseJson     = jsonFormat2(MRejectAddResponse)
+  implicit val MRejectDeleteResponseJson  = jsonFormat3(MRejectDeleteResponse)
+  implicit val MRejectListResponseJson    = jsonFormat9(MRejectListResponse)
+   */
   def shutdownSystem(): Unit
 
   object Endpoints extends Enumeration {
@@ -79,6 +97,9 @@ trait MandrillClient {
     val taginfo =       Value("taginfo",      "/tags/info.json")
     val tagtimeseries = Value("tagts",        "/tags/time-series.json")
     val tagalltime =    Value("tagallts",     "/tags/all-time-series.json")
+    val rejadd =        Value("rejadd",       "/rejects/add.json")
+    val rejlist =       Value("rejlist",      "/rejects/list.json")
+    val regdelete =     Value("regdelete",    "/rejects/delete.json")
 
     class MyVal(val endpoint: String) extends Val(nextId, endpoint)
     private[MandrillClient] final def Value(name: String, endpoint: String): MyVal = new MyVal(endpoint)

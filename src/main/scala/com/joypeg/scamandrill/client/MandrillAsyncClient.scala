@@ -102,6 +102,22 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[List[MTimeSeriesResponse]](Endpoints.tagalltime.endpoint, marshal(tag))(unmarshal[List[MTimeSeriesResponse]])
   }
 
+  /////////////////////////////////////////////////////////////////
+  //REJECT calls https://mandrillapp.com/api/docs/rejects.JSON.html
+  /////////////////////////////////////////////////////////////////
+
+  override def rejectAdd(reject: MRejectAdd): Future[MRejectAddResponse] = {
+    executeQuery[MRejectAddResponse](Endpoints.rejadd.endpoint, marshal(reject))(unmarshal[MRejectAddResponse])
+  }
+
+  override def rejectDelete(reject: MRejectDeleteResponse): Future[MRejectDeleteResponse] = {
+    executeQuery[MRejectDeleteResponse](Endpoints.regdelete.endpoint, marshal(reject))(unmarshal[MRejectDeleteResponse])
+  }
+
+  override def rejectList(reject: MRejectListResponse): Future[MRejectListResponse] = {
+    executeQuery[MRejectListResponse](Endpoints.rejlist.endpoint, marshal(reject))(unmarshal[MRejectListResponse])
+  }
+
   override def shutdownSystem(): Unit = shutdown()
 
 }
