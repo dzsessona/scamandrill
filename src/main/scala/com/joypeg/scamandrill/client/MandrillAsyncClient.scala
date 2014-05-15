@@ -30,6 +30,10 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[List[MSendResponse]](Endpoints.send.endpoint, marshal(msg))(unmarshal[List[MSendResponse]])
   }
 
+  override def sendTemplate(msg: MSendTemplateMessage): Future[List[MSendResponse]] = {
+    executeQuery[List[MSendResponse]](Endpoints.sendTemplate.endpoint, marshal(msg))(unmarshal[List[MSendResponse]])
+  }
+
   override def shutdownSystem(): Unit = shutdown()
 
 }

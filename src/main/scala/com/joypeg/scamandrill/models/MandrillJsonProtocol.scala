@@ -1,8 +1,6 @@
 package com.joypeg.scamandrill.models
 
 import spray.json._
-import com.joypeg.scamandrill.models._
-import scala.collection.mutable.ArrayBuffer
 import scala.util.Try
 
 object MandrillJsonProtocol extends DefaultJsonProtocol {
@@ -12,13 +10,12 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
   implicit val MStatJson              = jsonFormat10(MStat)
   implicit val MStatsJson             = jsonFormat6(MStats)
   implicit val MInfoResponseJson      = jsonFormat7(MInfoResponse)
-
   implicit val MAttachmetOrImageJson  = jsonFormat3(MAttachmetOrImage)
   implicit val MVarsJson              = jsonFormat2(MVars)
   implicit val MMergeVarsJson         = jsonFormat2(MMergeVars)
   implicit val MToJson                = jsonFormat3(MTo)
   implicit val MSendResponseJson      = jsonFormat4(MSendResponse)
-  implicit object MSendMsgJsonFormat extends RootJsonFormat[MSendMsg] {
+  implicit object MSendMsgJsonFormat extends RootJsonFormat[MSendMsg]{
     def write(msg: MSendMsg) = JsObject(
         "html" -> JsString(msg.html),
         "text" -> JsString(msg.text),
@@ -43,9 +40,15 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
         "global_merge_vars" -> JsArray(msg.global_merge_vars.map(_.toJson)),
         "merge_vars" -> JsArray(msg.merge_vars.map(_.toJson)),
         "tags" -> JsArray(msg.tags.map(JsString(_))),
-        "subaccount" -> JsString(msg.subaccount),
+        "subaccount" -> (msg.subaccount match {
+          case Some(value) => JsString(value)
+          case _ => JsNull
+        }),
         "google_analytics_domains" -> JsArray(msg.google_analytics_domains.map(JsString(_))),
-        "google_analytics_campaign" -> JsString(msg.google_analytics_campaign),
+        "google_analytics_campaign" -> (msg.google_analytics_campaign match {
+          case Some(value) => JsString(value)
+          case _ => JsNull
+        }),
         "attachments" -> JsArray(msg.attachments.map(_.toJson)),
         "images" -> JsArray(msg.images.map(_.toJson))
       )
@@ -65,14 +68,15 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
           a(14).convertTo[Boolean],
           a(15).convertTo[String],a(16).convertTo[String],a(17).convertTo[String],a(18).convertTo[String],a(19).convertTo[Boolean],
           a(20).convertTo[List[MVars]],a(21).convertTo[List[MMergeVars]],a(22).convertTo[List[String]],
-          a(23).convertTo[String],a(24).convertTo[List[String]],a(25).convertTo[String],
+          a(23).convertTo[Option[String]],a(24).convertTo[List[String]],a(25).convertTo[Option[String]],
           a(26).convertTo[List[MAttachmetOrImage]],a(27).convertTo[List[MAttachmetOrImage]]
         )
         message
       }.recover{ case e: Exception => deserializationError("MSendMessage expected")}.get
     }
   }
-  implicit val MSendMessageJson       = jsonFormat5(MSendMessage)
+  implicit val MSendMessageJson         = jsonFormat5(MSendMessage)
+  implicit val MSendTemplateMessageJson = jsonFormat7(MSendTemplateMessage)
 }
 
 trait MandrillResponse

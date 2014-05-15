@@ -1,40 +1,48 @@
 package com.joypeg.scamandrill.models
 
-case class MSendMessage(key: String,
+case class MSendMessage(key: String = "6gRGtx4kJBq4nURbiKrTdA",
                         message: MSendMsg,
-                        async: Boolean,
-                        ip_pool: String,
-                        send_at: String) extends MandrillRequest
+                        async: Boolean = false,
+                        ip_pool: Option[String] = None,
+                        send_at: Option[String] = None) extends MandrillRequest
 
-//metadata and headers and recipient_metadata
+case class MSendTemplateMessage(key: String = "6gRGtx4kJBq4nURbiKrTdA",
+                                template_name: String,
+                                template_content: List[MVars],
+                                message: MSendMsg,
+                                async: Boolean = false,
+                                ip_pool: Option[String] = None,
+                                send_at: Option[String] = None) extends MandrillRequest
+
+//TODO: metadata and headers and recipient_metadata
 class MSendMsg( val html: String,
                 val text: String,
                 val subject: String,
                 val from_email: String,
                 val from_name: String,
                 val to: List[MTo],
-                val important: Boolean,
-                val track_opens: Boolean,
-                val track_clicks: Boolean,
-                val auto_text: Boolean,
-                val auto_html: Boolean,
-                val inline_css: Boolean,
-                val url_strip_qs: Boolean,
-                val preserve_recipients: Boolean,
-                val view_content_link: Boolean,
+                val important: Boolean = false,
+                val track_opens: Boolean = false,
+                val track_clicks: Boolean = false,
+                val auto_text: Boolean = false,
+                val auto_html: Boolean = false,
+                val inline_css: Boolean = false,
+                val url_strip_qs: Boolean = false,
+                val preserve_recipients: Boolean = false,
+                val view_content_link: Boolean = false,
                 val bcc_address: String,
                 val tracking_domain: String,
                 val signing_domain: String,
                 val return_path_domain: String,
-                val merge: Boolean,
-                val global_merge_vars: List[MVars],
-                val merge_vars: List[MMergeVars],
-                val tags: List[String],
-                val subaccount: String,
-                val google_analytics_domains: List[String],
-                val google_analytics_campaign: String,
-                val attachments: List[MAttachmetOrImage],
-                val images: List[MAttachmetOrImage]){
+                val merge: Boolean = false,
+                val global_merge_vars: List[MVars] = List.empty,
+                val merge_vars: List[MMergeVars] = List.empty,
+                val tags: List[String] = List.empty,
+                val subaccount: Option[String] = None,
+                val google_analytics_domains: List[String] = List.empty,
+                val google_analytics_campaign: Option[String] = None,
+                val attachments: List[MAttachmetOrImage] = List.empty,
+                val images: List[MAttachmetOrImage] = List.empty){
 
   override def equals(other: Any) = other match {
     case o: MSendMsg =>
@@ -76,4 +84,4 @@ case class MMergeVars(rcpt: String, vars: List[MVars])
 
 case class MVars(name: String, content: String)
 
-case class MTo(email: String, name: String, `type`: String)
+case class MTo(email: String, name: Option[String] = None, `type`: String = "to")

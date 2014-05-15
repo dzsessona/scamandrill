@@ -1,7 +1,7 @@
 package com.joypeg.scamandrill.models
 
 
-case class MSendResponse(email: String,
+case class MSendResponse(_id: String,
+                        email: String,
                         status: String,
-                        reject_reason: String,
-                        _id: String) extends MandrillResponse
+                        reject_reason: Option[String]) extends MandrillResponse

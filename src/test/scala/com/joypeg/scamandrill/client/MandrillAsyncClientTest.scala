@@ -11,15 +11,18 @@ import com.joypeg.scamandrill.models._
 class MandrillAsyncClientTest extends FlatSpec with Matchers with BeforeAndAfterAll {
 
   val timeout = 6.seconds
+  import com.joypeg.scamandrill.MandrillTestUtils._
 
   "Send" should "work getting a valid List[MSendResponse]" in {
-    val msg = MSendMessage("6gRGtx4kJBq4nURbiKrTdA",
-      MandrillJsonProtocolTest.msg,
-      false,
-      "",
-      "")
+    val msg = MSendMessage(message = validMessage)
     val res1 = Await.result(MandrillAsyncClient.send(msg), timeout)
      println("res1: " + res1)
+  }
+
+  it should "work when telling that the operation is async" in {
+    val msg = MSendMessage(message = validMessage, async = true)
+    val res1 = Await.result(MandrillAsyncClient.send(msg), timeout)
+    println("res1: " + res1)
   }
 
 //  "Info" should "work getting a valid MInfoResponse" in {
