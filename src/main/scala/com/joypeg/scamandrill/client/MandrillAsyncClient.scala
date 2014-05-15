@@ -50,6 +50,26 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[MContentResponse](Endpoints.content.endpoint, marshal(q))(unmarshal[MContentResponse])
   }
 
+  override def parse(raw: MParse): Future[MParseResponse] = {
+    executeQuery[MParseResponse](Endpoints.parse.endpoint, marshal(raw))(unmarshal[MParseResponse])
+  }
+
+  override def sendRaw(raw: MSendRaw): Future[List[MSendResponse]] = {
+    executeQuery[List[MSendResponse]](Endpoints.sendraw.endpoint, marshal(raw))(unmarshal[List[MSendResponse]])
+  }
+
+  override def listSchedule(sc: MListSchedule): Future[List[MScheduleResponse]] = {
+    executeQuery[List[MScheduleResponse]](Endpoints.listSchedule.endpoint, marshal(sc))(unmarshal[List[MScheduleResponse]])
+  }
+
+  override def cancelSchedule(sc: MCancelSchedule): Future[MScheduleResponse] = {
+    executeQuery[MScheduleResponse](Endpoints.cancelSchedule.endpoint, marshal(sc))(unmarshal[MScheduleResponse])
+  }
+
+  override def reSchedule(sc: MReSchedule): Future[MScheduleResponse] = {
+    executeQuery[MScheduleResponse](Endpoints.reschedule.endpoint, marshal(sc))(unmarshal[MScheduleResponse])
+  }
+
   override def shutdownSystem(): Unit = shutdown()
 
 }

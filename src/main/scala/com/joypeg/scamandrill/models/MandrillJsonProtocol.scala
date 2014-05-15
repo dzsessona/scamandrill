@@ -88,6 +88,13 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
   implicit val MMessageInfoResponseJson   = jsonFormat13(MMessageInfoResponse)
   implicit val MToResponseJson            = jsonFormat2(MToResponse)
   implicit val MContentResponseJson       = jsonFormat10(MContentResponse)
+  implicit val MParseJson                 = jsonFormat2(MParse)
+  implicit val MParseResponseJson         = jsonFormat8(MParseResponse)
+  implicit val MSendRawJson               = jsonFormat9(MSendRaw)
+  implicit val MScheduleResponseJson      = jsonFormat6(MScheduleResponse)
+  implicit val MListScheduleJson          = jsonFormat2(MListSchedule)
+  implicit val MCancelScheduleJson        = jsonFormat2(MCancelSchedule)
+  implicit val MReScheduleJson            = jsonFormat3(MReSchedule)
 }
 
 trait MandrillResponse

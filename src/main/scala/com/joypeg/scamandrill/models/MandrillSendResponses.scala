@@ -51,6 +51,7 @@ case class MSendResponse(_id: String,
                         status: String,
                         reject_reason: Option[String]) extends MandrillResponse
 
+//TODO: headers
 case class MContentResponse(ts: Int,
                             _id: Int,
                              from_email: String,
@@ -63,4 +64,23 @@ case class MContentResponse(ts: Int,
                              attachemnt: List[MAttachmetOrImage])
 
 case class MToResponse(email: String, name: String)
+
+//TODO: headers
+case class MParseResponse(subject: Option[String],
+                          from_email: Option[String],
+                          from_name: Option[String],
+                          to: Option[List[MToResponse]],
+                          text: Option[String],
+                          html: Option[String],
+                          attachments: Option[List[MAttachmetOrImage]],
+                          images: Option[List[MAttachmetOrImage]])
+
+case class MScheduleResponse(_id: String,
+                             created_at: String,
+                             send_at: String,
+                             from_email: String,
+                             to: String,
+                             subject: String)
+
+
 

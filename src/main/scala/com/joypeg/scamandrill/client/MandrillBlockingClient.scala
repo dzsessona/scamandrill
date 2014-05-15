@@ -48,5 +48,25 @@ object MandrillBlockingClient extends MandrillClient {
     Await.result(MandrillAsyncClient.content(q), 5 seconds)
   }
 
+  override def parse(raw: MParse): Try[MParseResponse] = Try {
+    Await.result(MandrillAsyncClient.parse(raw), 5 seconds)
+  }
+
+  override def sendRaw(raw: MSendRaw): Try[List[MSendResponse]] = Try{
+    Await.result(MandrillAsyncClient.sendRaw(raw), 5 seconds)
+  }
+
+  override def listSchedule(sc: MListSchedule): Try[List[MScheduleResponse]] = Try {
+    Await.result(MandrillAsyncClient.listSchedule(sc), 5 seconds)
+  }
+
+  override def cancelSchedule(sc: MCancelSchedule): Try[MScheduleResponse] = Try {
+    Await.result(MandrillAsyncClient.cancelSchedule(sc), 5 seconds)
+  }
+
+  override def reSchedule(sc: MReSchedule): Try[MScheduleResponse] = Try {
+    Await.result(MandrillAsyncClient.reSchedule(sc), 5 seconds)
+  }
+
   override def shutdownSystem(): Unit = MandrillAsyncClient.shutdownSystem()
 }

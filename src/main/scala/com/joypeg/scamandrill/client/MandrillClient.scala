@@ -24,6 +24,16 @@ trait MandrillClient {
 
   def content(q: MMessageInfo): Any
 
+  def parse(raw: MParse): Any
+
+  def sendRaw(raw: MSendRaw): Any
+
+  def listSchedule(sc: MListSchedule): Any
+
+  def cancelSchedule(sc: MCancelSchedule): Any
+
+  def reSchedule(sc: MReSchedule): Any
+
   def shutdownSystem(): Unit
 
   object Endpoints extends Enumeration {
@@ -37,6 +47,11 @@ trait MandrillClient {
     val searchTimeS =   Value("searchts",     "/messages/search-time-series.json")
     val msginfo =       Value("msginfo",      "/messages/info.json")
     val content =       Value("content",      "/messages/content.json")
+    val parse =         Value("parse",        "/messages/parse.json")
+    val sendraw =       Value("sendraw",      "/messages/send-raw.json")
+    val listSchedule =  Value("sclist",       "/messages/list-scheduled.json")
+    val cancelSchedule =Value("sccanc",       "/messages/cancel-scheduled.json")
+    val reschedule =    Value("scre",         "/messages/reschedule.json")
 
     class MyVal(val endpoint: String) extends Val(nextId, endpoint)
     private[MandrillClient] final def Value(name: String, endpoint: String): MyVal = new MyVal(endpoint)

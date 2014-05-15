@@ -104,3 +104,20 @@ case class MSearchTimeSeries(key: String = DefaultConfig.defaultKeyFromConfig,
 
 case class MMessageInfo(key: String = DefaultConfig.defaultKeyFromConfig, id: String) extends MandrillResponse
 
+case class MParse(key: String = DefaultConfig.defaultKeyFromConfig, raw_message: String) extends MandrillResponse
+
+case class MSendRaw(key: String = DefaultConfig.defaultKeyFromConfig,
+                    raw_message: String,
+                    from_email: Option[String] = None,
+                    from_name: Option[String] = None,
+                    to: Option[List[String]] = None,
+                    async: Boolean = false,
+                    ip_pool: Option[String] = None,
+                    send_at: Option[String] = None,
+                    return_path_domain: Option[String] = None)
+
+case class MListSchedule(key: String = DefaultConfig.defaultKeyFromConfig, to: String)
+case class MCancelSchedule(key: String = DefaultConfig.defaultKeyFromConfig, id: String)
+case class MReSchedule(key: String = DefaultConfig.defaultKeyFromConfig, id: String,  send_at: String)
+
+

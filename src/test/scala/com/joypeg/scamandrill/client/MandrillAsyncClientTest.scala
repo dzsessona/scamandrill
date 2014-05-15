@@ -13,6 +13,20 @@ class MandrillAsyncClientTest extends FlatSpec with Matchers with BeforeAndAfter
   val timeout = 6.seconds
   import com.joypeg.scamandrill.MandrillTestUtils._
 
+    "SendRaw" should "work finding some results" in {
+      val q = MSendRaw(raw_message = """From: sender@example.com\nTo: recipient.email@example.com\nSubject: Some Subject\n\nSome content.""")
+      val res = Await.result(MandrillAsyncClient.sendRaw(q), timeout)
+      println("res1: " + res)
+    }
+
+//  "Parse" should "getting" in {
+//    //  "MessageInfo" should "work finding some results" in {
+//        val raw_message = MParse(raw_message = """"From: sender@example.com\nTo: recipient.email@example.com\nSubject: Some Subject\n\nSome content."""")
+//        val res = Await.result(MandrillAsyncClient.parse(raw_message), timeout)
+//        println("res1: " + res)
+//    //  }
+//  }
+
 //  "MessageInfo" should "work finding some results" in {
 //    val q = MMessageInfo(key = "Su9Twr4SZKU6aoWRQy4DIA", id = "66fb42789e47461d80eb140862f564d5")
 //    val res = Await.result(MandrillAsyncClient.messageInfo(q), timeout)
