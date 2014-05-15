@@ -76,9 +76,9 @@ trait MandrillClient {
 
   def whitelistList(mail: MWhitelist): Any
 
-  ///////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////
   //SENDERS calls https://mandrillapp.com/api/docs/senders.JSON.html
-  ///////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////
 
   def sendersList(snd: MSenders): Any
 
@@ -94,6 +94,21 @@ trait MandrillClient {
 
   def sendersTimeSeries(snd: MSenderAddress): Any
 
+  ////////////////////////////////////////////////////////////
+  //URLS calls https://mandrillapp.com/api/docs/urls.JSON.html
+  ////////////////////////////////////////////////////////////
+
+  def urlsList(url: MUrls): Any
+
+  def urlsSearch(url: MUrlSearch): Any
+
+  def urlsTimeSeries(url: MUrlTimeSeries): Any
+
+  def urlsTrackingDomain(url: MUrls): Any
+
+  def urlsCheckTrackingDomain(url: MUrlDomain): Any
+
+  def urlsAddTrackingDomain(url: MUrlDomain): Any
 
   def shutdownSystem(): Unit
 
@@ -131,6 +146,12 @@ trait MandrillClient {
     val sendersverdom = Value("sendersverdom","/senders/verify-domain.json")
     val sendersinfo =   Value("sendersinfo",  "/senders/info.json")
     val sendersts =     Value("sendersts",    "/senders/time-series.json")
+    val urllist =       Value("urllist",      "/urls/list.json")
+    val urlsearch =     Value("urlsearch",    "/urls/search.json")
+    val urlts =         Value("urlts",        "/urls/time-series.json")
+    val urltrackdom =   Value("urltrackdom",  "/urls/tracking-domains.json")
+    val urladdtrackdom =Value("urladdtrackdm","/urls/add-tracking-domain.json")
+    val urlchktrackdom =Value("urlchktrackdm","/urls/check-tracking-domain.json")
 
     class MyVal(val endpoint: String) extends Val(nextId, endpoint)
     private[MandrillClient] final def Value(name: String, endpoint: String): MyVal = new MyVal(endpoint)

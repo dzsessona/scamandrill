@@ -164,5 +164,33 @@ object MandrillBlockingClient extends MandrillClient {
     Await.result(MandrillAsyncClient.sendersTimeSeries(snd), 5 seconds)
   }
 
+  ////////////////////////////////////////////////////////////
+  //URLS calls https://mandrillapp.com/api/docs/urls.JSON.html
+  ////////////////////////////////////////////////////////////
+
+  override def urlsList(url: MUrls): Try[List[MUrlResponse]] = Try {
+    Await.result(MandrillAsyncClient.urlsList(url), 5 seconds)
+  }
+
+  override def urlsSearch(url: MUrlSearch): Try[MUrlResponse] = Try {
+    Await.result(MandrillAsyncClient.urlsSearch(url), 5 seconds)
+  }
+
+  override def urlsTimeSeries(url: MUrlTimeSeries): Try[List[MUrlTimeResponse]] = Try {
+    Await.result(MandrillAsyncClient.urlsTimeSeries(url), 5 seconds)
+  }
+
+  override def urlsTrackingDomain(url: MUrls): Try[List[MUrlDomainResponse]] = Try {
+    Await.result(MandrillAsyncClient.urlsTrackingDomain(url), 5 seconds)
+  }
+
+  override def urlsCheckTrackingDomain(url: MUrlDomain): Try[MUrlDomainResponse] = Try {
+    Await.result(MandrillAsyncClient.urlsCheckTrackingDomain(url), 5 seconds)
+  }
+
+  override def urlsAddTrackingDomain(url: MUrlDomain): Try[MUrlDomainResponse] = Try {
+    Await.result(MandrillAsyncClient.urlsAddTrackingDomain(url), 5 seconds)
+  }
+
   override def shutdownSystem(): Unit = MandrillAsyncClient.shutdownSystem()
 }

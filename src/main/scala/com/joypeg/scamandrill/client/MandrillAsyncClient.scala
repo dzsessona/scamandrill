@@ -166,6 +166,38 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[List[MSenderTSResponse]](Endpoints.sendersts.endpoint, marshal(snd))(unmarshal[List[MSenderTSResponse]])
   }
 
+  ////////////////////////////////////////////////////////////
+  //URLS calls https://mandrillapp.com/api/docs/urls.JSON.html
+  ////////////////////////////////////////////////////////////
+
+  override def urlsList(url: MUrls): Future[List[MUrlResponse]] = {
+    executeQuery[List[MUrlResponse]](Endpoints.urllist.endpoint, marshal(url))(unmarshal[List[MUrlResponse]])
+  }
+
+  override def urlsSearch(url: MUrlSearch): Future[MUrlResponse] = {
+    executeQuery[MUrlResponse](Endpoints.urlsearch.endpoint, marshal(url))(unmarshal[MUrlResponse])
+  }
+
+  override def urlsTimeSeries(url: MUrlTimeSeries): Future[List[MUrlTimeResponse]] = {
+    executeQuery[List[MUrlTimeResponse]](Endpoints.urlts.endpoint, marshal(url))(unmarshal[List[MUrlTimeResponse]])
+  }
+
+  override def urlsTrackingDomain(url: MUrls): Future[List[MUrlDomainResponse]] = {
+    executeQuery[List[MUrlDomainResponse]](Endpoints.urltrackdom.endpoint, marshal(url))(unmarshal[List[MUrlDomainResponse]])
+  }
+
+  override def urlsCheckTrackingDomain(url: MUrlDomain): Future[MUrlDomainResponse] = {
+    executeQuery[MUrlDomainResponse](Endpoints.urlchktrackdom.endpoint, marshal(url))(unmarshal[MUrlDomainResponse])
+  }
+
+  override def urlsAddTrackingDomain(url: MUrlDomain): Future[MUrlDomainResponse] = {
+    executeQuery[MUrlDomainResponse](Endpoints.urladdtrackdom.endpoint, marshal(url))(unmarshal[MUrlDomainResponse])
+  }
+
+
+
+
+
   override def shutdownSystem(): Unit = shutdown()
 
 }

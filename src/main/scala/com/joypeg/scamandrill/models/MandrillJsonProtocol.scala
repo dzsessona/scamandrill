@@ -120,6 +120,15 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
   implicit val MSendersInfoRespj          = jsonFormat11(MSendersInfoResp)
   implicit val MSenderTSResponsej         = jsonFormat11(MSenderTSResponse)
   implicit val MSendersListRespj          = jsonFormat12(MSendersListResp)
+  implicit val MUrlsj                     = jsonFormat1(MUrls)
+  implicit val MUrlSearchj                = jsonFormat2(MUrlSearch)
+  implicit val MUrlTimeSeriesj            = jsonFormat2(MUrlTimeSeries)
+  implicit val MUrlDomainj                = jsonFormat2(MUrlDomain)
+  implicit val MUrlCnamej                 = jsonFormat3(MUrlCname)
+  implicit val MUrlResponsej              = jsonFormat4(MUrlResponse)
+  implicit val MUrlTimeResponsej          = jsonFormat4(MUrlTimeResponse)
+  implicit val MUrlDomainResponsej        = jsonFormat5(MUrlDomainResponse)
+
 }
 
 trait MandrillResponse
