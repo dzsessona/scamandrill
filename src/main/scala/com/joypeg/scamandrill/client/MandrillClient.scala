@@ -4,6 +4,10 @@ import com.joypeg.scamandrill.models._
 
 trait MandrillClient {
 
+  /////////////////////////////////////////////////////////////
+  //USER calls https://mandrillapp.com/api/docs/users.JSON.html
+  /////////////////////////////////////////////////////////////
+
   def ping(ping: MPing): Any
 
   def ping2(ping: MPing): Any
@@ -11,6 +15,10 @@ trait MandrillClient {
   def senders(ping: MPing): Any
 
   def info(ping: MPing): Any
+
+  ////////////////////////////////////////////////////////////////////
+  //MESSAGES calls https://mandrillapp.com/api/docs/messages.JSON.html
+  ////////////////////////////////////////////////////////////////////
 
   def send(msg: MSendMessage): Any
 
@@ -33,6 +41,10 @@ trait MandrillClient {
   def cancelSchedule(sc: MCancelSchedule): Any
 
   def reSchedule(sc: MReSchedule): Any
+
+  ////////////////////////////////////////////////////////////
+  //TAGS calls https://mandrillapp.com/api/docs/tags.JSON.html
+  ////////////////////////////////////////////////////////////
 
   def tagList(tag: MTag): Any
 

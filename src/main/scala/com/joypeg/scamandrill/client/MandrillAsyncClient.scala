@@ -10,6 +10,10 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
   import spray.httpx.SprayJsonSupport._
   import com.joypeg.scamandrill.models.MandrillJsonProtocol._
 
+  /////////////////////////////////////////////////////////////
+  //USER calls https://mandrillapp.com/api/docs/users.JSON.html
+  /////////////////////////////////////////////////////////////
+
   override def ping(ping: MPing): Future[MPingResponse] = {
     executeQuery[MPingResponse](Endpoints.ping.endpoint, marshal(ping))(unmarshal[String].andThen(MPingResponse))
   }
@@ -25,6 +29,10 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
   override def info(ping: MPing): Future[MInfoResponse] = {
     executeQuery[MInfoResponse](Endpoints.info.endpoint, marshal(ping))(unmarshal[MInfoResponse])
   }
+
+  ////////////////////////////////////////////////////////////////////
+  //MESSAGES calls https://mandrillapp.com/api/docs/messages.JSON.html
+  ////////////////////////////////////////////////////////////////////
 
   override def send(msg: MSendMessage): Future[List[MSendResponse]] = {
     executeQuery[List[MSendResponse]](Endpoints.send.endpoint, marshal(msg))(unmarshal[List[MSendResponse]])
@@ -69,6 +77,10 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
   override def reSchedule(sc: MReSchedule): Future[MScheduleResponse] = {
     executeQuery[MScheduleResponse](Endpoints.reschedule.endpoint, marshal(sc))(unmarshal[MScheduleResponse])
   }
+
+  ////////////////////////////////////////////////////////////
+  //TAGS calls https://mandrillapp.com/api/docs/tags.JSON.html
+  ////////////////////////////////////////////////////////////
 
   override def tagList(tag: MTag): Future[List[MTagResponse]] = {
     executeQuery[List[MTagResponse]](Endpoints.taglist.endpoint, marshal(tag))(unmarshal[List[MTagResponse]])

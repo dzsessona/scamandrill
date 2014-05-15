@@ -8,6 +8,10 @@ import scala.concurrent.duration._
 
 object MandrillBlockingClient extends MandrillClient {
 
+  /////////////////////////////////////////////////////////////
+  //USER calls https://mandrillapp.com/api/docs/users.JSON.html
+  /////////////////////////////////////////////////////////////
+
   override def ping(ping: MPing): Try[MPingResponse] = Try {
     Await.result(MandrillAsyncClient.ping(ping), 5 seconds)
   }
@@ -23,6 +27,10 @@ object MandrillBlockingClient extends MandrillClient {
   override def info(ping: MPing): Try[MInfoResponse] = Try {
     Await.result(MandrillAsyncClient.info(ping), 5 seconds)
   }
+
+  ////////////////////////////////////////////////////////////////////
+  //MESSAGES calls https://mandrillapp.com/api/docs/messages.JSON.html
+  ////////////////////////////////////////////////////////////////////
 
   override def send(msg: MSendMessage): Try[List[MSendResponse]] = Try {
     Await.result(MandrillAsyncClient.send(msg), 5 seconds)
@@ -67,6 +75,10 @@ object MandrillBlockingClient extends MandrillClient {
   override def reSchedule(sc: MReSchedule): Try[MScheduleResponse] = Try {
     Await.result(MandrillAsyncClient.reSchedule(sc), 5 seconds)
   }
+
+  ////////////////////////////////////////////////////////////
+  //TAGS calls https://mandrillapp.com/api/docs/tags.JSON.html
+  ////////////////////////////////////////////////////////////
 
   override def tagList(tag: MTag): Try[List[MTagResponse]] = Try {
     Await.result(MandrillAsyncClient.tagList(tag), 5 seconds)
