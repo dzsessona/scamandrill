@@ -116,5 +116,21 @@ object MandrillBlockingClient extends MandrillClient {
     Await.result(MandrillAsyncClient.rejectList(reject), 5 seconds)
   }
 
+  ///////////////////////////////////////////////////////////////////////
+  //WHITELIST calls https://mandrillapp.com/api/docs/whitelists.JSON.html
+  ///////////////////////////////////////////////////////////////////////
+
+  override def whitelistAdd(mail: MWhitelist): Try[MWhitelistAddResponse] = Try {
+    Await.result(MandrillAsyncClient.whitelistAdd(mail), 5 seconds)
+  }
+
+  override def whitelistDelete(mail: MWhitelist): Try[MWhitelistDeleteResponse] = Try {
+    Await.result(MandrillAsyncClient.whitelistDelete(mail), 5 seconds)
+  }
+
+  override def whitelistList(mail: MWhitelist): Try[MWhitelistListResponse] = Try {
+    Await.result(MandrillAsyncClient.whitelistList(mail), 5 seconds)
+  }
+
   override def shutdownSystem(): Unit = MandrillAsyncClient.shutdownSystem()
 }

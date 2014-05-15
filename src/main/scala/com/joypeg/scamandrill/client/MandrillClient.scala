@@ -66,14 +66,16 @@ trait MandrillClient {
 
   def rejectList(reject: MRejectListResponse): Any
 
-  /**
-   * implicit val MRejectAddJson             = jsonFormat4(MRejectAdd)
-  implicit val MRejectListJson            = jsonFormat4(MRejectList)
-  implicit val MRejectDeleteJson          = jsonFormat3(MRejectDelete)
-  implicit val MRejectAddResponseJson     = jsonFormat2(MRejectAddResponse)
-  implicit val MRejectDeleteResponseJson  = jsonFormat3(MRejectDeleteResponse)
-  implicit val MRejectListResponseJson    = jsonFormat9(MRejectListResponse)
-   */
+  ///////////////////////////////////////////////////////////////////////
+  //WHITELIST calls https://mandrillapp.com/api/docs/whitelists.JSON.html
+  ///////////////////////////////////////////////////////////////////////
+
+  def whitelistAdd(mail: MWhitelist): Any
+
+  def whitelistDelete(mail: MWhitelist): Any
+
+  def whitelistList(mail: MWhitelist): Any
+
   def shutdownSystem(): Unit
 
   object Endpoints extends Enumeration {
@@ -100,6 +102,9 @@ trait MandrillClient {
     val rejadd =        Value("rejadd",       "/rejects/add.json")
     val rejlist =       Value("rejlist",      "/rejects/list.json")
     val regdelete =     Value("regdelete",    "/rejects/delete.json")
+    val wlistadd =      Value("wlistadd",     "/whitelists/add.json")
+    val wlistdelete =   Value("wlistdelete",  "/whitelists/delete.json")
+    val wlistlist =     Value("wlistlist",    "/whitelists/list.json")
 
     class MyVal(val endpoint: String) extends Val(nextId, endpoint)
     private[MandrillClient] final def Value(name: String, endpoint: String): MyVal = new MyVal(endpoint)

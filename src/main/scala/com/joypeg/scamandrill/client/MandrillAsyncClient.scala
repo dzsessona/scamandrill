@@ -118,6 +118,22 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[MRejectListResponse](Endpoints.rejlist.endpoint, marshal(reject))(unmarshal[MRejectListResponse])
   }
 
+  ///////////////////////////////////////////////////////////////////////
+  //WHITELIST calls https://mandrillapp.com/api/docs/whitelists.JSON.html
+  ///////////////////////////////////////////////////////////////////////
+
+  override def whitelistAdd(mail: MWhitelist): Future[MWhitelistAddResponse] = {
+    executeQuery[MWhitelistAddResponse](Endpoints.wlistadd.endpoint, marshal(mail))(unmarshal[MWhitelistAddResponse])
+  }
+
+  override def whitelistDelete(mail: MWhitelist): Future[MWhitelistDeleteResponse] = {
+    executeQuery[MWhitelistDeleteResponse](Endpoints.wlistdelete.endpoint, marshal(mail))(unmarshal[MWhitelistDeleteResponse])
+  }
+
+  override def whitelistList(mail: MWhitelist): Future[MWhitelistListResponse] = {
+    executeQuery[MWhitelistListResponse](Endpoints.wlistlist.endpoint, marshal(mail))(unmarshal[MWhitelistListResponse])
+  }
+
   override def shutdownSystem(): Unit = shutdown()
 
 }
