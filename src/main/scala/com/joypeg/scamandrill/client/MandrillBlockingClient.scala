@@ -132,5 +132,37 @@ object MandrillBlockingClient extends MandrillClient {
     Await.result(MandrillAsyncClient.whitelistList(mail), 5 seconds)
   }
 
+  ///////////////////////////////////////////////////////////////////////
+  //SENDERS calls https://mandrillapp.com/api/docs/senders.JSON.html
+  ///////////////////////////////////////////////////////////////////////
+
+  override def sendersList(snd: MSenders): Try[List[MSendersListResp]] = Try {
+    Await.result(MandrillAsyncClient.sendersList(snd), 5 seconds)
+  }
+
+  override def sendersDomains(snd: MSenders): Try[List[MSendersDomainResponses]] = Try {
+    Await.result(MandrillAsyncClient.sendersDomains(snd), 5 seconds)
+  }
+
+  override def sendersAddDomain(snd: MSenderDomain): Try[MSendersDomainResponses] = Try {
+    Await.result(MandrillAsyncClient.sendersAddDomain(snd), 5 seconds)
+  }
+
+  override def sendersCheckDomain(snd: MSenders): Try[MSendersDomainResponses] = Try {
+    Await.result(MandrillAsyncClient.sendersCheckDomain(snd), 5 seconds)
+  }
+
+  override def sendersVerifyDomain(snd: MSenderVerifyDomain): Try[MSendersVerifyDomResp] = Try {
+    Await.result(MandrillAsyncClient.sendersVerifyDomain(snd), 5 seconds)
+  }
+
+  override def sendersInfo(snd: MSenderAddress): Try[MSendersInfoResp] = Try {
+    Await.result(MandrillAsyncClient.sendersInfo(snd), 5 seconds)
+  }
+
+  override def sendersTimeSeries(snd: MSenderAddress): Try[List[MSenderTSResponse]] = Try {
+    Await.result(MandrillAsyncClient.sendersTimeSeries(snd), 5 seconds)
+  }
+
   override def shutdownSystem(): Unit = MandrillAsyncClient.shutdownSystem()
 }

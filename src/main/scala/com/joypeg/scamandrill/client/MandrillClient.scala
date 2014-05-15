@@ -76,6 +76,25 @@ trait MandrillClient {
 
   def whitelistList(mail: MWhitelist): Any
 
+  ///////////////////////////////////////////////////////////////////////
+  //SENDERS calls https://mandrillapp.com/api/docs/senders.JSON.html
+  ///////////////////////////////////////////////////////////////////////
+
+  def sendersList(snd: MSenders): Any
+
+  def sendersDomains(snd: MSenders): Any
+
+  def sendersAddDomain(snd: MSenderDomain): Any
+
+  def sendersCheckDomain(snd: MSenders): Any
+
+  def sendersVerifyDomain(snd: MSenderVerifyDomain): Any
+
+  def sendersInfo(snd: MSenderAddress): Any
+
+  def sendersTimeSeries(snd: MSenderAddress): Any
+
+
   def shutdownSystem(): Unit
 
   object Endpoints extends Enumeration {
@@ -105,6 +124,13 @@ trait MandrillClient {
     val wlistadd =      Value("wlistadd",     "/whitelists/add.json")
     val wlistdelete =   Value("wlistdelete",  "/whitelists/delete.json")
     val wlistlist =     Value("wlistlist",    "/whitelists/list.json")
+    val senderslist =   Value("senderslist",  "/senders/list.json")
+    val sendersdomains =Value("sendersdom",   "/senders/domains.json")
+    val sendersadddom = Value("sendersadddom","/senders/add-domain.json")
+    val senderschkdom = Value("senderscheck", "/senders/check-domain.json")
+    val sendersverdom = Value("sendersverdom","/senders/verify-domain.json")
+    val sendersinfo =   Value("sendersinfo",  "/senders/info.json")
+    val sendersts =     Value("sendersts",    "/senders/time-series.json")
 
     class MyVal(val endpoint: String) extends Val(nextId, endpoint)
     private[MandrillClient] final def Value(name: String, endpoint: String): MyVal = new MyVal(endpoint)

@@ -109,8 +109,18 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
   implicit val MWhitelistAddResponseJson  = jsonFormat2(MWhitelistAddResponse)
   implicit val MWhitelistListResponseJson = jsonFormat3(MWhitelistListResponse)
   implicit val MWhitelistDeleteResponseJ  = jsonFormat2(MWhitelistDeleteResponse)
+  implicit val MSendersjson               = jsonFormat1(MSenders)
+  implicit val MSendersDomj               = jsonFormat3(MSendersDom)
+  implicit val MSenderDomainjson          = jsonFormat2(MSenderDomain)
+  implicit val MSenderVerifyDomainjson    = jsonFormat3(MSenderVerifyDomain)
+  implicit val MSenderAddressjson         = jsonFormat2(MSenderAddress)
+  implicit val MSendersStatsj             = jsonFormat5(MSendersStats)
+  implicit val MSendersDomainResponsesj   = jsonFormat7(MSendersDomainResponses)
+  implicit val MSendersVerifyDomRespj     = jsonFormat3(MSendersVerifyDomResp)
+  implicit val MSendersInfoRespj          = jsonFormat11(MSendersInfoResp)
+  implicit val MSenderTSResponsej         = jsonFormat11(MSenderTSResponse)
+  implicit val MSendersListRespj          = jsonFormat12(MSendersListResp)
 }
-
 
 trait MandrillResponse
 

@@ -134,6 +134,38 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[MWhitelistListResponse](Endpoints.wlistlist.endpoint, marshal(mail))(unmarshal[MWhitelistListResponse])
   }
 
+  ///////////////////////////////////////////////////////////////////////
+  //SENDERS calls https://mandrillapp.com/api/docs/senders.JSON.html
+  ///////////////////////////////////////////////////////////////////////
+
+  override def sendersList(snd: MSenders): Future[List[MSendersListResp]] = {
+    executeQuery[List[MSendersListResp]](Endpoints.senderslist.endpoint, marshal(snd))(unmarshal[List[MSendersListResp]])
+  }
+
+  override def sendersDomains(snd: MSenders): Future[List[MSendersDomainResponses]] = {
+    executeQuery[List[MSendersDomainResponses]](Endpoints.sendersdomains.endpoint, marshal(snd))(unmarshal[List[MSendersDomainResponses]])
+  }
+
+  override def sendersAddDomain(snd: MSenderDomain): Future[MSendersDomainResponses] = {
+    executeQuery[MSendersDomainResponses](Endpoints.sendersadddom.endpoint, marshal(snd))(unmarshal[MSendersDomainResponses])
+  }
+
+  override def sendersCheckDomain(snd: MSenders): Future[MSendersDomainResponses] = {
+    executeQuery[MSendersDomainResponses](Endpoints.senderschkdom.endpoint, marshal(snd))(unmarshal[MSendersDomainResponses])
+  }
+
+  override def sendersVerifyDomain(snd: MSenderVerifyDomain): Future[MSendersVerifyDomResp] = {
+    executeQuery[MSendersVerifyDomResp](Endpoints.sendersverdom.endpoint, marshal(snd))(unmarshal[MSendersVerifyDomResp])
+  }
+
+  override def sendersInfo(snd: MSenderAddress): Future[MSendersInfoResp] = {
+    executeQuery[MSendersInfoResp](Endpoints.sendersinfo.endpoint, marshal(snd))(unmarshal[MSendersInfoResp])
+  }
+
+  override def sendersTimeSeries(snd: MSenderAddress): Future[List[MSenderTSResponse]] = {
+    executeQuery[List[MSenderTSResponse]](Endpoints.sendersts.endpoint, marshal(snd))(unmarshal[List[MSenderTSResponse]])
+  }
+
   override def shutdownSystem(): Unit = shutdown()
 
 }
