@@ -151,6 +151,37 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
   implicit val MSubaccountsResponsej      = jsonFormat10(MSubaccountsResponse)
   implicit val MSubaccountsInfoResponsej  = jsonFormat14(MSubaccountsInfoResponse)
 
+  implicit val MInboundDomainj            = jsonFormat2(MInboundDomain)
+  implicit val MInboundRoutej             = jsonFormat4(MInboundRoute)
+  implicit val MInboundUpdateRoutej       = jsonFormat4(MInboundUpdateRoute)
+  implicit val MInboundDelRoutej          = jsonFormat2(MInboundDelRoute)
+  implicit val MInboundRawj               = jsonFormat6(MInboundRaw)
+  implicit val MInboundDomainResponsej    = jsonFormat3(MInboundDomainResponse)
+  implicit val MInboundRouteResponsej     = jsonFormat3(MInboundRouteResponse)
+  implicit val MInboundRawResponsej       = jsonFormat3(MInboundRawResponse)
+
+  implicit val MExportInfoj               = jsonFormat2(MExportInfo)
+  implicit val MExportNotifyj             = jsonFormat2(MExportNotify)
+  implicit val MExportActivityj           = jsonFormat8(MExportActivity)
+  implicit val MExportResponsej           = jsonFormat6(MExportResponse)
+
+  implicit val MIspIdj                    = jsonFormat2(MIspId)
+  implicit val MIspIpj                    = jsonFormat2(MIspIp)
+  implicit val MIspPoolj                  = jsonFormat3(MIspPool)
+  implicit val MIspPoolInfoj              = jsonFormat2(MIspPoolInfo)
+  implicit val MIspSetPoolj               = jsonFormat4(MIspSetPool)
+  implicit val MIspDnsj                   = jsonFormat3(MIspDns)
+  implicit val MIspDnsRespj               = jsonFormat3(MIspDnsResp)
+  implicit val MIspWarmupRespj            = jsonFormat3(MIspWarmupResp)
+  implicit val MIspResponsej              = jsonFormat6(MIspResponse)
+  implicit val MIspProvisionRespj         = jsonFormat1(MIspProvisionResp)
+  implicit val MIspDeletej                = jsonFormat2(MIspDelete)
+  implicit val MIspInfoPoolj              = jsonFormat3(MIspInfoPool)
+  implicit val MIspDnsResponsej           = jsonFormat2(MIspDnsResponse)
+
+  implicit val MMeteadatapAddj            = jsonFormat3(MMeteadatapAdd)
+  implicit val MMeteadatapDeletej         = jsonFormat2(MMeteadatapDelete)
+  implicit val MIMetadataResponsej        = jsonFormat3(MIMetadataResponse)
 }
 
 
