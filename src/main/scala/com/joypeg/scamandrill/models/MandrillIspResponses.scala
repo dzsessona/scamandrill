@@ -24,3 +24,5 @@ case class MIspInfoPool(name: String,
                          isp: List[MIspResponse]) extends MandrillResponse
 
 case class MIspDnsResponse(valid: Boolean, error: String) extends MandrillResponse
+
+case class MIspDeletePoolResponse(pool: String, deleted: Boolean) extends MandrillResponse

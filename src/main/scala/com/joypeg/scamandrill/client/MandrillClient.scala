@@ -188,15 +188,44 @@ trait MandrillClient {
   //EXPORT https://mandrillapp.com/api/docs/exports.JSON.html
   ////////////////////////////////////////////////////////////
 
-  def exportInfo(export: MExportInfo) :Any
+  def exportInfo(export: MExportInfo): Any
 
-  def exportList(export: MKey) :Any
+  def exportList(export: MKey): Any
 
-  def exportReject(export: MExportNotify) :Any
+  def exportReject(export: MExportNotify): Any
 
-  def exportWhitelist(export: MExportNotify) :Any
+  def exportWhitelist(export: MExportNotify): Any
 
-  def exportActivity(export: MExportActivity) :Any
+  def exportActivity(export: MExportActivity): Any
+
+  ////////////////////////////////////////////////////
+  //ISP https://mandrillapp.com/api/docs/ips.JSON.html
+  ////////////////////////////////////////////////////
+
+  def ispList(isp: MKey): Any
+
+  def ispInfo(isp: MIspIp): Any
+
+  def ispProvision(isp: MIspPool): Any
+
+  def ispStartWarmup(isp: MIspIp): Any
+
+  def ispCancelWarmup(isp: MIspIp): Any
+
+  def ispSetPool(isp: MIspSetPool): Any
+
+  def ispDelete(isp: MIspIp): Any
+
+  def ispListPool(isp: MKey): Any
+
+  def ispPoolInfo(isp: MIspPoolInfo): Any
+
+  def ispCreatePool(isp: MIspPoolInfo): Any
+
+  def ispDeletePool(isp: MIspPoolInfo): Any
+
+  def ispSetCustomDns(isp: MIspDns): Any
+
 
 
   def shutdownSystem(): Unit

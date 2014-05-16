@@ -178,6 +178,7 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
   implicit val MIspDeletej                = jsonFormat2(MIspDelete)
   implicit val MIspInfoPoolj              = jsonFormat3(MIspInfoPool)
   implicit val MIspDnsResponsej           = jsonFormat2(MIspDnsResponse)
+  implicit val MIspDeletePoolResponsej    = jsonFormat2(MIspDeletePoolResponse)
 
   implicit val MMeteadatapAddj            = jsonFormat3(MMeteadatapAdd)
   implicit val MMeteadatapDeletej         = jsonFormat2(MMeteadatapDelete)

@@ -349,4 +349,56 @@ object MandrillBlockingClient extends MandrillClient {
   override def exportActivity(export: MExportActivity): Try[MExportResponse] = Try {
     Await.result(MandrillAsyncClient.exportActivity(export), 5 seconds)
   }
+
+  ////////////////////////////////////////////////////
+  //ISP https://mandrillapp.com/api/docs/ips.JSON.html
+  ////////////////////////////////////////////////////
+
+  override def ispList(isp: MKey): Try[List[MIspResponse]] = Try {
+    Await.result(MandrillAsyncClient.ispList(isp), 5 seconds)
+  }
+
+  override def ispInfo(isp: MIspIp): Try[MIspResponse] = Try {
+    Await.result(MandrillAsyncClient.ispInfo(isp), 5 seconds)
+  }
+
+  override def ispProvision(isp: MIspPool): Try[MIspProvisionResp] = Try {
+    Await.result(MandrillAsyncClient.ispProvision(isp), 5 seconds)
+  }
+
+  override def ispStartWarmup(isp: MIspIp): Try[MIspResponse] = Try {
+    Await.result(MandrillAsyncClient.ispStartWarmup(isp), 5 seconds)
+  }
+
+  override def ispCancelWarmup(isp: MIspIp): Try[MIspResponse] = Try {
+    Await.result(MandrillAsyncClient.ispCancelWarmup(isp), 5 seconds)
+  }
+
+  override def ispSetPool(isp: MIspSetPool): Try[MIspResponse] = Try {
+    Await.result(MandrillAsyncClient.ispSetPool(isp), 5 seconds)
+  }
+
+  override def ispDelete(isp: MIspIp): Try[MIspDelete] = Try {
+    Await.result(MandrillAsyncClient.ispDelete(isp), 5 seconds)
+  }
+
+  override def ispListPool(isp: MKey): Try[List[MIspInfoPool]] = Try {
+    Await.result(MandrillAsyncClient.ispListPool(isp), 5 seconds)
+  }
+
+  override def ispPoolInfo(isp: MIspPoolInfo): Try[MIspInfoPool] = Try {
+    Await.result(MandrillAsyncClient.ispPoolInfo(isp), 5 seconds)
+  }
+
+  override def ispCreatePool(isp: MIspPoolInfo): Try[MIspInfoPool] = Try {
+    Await.result(MandrillAsyncClient.ispCreatePool(isp), 5 seconds)
+  }
+
+  override def ispDeletePool(isp: MIspPoolInfo): Try[MIspDeletePoolResponse] = Try {
+    Await.result(MandrillAsyncClient.ispDeletePool(isp), 5 seconds)
+  }
+
+  override def ispSetCustomDns(isp: MIspDns): Try[MIspDnsResponse] = Try {
+    Await.result(MandrillAsyncClient.ispSetCustomDns(isp), 5 seconds)
+  }
 }

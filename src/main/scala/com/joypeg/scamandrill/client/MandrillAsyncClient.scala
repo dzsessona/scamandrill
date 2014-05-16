@@ -352,4 +352,56 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[MExportResponse](Endpoints.expactivity.endpoint, marshal(export))(unmarshal[MExportResponse])
   }
 
+  ////////////////////////////////////////////////////
+  //ISP https://mandrillapp.com/api/docs/ips.JSON.html
+  ////////////////////////////////////////////////////
+
+  override def ispList(isp: MKey): Future[List[MIspResponse]] = {
+    executeQuery[List[MIspResponse]](Endpoints.isplist.endpoint, marshal(isp))(unmarshal[List[MIspResponse]])
+  }
+
+  override def ispInfo(isp: MIspIp): Future[MIspResponse] = {
+    executeQuery[MIspResponse](Endpoints.ispinfo.endpoint, marshal(isp))(unmarshal[MIspResponse])
+  }
+
+  override def ispProvision(isp: MIspPool): Future[MIspProvisionResp] = {
+    executeQuery[MIspProvisionResp](Endpoints.ispprov.endpoint, marshal(isp))(unmarshal[MIspProvisionResp])
+  }
+
+  override def ispStartWarmup(isp: MIspIp): Future[MIspResponse] = {
+    executeQuery[MIspResponse](Endpoints.ispstwarm.endpoint, marshal(isp))(unmarshal[MIspResponse])
+  }
+
+  override def ispCancelWarmup(isp: MIspIp): Future[MIspResponse] = {
+    executeQuery[MIspResponse](Endpoints.ispcancwarm.endpoint, marshal(isp))(unmarshal[MIspResponse])
+  }
+
+  override def ispSetPool(isp: MIspSetPool): Future[MIspResponse] = {
+    executeQuery[MIspResponse](Endpoints.ispsetpool.endpoint, marshal(isp))(unmarshal[MIspResponse])
+  }
+
+  override def ispDelete(isp: MIspIp): Future[MIspDelete] = {
+    executeQuery[MIspDelete](Endpoints.ispdel.endpoint, marshal(isp))(unmarshal[MIspDelete])
+  }
+
+  override def ispListPool(isp: MKey): Future[List[MIspInfoPool]] = {
+    executeQuery[List[MIspInfoPool]](Endpoints.isplistpool.endpoint, marshal(isp))(unmarshal[List[MIspInfoPool]])
+  }
+
+  override def ispPoolInfo(isp: MIspPoolInfo): Future[MIspInfoPool] = {
+    executeQuery[MIspInfoPool](Endpoints.isppoolinfo.endpoint, marshal(isp))(unmarshal[MIspInfoPool])
+  }
+
+  override def ispCreatePool(isp: MIspPoolInfo): Future[MIspInfoPool] = {
+    executeQuery[MIspInfoPool](Endpoints.ispcreatep.endpoint, marshal(isp))(unmarshal[MIspInfoPool])
+  }
+
+  override def ispDeletePool(isp: MIspPoolInfo): Future[MIspDeletePoolResponse] = {
+    executeQuery[MIspDeletePoolResponse](Endpoints.ispdeletep.endpoint, marshal(isp))(unmarshal[MIspDeletePoolResponse])
+  }
+
+  override def ispSetCustomDns(isp: MIspDns): Future[MIspDnsResponse] = {
+    executeQuery[MIspDnsResponse](Endpoints.ispdns.endpoint, marshal(isp))(unmarshal[MIspDnsResponse])
+  }
+
 }
