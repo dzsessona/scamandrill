@@ -8,7 +8,7 @@ import com.joypeg.scamandrill.models._
 import scala.util.{Failure, Success}
 import com.joypeg.scamandrill.utils._
 
-class UserCallsClientTest extends FlatSpec with Matchers with BeforeAndAfterAll with SimpleLogger{
+class UserCallsTest extends FlatSpec with Matchers with BeforeAndAfterAll with SimpleLogger{
 
   "Ping" should "work getting a valid MPingResponse (async client)" in {
     val res = Await.result(MandrillAsyncClient.ping(MKey()), DefaultConfig.defaultTimeout)
