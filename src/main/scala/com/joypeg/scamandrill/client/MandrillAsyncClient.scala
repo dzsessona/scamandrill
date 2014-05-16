@@ -10,6 +10,8 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
   import spray.httpx.SprayJsonSupport._
   import com.joypeg.scamandrill.models.MandrillJsonProtocol._
 
+  override def shutdownSystem(): Unit = shutdown()
+
   /////////////////////////////////////////////////////////////
   //USER calls https://mandrillapp.com/api/docs/users.JSON.html
   /////////////////////////////////////////////////////////////
@@ -286,7 +288,45 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[MSubaccountsResponse](Endpoints.subresume.endpoint, marshal(subacc))(unmarshal[MSubaccountsResponse])
   }
 
+  ////////////////////////////////////////////////////////////
+  //INBOUND https://mandrillapp.com/api/docs/inbound.JSON.html
+  ////////////////////////////////////////////////////////////
 
-  override def shutdownSystem(): Unit = shutdown()
+  override def inboundDomains(inbound: MKey): Future[List[MInboundDomainResponse]] = {
+    executeQuery[List[MInboundDomainResponse]](Endpoints.inbdom.endpoint, marshal(inbound))(unmarshal[List[MInboundDomainResponse]])
+  }
+
+  override def inboundAddDomain(inbound: MInboundDomain): Future[MInboundDomainResponse] = {
+    executeQuery[MInboundDomainResponse](Endpoints.inbadddom.endpoint, marshal(inbound))(unmarshal[MInboundDomainResponse])
+  }
+
+  override def inboundCheckDomain(inbound: MInboundDomain): Future[MInboundDomainResponse] = {
+    executeQuery[MInboundDomainResponse](Endpoints.inbchkdom.endpoint, marshal(inbound))(unmarshal[MInboundDomainResponse])
+  }
+
+  override def inboundDeleteDomain(inbound: MInboundDomain): Future[MInboundDomainResponse] = {
+    executeQuery[MInboundDomainResponse](Endpoints.inbdeldom.endpoint, marshal(inbound))(unmarshal[MInboundDomainResponse])
+  }
+
+  override def inboundRoutes(inbound: MInboundDomain): Future[List[MInboundRouteResponse]] = {
+    executeQuery[List[MInboundRouteResponse]](Endpoints.inbroutes.endpoint, marshal(inbound))(unmarshal[List[MInboundRouteResponse]])
+  }
+
+  override def inboundAddRoute(inbound: MInboundRoute): Future[MInboundRouteResponse] = {
+    executeQuery[MInboundRouteResponse](Endpoints.inbaddroute.endpoint, marshal(inbound))(unmarshal[MInboundRouteResponse])
+  }
+
+  override def inboundUpdateRoute(inbound: MInboundUpdateRoute): Future[MInboundRouteResponse] = {
+    executeQuery[MInboundRouteResponse](Endpoints.inbdelroute.endpoint, marshal(inbound))(unmarshal[MInboundRouteResponse])
+  }
+
+  override def inboundDeleteRoute(inbound: MInboundDelRoute): Future[MInboundRouteResponse] = {
+    executeQuery[MInboundRouteResponse](Endpoints.inbdelroute.endpoint, marshal(inbound))(unmarshal[MInboundRouteResponse])
+  }
+
+  override def inboudSendRaw(inbound: MInboundRaw): Future[List[MInboundRawResponse]] = {
+    executeQuery[List[MInboundRawResponse]](Endpoints.inbraw.endpoint, marshal(inbound))(unmarshal[List[MInboundRawResponse]])
+  }
+
 
 }

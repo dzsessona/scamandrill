@@ -285,4 +285,44 @@ object MandrillBlockingClient extends MandrillClient {
   override def subaccountResume(subacc: MSubaccountInfo): Try[MSubaccountsResponse] = Try {
     Await.result(MandrillAsyncClient.subaccountResume(subacc), 5 seconds)
   }
+
+  ////////////////////////////////////////////////////////////
+  //INBOUND https://mandrillapp.com/api/docs/inbound.JSON.html
+  ////////////////////////////////////////////////////////////
+
+  override def inboundDomains(inbound: MKey): Try[List[MInboundDomainResponse]] = Try {
+    Await.result(MandrillAsyncClient.inboundDomains(inbound), 5 seconds)
+  }
+
+  override def inboundAddDomain(inbound: MInboundDomain): Try[MInboundDomainResponse] = Try {
+    Await.result(MandrillAsyncClient.inboundAddDomain(inbound), 5 seconds)
+  }
+
+  override def inboundCheckDomain(inbound: MInboundDomain): Try[MInboundDomainResponse] = Try {
+    Await.result(MandrillAsyncClient.inboundCheckDomain(inbound), 5 seconds)
+  }
+
+  override def inboundDeleteDomain(inbound: MInboundDomain): Try[MInboundDomainResponse] = Try {
+    Await.result(MandrillAsyncClient.inboundDeleteDomain(inbound), 5 seconds)
+  }
+
+  override def inboundRoutes(inbound: MInboundDomain): Try[List[MInboundRouteResponse]] = Try {
+    Await.result(MandrillAsyncClient.inboundRoutes(inbound), 5 seconds)
+  }
+
+  override def inboundAddRoute(inbound: MInboundRoute): Try[MInboundRouteResponse] = Try {
+    Await.result(MandrillAsyncClient.inboundAddRoute(inbound), 5 seconds)
+  }
+
+  override def inboundUpdateRoute(inbound: MInboundUpdateRoute): Try[MInboundRouteResponse] = Try {
+    Await.result(MandrillAsyncClient.inboundUpdateRoute(inbound), 5 seconds)
+  }
+
+  override def inboundDeleteRoute(inbound: MInboundDelRoute): Try[MInboundRouteResponse] = Try {
+    Await.result(MandrillAsyncClient.inboundDeleteRoute(inbound), 5 seconds)
+  }
+
+  override def inboudSendRaw(inbound: MInboundRaw): Try[List[MInboundRawResponse]] = Try {
+    Await.result(MandrillAsyncClient.inboudSendRaw(inbound), 5 seconds)
+  }
 }

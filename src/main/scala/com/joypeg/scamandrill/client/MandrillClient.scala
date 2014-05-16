@@ -162,6 +162,30 @@ trait MandrillClient {
 
   def subaccountResume(subacc: MSubaccountInfo): Any
 
+  ////////////////////////////////////////////////////////////
+  //INBOUND https://mandrillapp.com/api/docs/inbound.JSON.html
+  ////////////////////////////////////////////////////////////
+
+  def inboundDomains(inbound: MKey): Any
+
+  def inboundAddDomain(inbound: MInboundDomain): Any
+
+  def inboundCheckDomain(inbound: MInboundDomain): Any
+
+  def inboundDeleteDomain(inbound: MInboundDomain): Any
+
+  def inboundRoutes(inbound: MInboundDomain): Any
+
+  def inboundAddRoute(inbound: MInboundRoute): Any
+
+  def inboundUpdateRoute(inbound: MInboundUpdateRoute): Any
+
+  def inboundDeleteRoute(inbound: MInboundDelRoute): Any
+
+  def inboudSendRaw(inbound: MInboundRaw): Any
+
+
+
 
 
   def shutdownSystem(): Unit
