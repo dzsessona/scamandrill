@@ -1,3 +1,3 @@
 package com.joypeg.scamandrill.models
 
-case class MPing(key: String = DefaultConfig.defaultKeyFromConfig) extends MandrillRequest
+case class MKey(key: String = DefaultConfig.defaultKeyFromConfig) extends MandrillRequest

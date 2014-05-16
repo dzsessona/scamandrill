@@ -14,19 +14,19 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
   //USER calls https://mandrillapp.com/api/docs/users.JSON.html
   /////////////////////////////////////////////////////////////
 
-  override def ping(ping: MPing): Future[MPingResponse] = {
+  override def ping(ping: MKey): Future[MPingResponse] = {
     executeQuery[MPingResponse](Endpoints.ping.endpoint, marshal(ping))(unmarshal[String].andThen(MPingResponse))
   }
 
-  override def ping2(ping: MPing): Future[MPingResponse] = {
+  override def ping2(ping: MKey): Future[MPingResponse] = {
     executeQuery[MPingResponse](Endpoints.ping2.endpoint, marshal(ping))(unmarshal[MPingResponse])
   }
 
-  override def senders(ping: MPing): Future[List[MSenderDataResponse]] = {
+  override def senders(ping: MKey): Future[List[MSenderDataResponse]] = {
     executeQuery[List[MSenderDataResponse]](Endpoints.senders.endpoint, marshal(ping))(unmarshal[List[MSenderDataResponse]])
   }
 
-  override def info(ping: MPing): Future[MInfoResponse] = {
+  override def info(ping: MKey): Future[MInfoResponse] = {
     executeQuery[MInfoResponse](Endpoints.info.endpoint, marshal(ping))(unmarshal[MInfoResponse])
   }
 
@@ -82,7 +82,7 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
   //TAGS calls https://mandrillapp.com/api/docs/tags.JSON.html
   ////////////////////////////////////////////////////////////
 
-  override def tagList(tag: MTag): Future[List[MTagResponse]] = {
+  override def tagList(tag: MKey): Future[List[MTagResponse]] = {
     executeQuery[List[MTagResponse]](Endpoints.taglist.endpoint, marshal(tag))(unmarshal[List[MTagResponse]])
   }
 
@@ -98,7 +98,7 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[List[MTimeSeriesResponse]](Endpoints.tagtimeseries.endpoint, marshal(tag))(unmarshal[List[MTimeSeriesResponse]])
   }
 
-  override def tagAllTimeSeries(tag: MTag): Future[List[MTimeSeriesResponse]] = {
+  override def tagAllTimeSeries(tag: MKey): Future[List[MTimeSeriesResponse]] = {
     executeQuery[List[MTimeSeriesResponse]](Endpoints.tagalltime.endpoint, marshal(tag))(unmarshal[List[MTimeSeriesResponse]])
   }
 
@@ -138,11 +138,11 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
   //SENDERS calls https://mandrillapp.com/api/docs/senders.JSON.html
   ///////////////////////////////////////////////////////////////////////
 
-  override def sendersList(snd: MSenders): Future[List[MSendersListResp]] = {
+  override def sendersList(snd: MKey): Future[List[MSendersListResp]] = {
     executeQuery[List[MSendersListResp]](Endpoints.senderslist.endpoint, marshal(snd))(unmarshal[List[MSendersListResp]])
   }
 
-  override def sendersDomains(snd: MSenders): Future[List[MSendersDomainResponses]] = {
+  override def sendersDomains(snd: MKey): Future[List[MSendersDomainResponses]] = {
     executeQuery[List[MSendersDomainResponses]](Endpoints.sendersdomains.endpoint, marshal(snd))(unmarshal[List[MSendersDomainResponses]])
   }
 
@@ -150,7 +150,7 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[MSendersDomainResponses](Endpoints.sendersadddom.endpoint, marshal(snd))(unmarshal[MSendersDomainResponses])
   }
 
-  override def sendersCheckDomain(snd: MSenders): Future[MSendersDomainResponses] = {
+  override def sendersCheckDomain(snd: MKey): Future[MSendersDomainResponses] = {
     executeQuery[MSendersDomainResponses](Endpoints.senderschkdom.endpoint, marshal(snd))(unmarshal[MSendersDomainResponses])
   }
 
@@ -170,7 +170,7 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
   //URLS calls https://mandrillapp.com/api/docs/urls.JSON.html
   ////////////////////////////////////////////////////////////
 
-  override def urlsList(url: MUrls): Future[List[MUrlResponse]] = {
+  override def urlsList(url: MKey): Future[List[MUrlResponse]] = {
     executeQuery[List[MUrlResponse]](Endpoints.urllist.endpoint, marshal(url))(unmarshal[List[MUrlResponse]])
   }
 
@@ -182,7 +182,7 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[List[MUrlTimeResponse]](Endpoints.urlts.endpoint, marshal(url))(unmarshal[List[MUrlTimeResponse]])
   }
 
-  override def urlsTrackingDomain(url: MUrls): Future[List[MUrlDomainResponse]] = {
+  override def urlsTrackingDomain(url: MKey): Future[List[MUrlDomainResponse]] = {
     executeQuery[List[MUrlDomainResponse]](Endpoints.urltrackdom.endpoint, marshal(url))(unmarshal[List[MUrlDomainResponse]])
   }
 
@@ -230,7 +230,29 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[MTemplateRenderResponse](Endpoints.tmprender.endpoint, marshal(template))(unmarshal[MTemplateRenderResponse])
   }
 
+  ////////////////////////////////////////////////////////////////////
+  //WEBHOOKS calls https://mandrillapp.com/api/docs/webhooks.JSON.html
+  ////////////////////////////////////////////////////////////////////
 
+  override def webhookList(webhook: MKey): Future[List[MWebhooksResponse]] = {
+    executeQuery[List[MWebhooksResponse]](Endpoints.webhlist.endpoint, marshal(webhook))(unmarshal[List[MWebhooksResponse]])
+  }
+
+  override def webhookAdd(webhook: MWebhook): Future[MWebhooksResponse] = {
+    executeQuery[MWebhooksResponse](Endpoints.webhadd.endpoint, marshal(webhook))(unmarshal[MWebhooksResponse])
+  }
+
+  override def webhookInfo(webhook: MWebhookInfo): Future[MWebhooksResponse] = {
+    executeQuery[MWebhooksResponse](Endpoints.webhinfo.endpoint, marshal(webhook))(unmarshal[MWebhooksResponse])
+  }
+
+  override def webhookUpdate(webhook: MWebhookUpdate): Future[MWebhooksResponse] = {
+    executeQuery[MWebhooksResponse](Endpoints.webhupdate.endpoint, marshal(webhook))(unmarshal[MWebhooksResponse])
+  }
+
+  override def webhookDelete(webhook: MWebhookInfo): Future[MWebhooksResponse] = {
+    executeQuery[MWebhooksResponse](Endpoints.webhdelete.endpoint, marshal(webhook))(unmarshal[MWebhooksResponse])
+  }
 
 
   override def shutdownSystem(): Unit = shutdown()

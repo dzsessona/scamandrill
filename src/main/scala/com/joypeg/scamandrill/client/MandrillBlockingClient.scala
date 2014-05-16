@@ -14,19 +14,19 @@ object MandrillBlockingClient extends MandrillClient {
   //USER calls https://mandrillapp.com/api/docs/users.JSON.html
   /////////////////////////////////////////////////////////////
 
-  override def ping(ping: MPing): Try[MPingResponse] = Try {
+  override def ping(ping: MKey): Try[MPingResponse] = Try {
     Await.result(MandrillAsyncClient.ping(ping), 5 seconds)
   }
 
-  override def ping2(ping: MPing): Try[MPingResponse] = Try {
+  override def ping2(ping: MKey): Try[MPingResponse] = Try {
     Await.result(MandrillAsyncClient.ping2(ping), 5 seconds)
   }
 
-  override def senders(ping: MPing): Try[List[MSenderDataResponse]] = Try {
+  override def senders(ping: MKey): Try[List[MSenderDataResponse]] = Try {
     Await.result(MandrillAsyncClient.senders(ping), 5 seconds)
   }
 
-  override def info(ping: MPing): Try[MInfoResponse] = Try {
+  override def info(ping: MKey): Try[MInfoResponse] = Try {
     Await.result(MandrillAsyncClient.info(ping), 5 seconds)
   }
 
@@ -82,7 +82,7 @@ object MandrillBlockingClient extends MandrillClient {
   //TAGS calls https://mandrillapp.com/api/docs/tags.JSON.html
   ////////////////////////////////////////////////////////////
 
-  override def tagList(tag: MTag): Try[List[MTagResponse]] = Try {
+  override def tagList(tag: MKey): Try[List[MTagResponse]] = Try {
     Await.result(MandrillAsyncClient.tagList(tag), 5 seconds)
   }
 
@@ -98,7 +98,7 @@ object MandrillBlockingClient extends MandrillClient {
     Await.result(MandrillAsyncClient.tagTimeSeries(tag), 5 seconds)
   }
 
-  override def tagAllTimeSeries(tag: MTag): Try[List[MTimeSeriesResponse]] = Try {
+  override def tagAllTimeSeries(tag: MKey): Try[List[MTimeSeriesResponse]] = Try {
     Await.result(MandrillAsyncClient.tagAllTimeSeries(tag), 5 seconds)
   }
 
@@ -138,11 +138,11 @@ object MandrillBlockingClient extends MandrillClient {
   //SENDERS calls https://mandrillapp.com/api/docs/senders.JSON.html
   ///////////////////////////////////////////////////////////////////////
 
-  override def sendersList(snd: MSenders): Try[List[MSendersListResp]] = Try {
+  override def sendersList(snd: MKey): Try[List[MSendersListResp]] = Try {
     Await.result(MandrillAsyncClient.sendersList(snd), 5 seconds)
   }
 
-  override def sendersDomains(snd: MSenders): Try[List[MSendersDomainResponses]] = Try {
+  override def sendersDomains(snd: MKey): Try[List[MSendersDomainResponses]] = Try {
     Await.result(MandrillAsyncClient.sendersDomains(snd), 5 seconds)
   }
 
@@ -150,7 +150,7 @@ object MandrillBlockingClient extends MandrillClient {
     Await.result(MandrillAsyncClient.sendersAddDomain(snd), 5 seconds)
   }
 
-  override def sendersCheckDomain(snd: MSenders): Try[MSendersDomainResponses] = Try {
+  override def sendersCheckDomain(snd: MKey): Try[MSendersDomainResponses] = Try {
     Await.result(MandrillAsyncClient.sendersCheckDomain(snd), 5 seconds)
   }
 
@@ -170,7 +170,7 @@ object MandrillBlockingClient extends MandrillClient {
   //URLS calls https://mandrillapp.com/api/docs/urls.JSON.html
   ////////////////////////////////////////////////////////////
 
-  override def urlsList(url: MUrls): Try[List[MUrlResponse]] = Try {
+  override def urlsList(url: MKey): Try[List[MUrlResponse]] = Try {
     Await.result(MandrillAsyncClient.urlsList(url), 5 seconds)
   }
 
@@ -182,7 +182,7 @@ object MandrillBlockingClient extends MandrillClient {
     Await.result(MandrillAsyncClient.urlsTimeSeries(url), 5 seconds)
   }
 
-  override def urlsTrackingDomain(url: MUrls): Try[List[MUrlDomainResponse]] = Try {
+  override def urlsTrackingDomain(url: MKey): Try[List[MUrlDomainResponse]] = Try {
     Await.result(MandrillAsyncClient.urlsTrackingDomain(url), 5 seconds)
   }
 
@@ -228,6 +228,30 @@ object MandrillBlockingClient extends MandrillClient {
 
   override def templateRender(template: MTemplateRender): Try[MTemplateRenderResponse] = Try {
     Await.result(MandrillAsyncClient.templateRender(template), 5 seconds)
+  }
+
+  ////////////////////////////////////////////////////////////////////
+  //WEBHOOKS calls https://mandrillapp.com/api/docs/webhooks.JSON.html
+  ////////////////////////////////////////////////////////////////////
+
+  override def webhookList(webhook: MKey): Try[List[MWebhooksResponse]] = Try {
+    Await.result(MandrillAsyncClient.webhookList(webhook), 5 seconds)
+  }
+
+  override def webhookAdd(webhook: MWebhook): Try[MWebhooksResponse] = Try {
+    Await.result(MandrillAsyncClient.webhookAdd(webhook), 5 seconds)
+  }
+
+  override def webhookInfo(webhook: MWebhookInfo): Try[MWebhooksResponse] = Try {
+    Await.result(MandrillAsyncClient.webhookInfo(webhook), 5 seconds)
+  }
+
+  override def webhookUpdate(webhook: MWebhookUpdate): Try[MWebhooksResponse] = Try {
+    Await.result(MandrillAsyncClient.webhookUpdate(webhook), 5 seconds)
+  }
+
+  override def webhookDelete(webhook: MWebhookInfo): Try[MWebhooksResponse] = Try {
+    Await.result(MandrillAsyncClient.webhookDelete(webhook), 5 seconds)
   }
 
 }

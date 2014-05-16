@@ -8,13 +8,13 @@ trait MandrillClient {
   //USER calls https://mandrillapp.com/api/docs/users.JSON.html
   /////////////////////////////////////////////////////////////
 
-  def ping(ping: MPing): Any
+  def ping(ping: MKey): Any
 
-  def ping2(ping: MPing): Any
+  def ping2(ping: MKey): Any
 
-  def senders(ping: MPing): Any
+  def senders(ping: MKey): Any
 
-  def info(ping: MPing): Any
+  def info(ping: MKey): Any
 
   ////////////////////////////////////////////////////////////////////
   //MESSAGES calls https://mandrillapp.com/api/docs/messages.JSON.html
@@ -46,7 +46,7 @@ trait MandrillClient {
   //TAGS calls https://mandrillapp.com/api/docs/tags.JSON.html
   ////////////////////////////////////////////////////////////
 
-  def tagList(tag: MTag): Any
+  def tagList(tag: MKey): Any
 
   def tagDelete(tag: MTagRequest): Any
 
@@ -54,7 +54,7 @@ trait MandrillClient {
 
   def tagTimeSeries(tag: MTagRequest): Any
 
-  def tagAllTimeSeries(tag: MTag): Any
+  def tagAllTimeSeries(tag: MKey): Any
 
   /////////////////////////////////////////////////////////////////
   //REJECT calls https://mandrillapp.com/api/docs/rejects.JSON.html
@@ -80,13 +80,13 @@ trait MandrillClient {
   //SENDERS calls https://mandrillapp.com/api/docs/senders.JSON.html
   //////////////////////////////////////////////////////////////////
 
-  def sendersList(snd: MSenders): Any
+  def sendersList(snd: MKey): Any
 
-  def sendersDomains(snd: MSenders): Any
+  def sendersDomains(snd: MKey): Any
 
   def sendersAddDomain(snd: MSenderDomain): Any
 
-  def sendersCheckDomain(snd: MSenders): Any
+  def sendersCheckDomain(snd: MKey): Any
 
   def sendersVerifyDomain(snd: MSenderVerifyDomain): Any
 
@@ -98,13 +98,13 @@ trait MandrillClient {
   //URLS calls https://mandrillapp.com/api/docs/urls.JSON.html
   ////////////////////////////////////////////////////////////
 
-  def urlsList(url: MUrls): Any
+  def urlsList(url: MKey): Any
 
   def urlsSearch(url: MUrlSearch): Any
 
   def urlsTimeSeries(url: MUrlTimeSeries): Any
 
-  def urlsTrackingDomain(url: MUrls): Any
+  def urlsTrackingDomain(url: MKey): Any
 
   def urlsCheckTrackingDomain(url: MUrlDomain): Any
 
@@ -130,6 +130,19 @@ trait MandrillClient {
 
   def templateRender(template: MTemplateRender): Any
 
+  ////////////////////////////////////////////////////////////////////
+  //WEBHOOKS calls https://mandrillapp.com/api/docs/webhooks.JSON.html
+  ////////////////////////////////////////////////////////////////////
+
+  def webhookList(webhook: MKey): Any
+
+  def webhookAdd(webhook: MWebhook): Any
+
+  def webhookInfo(webhook: MWebhookInfo): Any
+
+  def webhookUpdate(webhook: MWebhookUpdate): Any
+
+  def webhookDelete(webhook: MWebhookInfo): Any
 
 
   def shutdownSystem(): Unit
@@ -182,6 +195,11 @@ trait MandrillClient {
     val tmplist         = Value("tmplist",      "/templates/list.json")
     val tmpts           = Value("tmpts",        "/templates/time-series.json")
     val tmprender       = Value("tmprender",    "/templates/render.json")
+    val webhlist        = Value("webhlist",     "/webhooks/list.json")
+    val webhadd         = Value("webhadd",      "/webhooks/add.json")
+    val webhinfo        = Value("webhinfo",     "/webhooks/info.json")
+    val webhupdate      = Value("webhupdate",   "/webhooks/update.json")
+    val webhdelete      = Value("webhdelete",   "/webhooks/delete.json")
 
     class MyVal(val endpoint: String) extends Val(nextId, endpoint)
     private[MandrillClient] final def Value(name: String, endpoint: String): MyVal = new MyVal(endpoint)

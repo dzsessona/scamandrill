@@ -1,8 +1,6 @@
 package com.joypeg.scamandrill.models
 
 
-case class MSenders(key: String = DefaultConfig.defaultKeyFromConfig) extends MandrillRequest
-
 case class MSenderDomain(key: String = DefaultConfig.defaultKeyFromConfig,
                     domain: String) extends MandrillRequest
 

@@ -4,7 +4,7 @@ import spray.json._
 import scala.util.Try
 
 object MandrillJsonProtocol extends DefaultJsonProtocol {
-  implicit val MUserPingJson          = jsonFormat1(MPing)
+  implicit val MUserPingJson          = jsonFormat1(MKey)
   implicit val MUserResponseJson      = jsonFormat1(MPingResponse)
   implicit val MUserDataResponseJson  = jsonFormat12(MSenderDataResponse)
   implicit val MUserStatJson          = jsonFormat10(MStat)
@@ -97,7 +97,6 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
   implicit val MCancelScheduleJson        = jsonFormat2(MCancelSchedule)
   implicit val MReScheduleJson            = jsonFormat3(MReSchedule)
 
-  implicit val MTagJson                   = jsonFormat1(MTag)
   implicit val MTagRequestJson            = jsonFormat2(MTagRequest)
   implicit val MTagResponseJson           = jsonFormat12(MTagResponse)
   implicit val MTagInfoResponseJson       = jsonFormat10(MTagInfoResponse)
@@ -114,7 +113,6 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
   implicit val MWhitelistListResponseJson = jsonFormat3(MWhitelistListResponse)
   implicit val MWhitelistDeleteResponseJ  = jsonFormat2(MWhitelistDeleteResponse)
 
-  implicit val MSendersjson               = jsonFormat1(MSenders)
   implicit val MSendersDomj               = jsonFormat3(MSendersDom)
   implicit val MSenderDomainjson          = jsonFormat2(MSenderDomain)
   implicit val MSenderVerifyDomainjson    = jsonFormat3(MSenderVerifyDomain)
@@ -126,7 +124,6 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
   implicit val MSenderTSResponsej         = jsonFormat11(MSenderTSResponse)
   implicit val MSendersListRespj          = jsonFormat12(MSendersListResp)
 
-  implicit val MUrlsj                     = jsonFormat1(MUrls)
   implicit val MUrlSearchj                = jsonFormat2(MUrlSearch)
   implicit val MUrlTimeSeriesj            = jsonFormat2(MUrlTimeSeries)
   implicit val MUrlDomainj                = jsonFormat2(MUrlDomain)
@@ -142,6 +139,11 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
   implicit val MTemplateRenderj           = jsonFormat4(MTemplateRender)
   implicit val MTemplateRenderResponsej   = jsonFormat1(MTemplateRenderResponse)
   implicit val MTemplateAddResponsesj     = jsonFormat17(MTemplateAddResponses)
+
+  implicit val MWebhookj                  = jsonFormat4(MWebhook)
+  implicit val MWebhookInfoj              = jsonFormat2(MWebhookInfo)
+  implicit val MWebhookUpdatej            = jsonFormat5(MWebhookUpdate)
+  implicit val MWebhooksResponsej         = jsonFormat9(MWebhooksResponse)
 
 }
 
