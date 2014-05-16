@@ -1,8 +1,9 @@
 package com.joypeg.scamandrill.models
 
 import org.scalatest.{Matchers, FlatSpec}
+import com.joypeg.scamandrill.utils.SimpleLogger
 
-class MandrillJsonProtocolTest extends FlatSpec with Matchers {
+class MandrillJsonProtocolTest extends FlatSpec with Matchers with SimpleLogger {
 
   import com.joypeg.scamandrill.MandrillTestUtils._
 

@@ -10,8 +10,9 @@ import spray.http.{HttpRequest, HttpResponse, HttpEntity}
 import spray.can.Http
 import spray.util._
 import com.joypeg.scamandrill.models.MandrillResponse
+import com.joypeg.scamandrill.utils.SimpleLogger
 
-trait ScamandrillSendReceive {
+trait ScamandrillSendReceive extends SimpleLogger {
 
   type Entity = Either[Throwable, HttpEntity]
 
@@ -26,7 +27,7 @@ trait ScamandrillSendReceive {
 
     pipeline(query).transform(
       ok => {
-        println("response: " + ok)
+        logger.debug("response: " + ok)
         ok ~> handler},
       ko => ko
     )
