@@ -325,4 +325,28 @@ object MandrillBlockingClient extends MandrillClient {
   override def inboudSendRaw(inbound: MInboundRaw): Try[List[MInboundRawResponse]] = Try {
     Await.result(MandrillAsyncClient.inboudSendRaw(inbound), 5 seconds)
   }
+
+  ////////////////////////////////////////////////////////////
+  //EXPORT https://mandrillapp.com/api/docs/exports.JSON.html
+  ////////////////////////////////////////////////////////////
+
+  override def exportInfo(export: MExportInfo): Try[MExportResponse] = Try {
+    Await.result(MandrillAsyncClient.exportInfo(export), 5 seconds)
+  }
+
+  override def exportList(export: MKey): Try[List[MExportResponse]] = Try {
+    Await.result(MandrillAsyncClient.exportList(export), 5 seconds)
+  }
+
+  override def exportReject(export: MExportNotify): Try[MExportResponse] = Try {
+    Await.result(MandrillAsyncClient.exportReject(export), 5 seconds)
+  }
+
+  override def exportWhitelist(export: MExportNotify): Try[MExportResponse] = Try {
+    Await.result(MandrillAsyncClient.exportWhitelist(export), 5 seconds)
+  }
+
+  override def exportActivity(export: MExportActivity): Try[MExportResponse] = Try {
+    Await.result(MandrillAsyncClient.exportActivity(export), 5 seconds)
+  }
 }

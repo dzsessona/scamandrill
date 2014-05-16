@@ -184,8 +184,19 @@ trait MandrillClient {
 
   def inboudSendRaw(inbound: MInboundRaw): Any
 
+  ////////////////////////////////////////////////////////////
+  //EXPORT https://mandrillapp.com/api/docs/exports.JSON.html
+  ////////////////////////////////////////////////////////////
 
+  def exportInfo(export: MExportInfo) :Any
 
+  def exportList(export: MKey) :Any
+
+  def exportReject(export: MExportNotify) :Any
+
+  def exportWhitelist(export: MExportNotify) :Any
+
+  def exportActivity(export: MExportActivity) :Any
 
 
   def shutdownSystem(): Unit

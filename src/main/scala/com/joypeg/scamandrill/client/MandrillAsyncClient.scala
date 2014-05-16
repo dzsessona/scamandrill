@@ -328,5 +328,28 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[List[MInboundRawResponse]](Endpoints.inbraw.endpoint, marshal(inbound))(unmarshal[List[MInboundRawResponse]])
   }
 
+  ////////////////////////////////////////////////////////////
+  //EXPORT https://mandrillapp.com/api/docs/exports.JSON.html
+  ////////////////////////////////////////////////////////////
+
+  override def exportInfo(export: MExportInfo): Future[MExportResponse] = {
+    executeQuery[MExportResponse](Endpoints.expinfo.endpoint, marshal(export))(unmarshal[MExportResponse])
+  }
+
+  override def exportList(export: MKey): Future[List[MExportResponse]] = {
+    executeQuery[List[MExportResponse]](Endpoints.explist.endpoint, marshal(export))(unmarshal[List[MExportResponse]])
+  }
+
+  override def exportReject(export: MExportNotify): Future[MExportResponse] = {
+    executeQuery[MExportResponse](Endpoints.exprec.endpoint, marshal(export))(unmarshal[MExportResponse])
+  }
+
+  override def exportWhitelist(export: MExportNotify): Future[MExportResponse] = {
+    executeQuery[MExportResponse](Endpoints.expwhite.endpoint, marshal(export))(unmarshal[MExportResponse])
+  }
+
+  override def exportActivity(export: MExportActivity): Future[MExportResponse] = {
+    executeQuery[MExportResponse](Endpoints.expactivity.endpoint, marshal(export))(unmarshal[MExportResponse])
+  }
 
 }
