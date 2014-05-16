@@ -9,7 +9,6 @@ import spray.client.pipelining._
 import spray.http.{HttpRequest, HttpResponse, HttpEntity}
 import spray.can.Http
 import spray.util._
-import com.joypeg.scamandrill.models.MandrillResponse
 import com.joypeg.scamandrill.utils.SimpleLogger
 
 trait ScamandrillSendReceive extends SimpleLogger {
@@ -24,12 +23,11 @@ trait ScamandrillSendReceive extends SimpleLogger {
 
     val pipeline: HttpRequest => Future[HttpResponse] = sendReceive
     val query = Post(s"https://mandrillapp.com/api/1.0$endpoint", reqBody)
+    logger.debug(s"Request: $query")
 
     pipeline(query).transform(
-      ok => {
-        logger.debug("response: " + ok)
-        ok ~> handler},
-      ko => ko
+      ok => {logger.debug(s"Response OK: $ok"); ok ~> handler},
+      ko => {logger.debug(s"Response OK: $ko"); ko}
     )
   }
 
