@@ -254,4 +254,35 @@ object MandrillBlockingClient extends MandrillClient {
     Await.result(MandrillAsyncClient.webhookDelete(webhook), 5 seconds)
   }
 
+  //////////////////////////////////////////////////////////////////////////
+  //SUBACCOUNTS calls https://mandrillapp.com/api/docs/subaccounts.JSON.html
+  //////////////////////////////////////////////////////////////////////////
+
+  override def subaccountList(subacc: MSubaccountList): Try[List[MSubaccountsResponse]] = Try {
+    Await.result(MandrillAsyncClient.subaccountList(subacc), 5 seconds)
+  }
+
+  override def subaccountAdd(subacc: MSubaccount): Try[MSubaccountsResponse] = Try {
+    Await.result(MandrillAsyncClient.subaccountAdd(subacc), 5 seconds)
+  }
+
+  override def subaccountInfo(subacc: MSubaccountInfo): Try[MSubaccountsInfoResponse] = Try {
+    Await.result(MandrillAsyncClient.subaccountInfo(subacc), 5 seconds)
+  }
+
+  override def subaccountUpdate(subacc: MSubaccount): Try[MSubaccountsResponse] = Try {
+    Await.result(MandrillAsyncClient.subaccountUpdate(subacc), 5 seconds)
+  }
+
+  override def subaccountDelete(subacc: MSubaccountInfo): Try[MSubaccountsResponse] = Try {
+    Await.result(MandrillAsyncClient.subaccountDelete(subacc), 5 seconds)
+  }
+
+  override def subaccountPause(subacc: MSubaccountInfo): Try[MSubaccountsResponse] = Try {
+    Await.result(MandrillAsyncClient.subaccountPause(subacc), 5 seconds)
+  }
+
+  override def subaccountResume(subacc: MSubaccountInfo): Try[MSubaccountsResponse] = Try {
+    Await.result(MandrillAsyncClient.subaccountResume(subacc), 5 seconds)
+  }
 }

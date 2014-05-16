@@ -145,6 +145,12 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
   implicit val MWebhookUpdatej            = jsonFormat5(MWebhookUpdate)
   implicit val MWebhooksResponsej         = jsonFormat9(MWebhooksResponse)
 
+  implicit val MSubaccountListj           = jsonFormat2(MSubaccountList)
+  implicit val MSubaccountInfoj           = jsonFormat2(MSubaccountInfo)
+  implicit val MSubaccountj               = jsonFormat5(MSubaccount)
+  implicit val MSubaccountsResponsej      = jsonFormat10(MSubaccountsResponse)
+  implicit val MSubaccountsInfoResponsej  = jsonFormat14(MSubaccountsInfoResponse)
+
 }
 
 

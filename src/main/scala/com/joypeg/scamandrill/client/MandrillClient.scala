@@ -144,6 +144,25 @@ trait MandrillClient {
 
   def webhookDelete(webhook: MWebhookInfo): Any
 
+  //////////////////////////////////////////////////////////////////////////
+  //SUBACCOUNTS calls https://mandrillapp.com/api/docs/subaccounts.JSON.html
+  //////////////////////////////////////////////////////////////////////////
+
+  def subaccountList(subacc: MSubaccountList): Any
+
+  def subaccountAdd(subacc: MSubaccount): Any
+
+  def subaccountInfo(subacc: MSubaccountInfo): Any
+
+  def subaccountUpdate(subacc: MSubaccount): Any
+
+  def subaccountDelete(subacc: MSubaccountInfo): Any
+
+  def subaccountPause(subacc: MSubaccountInfo): Any
+
+  def subaccountResume(subacc: MSubaccountInfo): Any
+
+
 
   def shutdownSystem(): Unit
 
@@ -200,6 +219,13 @@ trait MandrillClient {
     val webhinfo        = Value("webhinfo",     "/webhooks/info.json")
     val webhupdate      = Value("webhupdate",   "/webhooks/update.json")
     val webhdelete      = Value("webhdelete",   "/webhooks/delete.json")
+    val sublist         = Value("sublist",      "/subaccounts/list.json")
+    val subadd          = Value("subadd",       "/subaccounts/add.json")
+    val subinfo         = Value("subinfo",      "/subaccounts/info.json")
+    val subupdate       = Value("subupdte",     "/subaccounts/update.json")
+    val subdelete       = Value("subdelete",    "/subaccounts/delete.json")
+    val subpause        = Value("subpause",     "/subaccounts/pause.json")
+    val subresume       = Value("subresumt",    "/subaccounts/resume.json")
 
     class MyVal(val endpoint: String) extends Val(nextId, endpoint)
     private[MandrillClient] final def Value(name: String, endpoint: String): MyVal = new MyVal(endpoint)

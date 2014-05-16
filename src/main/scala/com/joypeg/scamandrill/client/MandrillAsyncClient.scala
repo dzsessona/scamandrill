@@ -254,6 +254,38 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[MWebhooksResponse](Endpoints.webhdelete.endpoint, marshal(webhook))(unmarshal[MWebhooksResponse])
   }
 
+  //////////////////////////////////////////////////////////////////////////
+  //SUBACCOUNTS calls https://mandrillapp.com/api/docs/subaccounts.JSON.html
+  //////////////////////////////////////////////////////////////////////////
+
+  override def subaccountList(subacc: MSubaccountList): Future[List[MSubaccountsResponse]] = {
+    executeQuery[List[MSubaccountsResponse]](Endpoints.sublist.endpoint, marshal(subacc))(unmarshal[List[MSubaccountsResponse]])
+  }
+
+  override def subaccountAdd(subacc: MSubaccount): Future[MSubaccountsResponse] = {
+    executeQuery[MSubaccountsResponse](Endpoints.subadd.endpoint, marshal(subacc))(unmarshal[MSubaccountsResponse])
+  }
+
+  override def subaccountInfo(subacc: MSubaccountInfo): Future[MSubaccountsInfoResponse] = {
+    executeQuery[MSubaccountsInfoResponse](Endpoints.subinfo.endpoint, marshal(subacc))(unmarshal[MSubaccountsInfoResponse])
+  }
+
+  override def subaccountUpdate(subacc: MSubaccount): Future[MSubaccountsResponse] = {
+    executeQuery[MSubaccountsResponse](Endpoints.subupdate.endpoint, marshal(subacc))(unmarshal[MSubaccountsResponse])
+  }
+
+  override def subaccountDelete(subacc: MSubaccountInfo): Future[MSubaccountsResponse] = {
+    executeQuery[MSubaccountsResponse](Endpoints.subdelete.endpoint, marshal(subacc))(unmarshal[MSubaccountsResponse])
+  }
+
+  override def subaccountPause(subacc: MSubaccountInfo): Future[MSubaccountsResponse] = {
+    executeQuery[MSubaccountsResponse](Endpoints.subpause.endpoint, marshal(subacc))(unmarshal[MSubaccountsResponse])
+  }
+
+  override def subaccountResume(subacc: MSubaccountInfo): Future[MSubaccountsResponse] = {
+    executeQuery[MSubaccountsResponse](Endpoints.subresume.endpoint, marshal(subacc))(unmarshal[MSubaccountsResponse])
+  }
+
 
   override def shutdownSystem(): Unit = shutdown()
 
