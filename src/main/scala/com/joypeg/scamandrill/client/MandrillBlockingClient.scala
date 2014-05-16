@@ -401,4 +401,24 @@ object MandrillBlockingClient extends MandrillClient {
   override def ispSetCustomDns(isp: MIspDns): Try[MIspDnsResponse] = Try {
     Await.result(MandrillAsyncClient.ispSetCustomDns(isp), 5 seconds)
   }
+
+  //////////////////////////////////////////////////////////////
+  //METADATA https://mandrillapp.com/api/docs/metadata.JSON.html
+  //////////////////////////////////////////////////////////////
+
+  override def metadataList(meta: MKey): Try[List[MIMetadataResponse]] = Try {
+    Await.result(MandrillAsyncClient.metadataList(meta), 5 seconds)
+  }
+
+  override def metadataAdd(meta: MMeteadatapAdd): Try[MIMetadataResponse] = Try {
+    Await.result(MandrillAsyncClient.metadataAdd(meta), 5 seconds)
+  }
+
+  override def metadataUpdate(meta: MMeteadatapAdd): Try[MIMetadataResponse] = Try {
+    Await.result(MandrillAsyncClient.metadataUpdate(meta), 5 seconds)
+  }
+
+  override def metadataDelete(meta: MMeteadatapDelete): Try[MIMetadataResponse] = Try {
+    Await.result(MandrillAsyncClient.metadataDelete(meta), 5 seconds)
+  }
 }

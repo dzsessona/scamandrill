@@ -404,4 +404,24 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[MIspDnsResponse](Endpoints.ispdns.endpoint, marshal(isp))(unmarshal[MIspDnsResponse])
   }
 
+  //////////////////////////////////////////////////////////////
+  //METADATA https://mandrillapp.com/api/docs/metadata.JSON.html
+  //////////////////////////////////////////////////////////////
+
+  override def metadataList(meta: MKey): Future[List[MIMetadataResponse]] = {
+    executeQuery[List[MIMetadataResponse]](Endpoints.metalist.endpoint, marshal(meta))(unmarshal[List[MIMetadataResponse]])
+  }
+
+  override def metadataAdd(meta: MMeteadatapAdd): Future[MIMetadataResponse] = {
+    executeQuery[MIMetadataResponse](Endpoints.metaadd.endpoint, marshal(meta))(unmarshal[MIMetadataResponse])
+  }
+
+  override def metadataUpdate(meta: MMeteadatapAdd): Future[MIMetadataResponse] = {
+    executeQuery[MIMetadataResponse](Endpoints.metaupdate.endpoint, marshal(meta))(unmarshal[MIMetadataResponse])
+  }
+
+  override def metadataDelete(meta: MMeteadatapDelete): Future[MIMetadataResponse] = {
+    executeQuery[MIMetadataResponse](Endpoints.metadel.endpoint, marshal(meta))(unmarshal[MIMetadataResponse])
+  }
+
 }

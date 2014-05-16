@@ -226,6 +226,18 @@ trait MandrillClient {
 
   def ispSetCustomDns(isp: MIspDns): Any
 
+  //////////////////////////////////////////////////////////////
+  //METADATA https://mandrillapp.com/api/docs/metadata.JSON.html
+  //////////////////////////////////////////////////////////////
+
+  def metadataList(meta: MKey): Any
+
+  def metadataAdd(meta: MMeteadatapAdd): Any
+
+  def metadataUpdate(meta: MMeteadatapAdd): Any
+
+  def metadataDelete(meta: MMeteadatapDelete): Any
+
 
 
   def shutdownSystem(): Unit
