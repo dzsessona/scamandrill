@@ -194,6 +194,41 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[MUrlDomainResponse](Endpoints.urladdtrackdom.endpoint, marshal(url))(unmarshal[MUrlDomainResponse])
   }
 
+  /////////////////////////////////////////////////////////////////////
+  //TEMPLATE calls https://mandrillapp.com/api/docs/templates.JSON.html
+  /////////////////////////////////////////////////////////////////////
+
+  override def templateAdd(template: MTemplate): Future[MTemplateAddResponses] = {
+    executeQuery[MTemplateAddResponses](Endpoints.tmpadd.endpoint, marshal(template))(unmarshal[MTemplateAddResponses])
+  }
+
+  override def templateInfo(template: MTemplateInfo): Future[MTemplateAddResponses] = {
+    executeQuery[MTemplateAddResponses](Endpoints.tmpinfo.endpoint, marshal(template))(unmarshal[MTemplateAddResponses])
+  }
+
+  override def templateUpdate(template: MTemplate): Future[MTemplateAddResponses] = {
+    executeQuery[MTemplateAddResponses](Endpoints.tmpupdate.endpoint, marshal(template))(unmarshal[MTemplateAddResponses])
+  }
+
+  override def templatePublish(template: MTemplateInfo): Future[MTemplateAddResponses] = {
+    executeQuery[MTemplateAddResponses](Endpoints.tmppublish.endpoint, marshal(template))(unmarshal[MTemplateAddResponses])
+  }
+
+  override def templateDelete(template: MTemplateInfo): Future[MTemplateAddResponses] = {
+    executeQuery[MTemplateAddResponses](Endpoints.tmpdelete.endpoint, marshal(template))(unmarshal[MTemplateAddResponses])
+  }
+
+  override def templateList(template: MTemplateList): Future[List[MTemplateAddResponses]] = {
+    executeQuery[List[MTemplateAddResponses]](Endpoints.tmplist.endpoint, marshal(template))(unmarshal[List[MTemplateAddResponses]])
+  }
+
+  override def templateTimeSeries(template: MTemplateInfo): Future[List[MTimeSeriesResponse]] = {
+    executeQuery[List[MTimeSeriesResponse]](Endpoints.tmpts.endpoint, marshal(template))(unmarshal[List[MTimeSeriesResponse]])
+  }
+
+  override def templateRender(template: MTemplateRender): Future[MTemplateRenderResponse] = {
+    executeQuery[MTemplateRenderResponse](Endpoints.tmprender.endpoint, marshal(template))(unmarshal[MTemplateRenderResponse])
+  }
 
 
 

@@ -8,6 +8,8 @@ import scala.concurrent.duration._
 
 object MandrillBlockingClient extends MandrillClient {
 
+  override def shutdownSystem(): Unit = MandrillAsyncClient.shutdownSystem()
+
   /////////////////////////////////////////////////////////////
   //USER calls https://mandrillapp.com/api/docs/users.JSON.html
   /////////////////////////////////////////////////////////////
@@ -192,5 +194,40 @@ object MandrillBlockingClient extends MandrillClient {
     Await.result(MandrillAsyncClient.urlsAddTrackingDomain(url), 5 seconds)
   }
 
-  override def shutdownSystem(): Unit = MandrillAsyncClient.shutdownSystem()
+  /////////////////////////////////////////////////////////////////////
+  //TEMPLATE calls https://mandrillapp.com/api/docs/templates.JSON.html
+  /////////////////////////////////////////////////////////////////////
+
+  override def templateAdd(template: MTemplate): Try[MTemplateAddResponses] = Try {
+    Await.result(MandrillAsyncClient.templateAdd(template), 5 seconds)
+  }
+
+  override def templateInfo(template: MTemplateInfo): Try[MTemplateAddResponses]= Try {
+    Await.result(MandrillAsyncClient.templateInfo(template), 5 seconds)
+  }
+
+  override def templateUpdate(template: MTemplate): Try[MTemplateAddResponses] = Try {
+    Await.result(MandrillAsyncClient.templateUpdate(template), 5 seconds)
+  }
+
+  override def templatePublish(template: MTemplateInfo): Try[MTemplateAddResponses] = Try {
+    Await.result(MandrillAsyncClient.templatePublish(template), 5 seconds)
+  }
+
+  override def templateDelete(template: MTemplateInfo): Try[MTemplateAddResponses] = Try {
+    Await.result(MandrillAsyncClient.templateDelete(template), 5 seconds)
+  }
+
+  override def templateList(template: MTemplateList): Try[List[MTemplateAddResponses]] = Try {
+    Await.result(MandrillAsyncClient.templateList(template), 5 seconds)
+  }
+
+  override def templateTimeSeries(template: MTemplateInfo): Try[List[MTimeSeriesResponse]] = Try {
+    Await.result(MandrillAsyncClient.templateTimeSeries(template), 5 seconds)
+  }
+
+  override def templateRender(template: MTemplateRender): Try[MTemplateRenderResponse] = Try {
+    Await.result(MandrillAsyncClient.templateRender(template), 5 seconds)
+  }
+
 }

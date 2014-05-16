@@ -4,12 +4,13 @@ import spray.json._
 import scala.util.Try
 
 object MandrillJsonProtocol extends DefaultJsonProtocol {
-  implicit val MPingJson              = jsonFormat1(MPing)
-  implicit val MPingResponseJson      = jsonFormat1(MPingResponse)
-  implicit val MSenderDataResponseJson= jsonFormat12(MSenderDataResponse)
-  implicit val MStatJson              = jsonFormat10(MStat)
-  implicit val MStatsJson             = jsonFormat6(MStats)
-  implicit val MInfoResponseJson      = jsonFormat7(MInfoResponse)
+  implicit val MUserPingJson          = jsonFormat1(MPing)
+  implicit val MUserResponseJson      = jsonFormat1(MPingResponse)
+  implicit val MUserDataResponseJson  = jsonFormat12(MSenderDataResponse)
+  implicit val MUserStatJson          = jsonFormat10(MStat)
+  implicit val MUserStatsJson         = jsonFormat6(MStats)
+  implicit val MUserInfoResponseJson  = jsonFormat7(MInfoResponse)
+
   implicit val MAttachmetOrImageJson  = jsonFormat3(MAttachmetOrImage)
   implicit val MVarsJson              = jsonFormat2(MVars)
   implicit val MMergeVarsJson         = jsonFormat2(MMergeVars)
@@ -95,20 +96,24 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
   implicit val MListScheduleJson          = jsonFormat2(MListSchedule)
   implicit val MCancelScheduleJson        = jsonFormat2(MCancelSchedule)
   implicit val MReScheduleJson            = jsonFormat3(MReSchedule)
+
   implicit val MTagJson                   = jsonFormat1(MTag)
   implicit val MTagRequestJson            = jsonFormat2(MTagRequest)
   implicit val MTagResponseJson           = jsonFormat12(MTagResponse)
   implicit val MTagInfoResponseJson       = jsonFormat10(MTagInfoResponse)
+
   implicit val MRejectAddJson             = jsonFormat4(MRejectAdd)
   implicit val MRejectListJson            = jsonFormat4(MRejectList)
   implicit val MRejectDeleteJson          = jsonFormat3(MRejectDelete)
   implicit val MRejectAddResponseJson     = jsonFormat2(MRejectAddResponse)
   implicit val MRejectDeleteResponseJson  = jsonFormat3(MRejectDeleteResponse)
   implicit val MRejectListResponseJson    = jsonFormat9(MRejectListResponse)
+
   implicit val MWhitelistJson             = jsonFormat2(MWhitelist)
   implicit val MWhitelistAddResponseJson  = jsonFormat2(MWhitelistAddResponse)
   implicit val MWhitelistListResponseJson = jsonFormat3(MWhitelistListResponse)
   implicit val MWhitelistDeleteResponseJ  = jsonFormat2(MWhitelistDeleteResponse)
+
   implicit val MSendersjson               = jsonFormat1(MSenders)
   implicit val MSendersDomj               = jsonFormat3(MSendersDom)
   implicit val MSenderDomainjson          = jsonFormat2(MSenderDomain)
@@ -120,6 +125,7 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
   implicit val MSendersInfoRespj          = jsonFormat11(MSendersInfoResp)
   implicit val MSenderTSResponsej         = jsonFormat11(MSenderTSResponse)
   implicit val MSendersListRespj          = jsonFormat12(MSendersListResp)
+
   implicit val MUrlsj                     = jsonFormat1(MUrls)
   implicit val MUrlSearchj                = jsonFormat2(MUrlSearch)
   implicit val MUrlTimeSeriesj            = jsonFormat2(MUrlTimeSeries)
@@ -129,7 +135,16 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
   implicit val MUrlTimeResponsej          = jsonFormat4(MUrlTimeResponse)
   implicit val MUrlDomainResponsej        = jsonFormat5(MUrlDomainResponse)
 
+  implicit val MTemplateAddj              = jsonFormat9(MTemplate)
+  implicit val MTemplateInfoj             = jsonFormat2(MTemplateInfo)
+  implicit val MTemplateListj             = jsonFormat2(MTemplateList)
+  implicit val MTemplateCntj              = jsonFormat2(MTemplateCnt)
+  implicit val MTemplateRenderj           = jsonFormat4(MTemplateRender)
+  implicit val MTemplateRenderResponsej   = jsonFormat1(MTemplateRenderResponse)
+  implicit val MTemplateAddResponsesj     = jsonFormat17(MTemplateAddResponses)
+
 }
+
 
 trait MandrillResponse
 
