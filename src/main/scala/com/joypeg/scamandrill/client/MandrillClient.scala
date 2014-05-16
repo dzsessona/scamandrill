@@ -167,10 +167,12 @@ trait MandrillClient {
   def shutdownSystem(): Unit
 
   object Endpoints extends Enumeration {
+    //users
     val ping            = Value("ping",         "/users/ping.json")
     val ping2           = Value("ping2",        "/users/ping2.json")
     val senders         = Value("senders",      "/users/senders.json")
     val info            = Value("info",         "/users/info.json")
+    //messages
     val send            = Value("send",         "/messages/send.json")
     val sendTemplate    = Value("sendtemplate", "/messages/send-template.json")
     val search          = Value("search",       "/messages/search.json")
@@ -182,17 +184,21 @@ trait MandrillClient {
     val listSchedule    = Value("sclist",       "/messages/list-scheduled.json")
     val cancelSchedule  = Value("sccanc",       "/messages/cancel-scheduled.json")
     val reschedule      = Value("scre",         "/messages/reschedule.json")
+    //tags
     val taglist         = Value("taglist",      "/tags/list.json")
     val tagdelete       = Value("tagdelete",    "/tags/delete.json")
     val taginfo         = Value("taginfo",      "/tags/info.json")
     val tagtimeseries   = Value("tagts",        "/tags/time-series.json")
     val tagalltime      = Value("tagallts",     "/tags/all-time-series.json")
+    //rejects
     val rejadd          = Value("rejadd",       "/rejects/add.json")
     val rejlist         = Value("rejlist",      "/rejects/list.json")
     val regdelete       = Value("regdelete",    "/rejects/delete.json")
+    //whitelist
     val wlistadd        = Value("wlistadd",     "/whitelists/add.json")
     val wlistdelete     = Value("wlistdelete",  "/whitelists/delete.json")
     val wlistlist       = Value("wlistlist",    "/whitelists/list.json")
+    //senders
     val senderslist     = Value("senderslist",  "/senders/list.json")
     val sendersdomains  = Value("sendersdom",   "/senders/domains.json")
     val sendersadddom   = Value("sendersadddom","/senders/add-domain.json")
@@ -200,12 +206,14 @@ trait MandrillClient {
     val sendersverdom   = Value("sendersverdom","/senders/verify-domain.json")
     val sendersinfo     = Value("sendersinfo",  "/senders/info.json")
     val sendersts       = Value("sendersts",    "/senders/time-series.json")
+    //url
     val urllist         = Value("urllist",      "/urls/list.json")
     val urlsearch       = Value("urlsearch",    "/urls/search.json")
     val urlts           = Value("urlts",        "/urls/time-series.json")
     val urltrackdom     = Value("urltrackdom",  "/urls/tracking-domains.json")
     val urladdtrackdom  = Value("urladdtrackdm","/urls/add-tracking-domain.json")
     val urlchktrackdom  = Value("urlchktrackdm","/urls/check-tracking-domain.json")
+    //template
     val tmpadd          = Value("tmpadd",       "/templates/add.json")
     val tmpinfo         = Value("tmpinfo",      "/templates/info.json")
     val tmpupdate       = Value("tmpupdate",    "/templates/update.json")
@@ -214,11 +222,13 @@ trait MandrillClient {
     val tmplist         = Value("tmplist",      "/templates/list.json")
     val tmpts           = Value("tmpts",        "/templates/time-series.json")
     val tmprender       = Value("tmprender",    "/templates/render.json")
+    //webhooks
     val webhlist        = Value("webhlist",     "/webhooks/list.json")
     val webhadd         = Value("webhadd",      "/webhooks/add.json")
     val webhinfo        = Value("webhinfo",     "/webhooks/info.json")
     val webhupdate      = Value("webhupdate",   "/webhooks/update.json")
     val webhdelete      = Value("webhdelete",   "/webhooks/delete.json")
+    //subaccounts
     val sublist         = Value("sublist",      "/subaccounts/list.json")
     val subadd          = Value("subadd",       "/subaccounts/add.json")
     val subinfo         = Value("subinfo",      "/subaccounts/info.json")
@@ -226,6 +236,40 @@ trait MandrillClient {
     val subdelete       = Value("subdelete",    "/subaccounts/delete.json")
     val subpause        = Value("subpause",     "/subaccounts/pause.json")
     val subresume       = Value("subresumt",    "/subaccounts/resume.json")
+    //inbound
+    val inbdom          = Value("inbdom",       "/inbound/domains.json")
+    val inbadddom       = Value("inbadddom",    "/inbound/add-domain.json")
+    val inbchkdom       = Value("inbchkdom",    "/inbound/check-domain.json")
+    val inbdeldom       = Value("inbdeldom",    "/inbound/delete-domain.json")
+    val inbroutes       = Value("inbroutes",    "/inbound/routes.json")
+    val inbaddroute     = Value("inbaddroute",  "/inbound/add-route.json")
+    val inbuproute      = Value("inbuproute",   "/inbound/update-route.json")
+    val inbdelroute     = Value("inbdelroute",  "/inbound/delete-route.json")
+    val inbraw          = Value("inbraw",       "/inbound/send-raw.json")
+    //export
+    val expinfo         = Value("expinfo",      "/exports/info.json")
+    val explist         = Value("explist",      "/exports/list.json")
+    val exprec          = Value("exprej",       "/exports/rejects.json")
+    val expwhite        = Value("expwhite",     "/exports/whitelist.json")
+    val expactivity     = Value("expact",       "/exports/activity.json")
+    //isp
+    val isplist         = Value("isplist",      "/ips/list.json")
+    val ispinfo         = Value("ispinfo",      "/ips/info.json")
+    val ispprov         = Value("ispprov",      "/ips/provision.json")
+    val ispstwarm       = Value("isplistw",     "/ips/start-warmup.json")
+    val ispcancwarm     = Value("ispcancw",     "/ips/cancel-warmup.json")
+    val ispsetpool      = Value("ispsetpool",   "/ips/set-pool.json")
+    val ispdel          = Value("ispdel",       "/ips/delete.json")
+    val isplistpool     = Value("isplistpool",  "/ips/list-pools.json")
+    val isppoolinfo     = Value("ispoolinfo",   "/ips/pool-info.json")
+    val ispcreatep      = Value("ispcreatep",   "/ips/create-pool.json")
+    val ispdeletep      = Value("ispdelpool",   "/ips/delete-pool.json")
+    val ispdns          = Value("ispdns",       "/ips/set-custom-dns.json")
+    //metadata
+    val metalist        = Value("metalist",     "/metadata/list.json")
+    val metaadd         = Value("metaadd",      "/metadata/add.json")
+    val metaupdate      = Value("metaupdate",   "/metadata/update.json")
+    val metadel         = Value("metadel",      "/metadata/delete.json")
 
     class MyVal(val endpoint: String) extends Val(nextId, endpoint)
     private[MandrillClient] final def Value(name: String, endpoint: String): MyVal = new MyVal(endpoint)
