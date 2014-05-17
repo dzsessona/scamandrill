@@ -174,7 +174,7 @@ object MandrillBlockingClient extends MandrillClient {
     Await.result(MandrillAsyncClient.urlsList(url), DefaultConfig.defaultTimeout)
   }
 
-  override def urlsSearch(url: MUrlSearch): Try[MUrlResponse] = Try {
+  override def urlsSearch(url: MUrlSearch): Try[List[MUrlResponse]] = Try {
     Await.result(MandrillAsyncClient.urlsSearch(url), DefaultConfig.defaultTimeout)
   }
 

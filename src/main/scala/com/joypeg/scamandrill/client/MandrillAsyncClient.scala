@@ -176,8 +176,8 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[List[MUrlResponse]](Endpoints.urllist.endpoint, marshal(url))(unmarshal[List[MUrlResponse]])
   }
 
-  override def urlsSearch(url: MUrlSearch): Future[MUrlResponse] = {
-    executeQuery[MUrlResponse](Endpoints.urlsearch.endpoint, marshal(url))(unmarshal[MUrlResponse])
+  override def urlsSearch(url: MUrlSearch): Future[List[MUrlResponse]] = {
+    executeQuery[List[MUrlResponse]](Endpoints.urlsearch.endpoint, marshal(url))(unmarshal[List[MUrlResponse]])
   }
 
   override def urlsTimeSeries(url: MUrlTimeSeries): Future[List[MUrlTimeResponse]] = {

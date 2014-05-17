@@ -2,8 +2,8 @@ package com.joypeg.scamandrill.models
 
 
 case class MUrlCname(valid: Boolean,
-                     valid_after: String,
-                     error: String)
+                     valid_after: Option[String],
+                     error: Option[String])
 
 case class MUrlResponse(url: String,
                         sent: Int,
@@ -20,5 +20,6 @@ case class MUrlDomainResponse(domain: String,
                               last_tested_at: String,
                               valid_tracking: Boolean,
                               cname: MUrlCname) extends MandrillResponse
+
 
 
