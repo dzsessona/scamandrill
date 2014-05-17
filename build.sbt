@@ -10,6 +10,8 @@ scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8")
 
 resolvers ++= Seq("spray repo" at "http://repo.spray.io/")
 
+parallelExecution in Test := true
+
 val testDependencies = Seq(
   "org.specs2"          %%  "specs2"           % "2.2.3"    % "test",
   "org.scalatest"       %%  "scalatest"        % "2.1.6"    % "test->*"

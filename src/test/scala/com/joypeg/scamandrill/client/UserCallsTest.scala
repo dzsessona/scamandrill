@@ -7,8 +7,15 @@ import scala.concurrent.Await
 import com.joypeg.scamandrill.models._
 import scala.util.{Failure, Success}
 import com.joypeg.scamandrill.utils._
+import com.joypeg.scamandrill.MandrillTestUtils._
+import com.joypeg.scamandrill.models.MSenderDataResponse
+import com.joypeg.scamandrill.models.MInfoResponse
+import scala.util.Success
+import com.joypeg.scamandrill.models.MKey
+import com.joypeg.scamandrill.models.MPingResponse
+import scala.util.Failure
 
-class UserCallsTest extends FlatSpec with Matchers with BeforeAndAfterAll with SimpleLogger{
+class UserCallsTest extends FlatSpec with Matchers with SimpleLogger{
 
   "Ping" should "work getting a valid MPingResponse (async client)" in {
     val res = Await.result(MandrillAsyncClient.ping(MKey()), DefaultConfig.defaultTimeout)
@@ -21,16 +28,7 @@ class UserCallsTest extends FlatSpec with Matchers with BeforeAndAfterAll with S
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    MandrillBlockingClient.ping(MKey("invalidkeytest")) match {
-      case Success(res) =>
-        fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
-        val inernalError = MandrillError("error", -1, "Invalid_Key", "Invalid API key")
-        val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
-        MandrillResponseException(ex) shouldBe expected
-      case Failure(ex) =>
-        fail("should return an UnsuccessfulResponseException that can be parsed as MandrillResponseException")
-    }
+    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.ping(MKey("invalidkeytest")))
   }
 
   "Ping (version 2)" should "work getting a valid MPingResponse" in {
@@ -44,16 +42,7 @@ class UserCallsTest extends FlatSpec with Matchers with BeforeAndAfterAll with S
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    MandrillBlockingClient.ping2(MKey("invalidkeytest")) match {
-      case Success(res) =>
-        fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
-        val inernalError = MandrillError("error", -1, "Invalid_Key", "Invalid API key")
-        val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
-        MandrillResponseException(ex) shouldBe expected
-      case Failure(ex) =>
-        fail("should return an UnsuccessfulResponseException that can be parsed as MandrillResponseException")
-    }
+    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.ping2(MKey("invalidkeytest")))
   }
 
   "Sender" should "work getting a valid List[MSenderDataResponse] (async client)" in {
@@ -68,16 +57,7 @@ class UserCallsTest extends FlatSpec with Matchers with BeforeAndAfterAll with S
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    MandrillBlockingClient.senders(MKey("invalidkeytest")) match {
-      case Success(res) =>
-        fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
-        val inernalError = MandrillError("error", -1, "Invalid_Key", "Invalid API key")
-        val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
-        MandrillResponseException(ex) shouldBe expected
-      case Failure(ex) =>
-        fail("should return an UnsuccessfulResponseException that can be parsed as MandrillResponseException")
-    }
+    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.senders(MKey("invalidkeytest")))
   }
 
   "Info" should "work getting a valid MInfoResponse (async client)" in {
@@ -101,19 +81,6 @@ class UserCallsTest extends FlatSpec with Matchers with BeforeAndAfterAll with S
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    MandrillBlockingClient.info(MKey("invalidkeytest")) match {
-      case Success(res) =>
-        fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
-        val inernalError = MandrillError("error", -1, "Invalid_Key", "Invalid API key")
-        val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
-        MandrillResponseException(ex) shouldBe expected
-      case Failure(ex) =>
-        fail("should return an UnsuccessfulResponseException that can be parsed as MandrillResponseException")
-    }
-  }
-
-  override def afterAll() {
-    MandrillAsyncClient.shutdownSystem()
+    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.info(MKey("invalidkeytest")))
   }
 }
