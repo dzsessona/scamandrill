@@ -152,7 +152,7 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[MSendersDomainResponses](Endpoints.sendersadddom.endpoint, marshal(snd))(unmarshal[MSendersDomainResponses])
   }
 
-  override def sendersCheckDomain(snd: MKey): Future[MSendersDomainResponses] = {
+  override def sendersCheckDomain(snd: MSenderDomain): Future[MSendersDomainResponses] = {
     executeQuery[MSendersDomainResponses](Endpoints.senderschkdom.endpoint, marshal(snd))(unmarshal[MSendersDomainResponses])
   }
 

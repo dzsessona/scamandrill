@@ -150,7 +150,7 @@ object MandrillBlockingClient extends MandrillClient {
     Await.result(MandrillAsyncClient.sendersAddDomain(snd), DefaultConfig.defaultTimeout)
   }
 
-  override def sendersCheckDomain(snd: MKey): Try[MSendersDomainResponses] = Try {
+  override def sendersCheckDomain(snd: MSenderDomain): Try[MSendersDomainResponses] = Try {
     Await.result(MandrillAsyncClient.sendersCheckDomain(snd), DefaultConfig.defaultTimeout)
   }
 

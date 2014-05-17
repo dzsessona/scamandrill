@@ -14,16 +14,16 @@ case class MSendersListResp(address: String,
                             unique_clicks: Int) extends MandrillResponse
 
 case class MSendersDomainResponses(domain: String,
-                                    created_at: String,
+                                    created_at: Option[String],
                                     last_tested_at: String,
                                     spf: MSendersDom,
                                     dkim: MSendersDom,
-                                    verified_at: String,
+                                    verified_at: Option[String],
                                     valid_signing: Boolean) extends MandrillResponse
 
 case class MSendersDom(valid: Boolean,
-                       valid_after: String,
-                       error: String)
+                       valid_after: Option[String],
+                       error: Option[String])
 
 case class MSendersVerifyDomResp(status: String,
                                  domain: String,

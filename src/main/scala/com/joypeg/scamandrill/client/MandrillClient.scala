@@ -86,7 +86,7 @@ trait MandrillClient {
 
   def sendersAddDomain(snd: MSenderDomain): Any
 
-  def sendersCheckDomain(snd: MKey): Any
+  def sendersCheckDomain(snd: MSenderDomain): Any
 
   def sendersVerifyDomain(snd: MSenderVerifyDomain): Any
 
