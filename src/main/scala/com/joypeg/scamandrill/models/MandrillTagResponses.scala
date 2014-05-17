@@ -14,7 +14,6 @@ case class MTagResponse(tag: String,
                        unique_opens: Int,
                        unique_clicks: Int) extends MandrillResponse
 
-//TODO: Check if returns all time too
 case class MTagInfoResponse(tag: String,
                             sent: Int,
                             hard_bounces: Int,
@@ -25,4 +24,3 @@ case class MTagInfoResponse(tag: String,
                             opens: Int,
                             clicks: Int,
                             stats: MStats) extends MandrillResponse
-

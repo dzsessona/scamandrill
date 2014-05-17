@@ -62,9 +62,9 @@ trait MandrillClient {
 
   def rejectAdd(reject: MRejectAdd): Any
 
-  def rejectDelete(reject: MRejectDeleteResponse): Any
+  def rejectDelete(reject: MRejectDelete): Any
 
-  def rejectList(reject: MRejectListResponse): Any
+  def rejectList(reject: MRejectList): Any
 
   ///////////////////////////////////////////////////////////////////////
   //WHITELIST calls https://mandrillapp.com/api/docs/whitelists.JSON.html

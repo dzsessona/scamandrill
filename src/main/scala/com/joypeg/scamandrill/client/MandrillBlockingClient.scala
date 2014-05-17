@@ -110,11 +110,11 @@ object MandrillBlockingClient extends MandrillClient {
     Await.result(MandrillAsyncClient.rejectAdd(reject), DefaultConfig.defaultTimeout)
   }
 
-  override def rejectDelete(reject: MRejectDeleteResponse): Try[MRejectDeleteResponse] = Try {
+  override def rejectDelete(reject: MRejectDelete): Try[MRejectDeleteResponse] = Try {
     Await.result(MandrillAsyncClient.rejectDelete(reject), DefaultConfig.defaultTimeout)
   }
 
-  override def rejectList(reject: MRejectListResponse): Try[MRejectListResponse] = Try {
+  override def rejectList(reject: MRejectList): Try[List[MRejectListResponse]] = Try {
     Await.result(MandrillAsyncClient.rejectList(reject), DefaultConfig.defaultTimeout)
   }
 

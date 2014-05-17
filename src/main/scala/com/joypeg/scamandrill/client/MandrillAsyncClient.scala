@@ -112,12 +112,12 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[MRejectAddResponse](Endpoints.rejadd.endpoint, marshal(reject))(unmarshal[MRejectAddResponse])
   }
 
-  override def rejectDelete(reject: MRejectDeleteResponse): Future[MRejectDeleteResponse] = {
+  override def rejectDelete(reject: MRejectDelete): Future[MRejectDeleteResponse] = {
     executeQuery[MRejectDeleteResponse](Endpoints.regdelete.endpoint, marshal(reject))(unmarshal[MRejectDeleteResponse])
   }
 
-  override def rejectList(reject: MRejectListResponse): Future[MRejectListResponse] = {
-    executeQuery[MRejectListResponse](Endpoints.rejlist.endpoint, marshal(reject))(unmarshal[MRejectListResponse])
+  override def rejectList(reject: MRejectList): Future[List[MRejectListResponse]] = {
+    executeQuery[List[MRejectListResponse]](Endpoints.rejlist.endpoint, marshal(reject))(unmarshal[List[MRejectListResponse]])
   }
 
   ///////////////////////////////////////////////////////////////////////
