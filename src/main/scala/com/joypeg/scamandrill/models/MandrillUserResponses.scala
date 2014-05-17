@@ -28,7 +28,7 @@ case class MStats(today: MStat,
                   last_30_days: MStat,
                   last_60_days: MStat,
                   last_90_days: MStat,
-                  all_time: MStat)
+                  all_time: Option[MStat])
 
 
 case class MStat(sent: Int,
