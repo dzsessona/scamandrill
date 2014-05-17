@@ -1,9 +1,15 @@
 package com.joypeg.scamandrill
 
-import com.joypeg.scamandrill.models.{MSearchTimeSeries, MSearch, MTo, MSendMsg}
+import com.joypeg.scamandrill.models._
 import com.joypeg.scamandrill.client.{MandrillError, MandrillResponseException}
 import org.scalatest.Matchers
 import scala.util.{Failure, Success, Try}
+import com.joypeg.scamandrill.models.MSearch
+import scala.util.Success
+import com.joypeg.scamandrill.models.MSearchTimeSeries
+import com.joypeg.scamandrill.models.MTo
+import scala.util.Failure
+import com.joypeg.scamandrill.client.MandrillError
 
 object MandrillTestUtils extends Matchers {
 
@@ -39,6 +45,8 @@ object MandrillTestUtils extends Matchers {
   }
 
   val idOfMailForInfoTest = "acf0a530caca4301bb433161ae9a68ac"
+
+  val validRawMessage = MSendRaw(raw_message =  """From: sender@example.com""")
 
   val validMessage = new MSendMsg(
     html = "<h1>test</h1>",
