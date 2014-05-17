@@ -122,11 +122,11 @@ class MessageCallsTest extends FlatSpec with Matchers with SimpleLogger {
       message = validMessage)))
   }
 
-  "Search" should "work getting a valid List[MSendResponse] (async client)" in {
+  "Search" should "work getting a valid List[MSearchResponse] (async client)" in {
     val res = Await.result(MandrillAsyncClient.search(validSearch), DefaultConfig.defaultTimeout)
     res shouldBe Nil
   }
-  it should "work getting a valid List[MSendResponse] (blocking client)" in {
+  it should "work getting a valid List[MSearchResponse] (blocking client)" in {
     MandrillBlockingClient.search(validSearch) match {
       case Success(res) =>res shouldBe Nil
       case Failure(ex) => fail(ex)
@@ -134,5 +134,52 @@ class MessageCallsTest extends FlatSpec with Matchers with SimpleLogger {
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
     checkFailedBecauseOfInvalidKey(MandrillBlockingClient.search(validSearch.copy(key = "invalid")))
+  }
+
+  "SearchTimeSeries" should "work getting a valid List[MSearchResponse] (async client)" in {
+    val res = Await.result(MandrillAsyncClient.searchTimeSeries(validSearchTimeSeries), DefaultConfig.defaultTimeout)
+    res shouldBe Nil
+  }
+  it should "work getting a valid List[MSearchResponse] (blocking client)" in {
+    MandrillBlockingClient.searchTimeSeries(validSearchTimeSeries) match {
+      case Success(res) =>res shouldBe Nil
+      case Failure(ex) => fail(ex)
+    }
+  }
+  it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
+    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.search(validSearch.copy(key = "invalid")))
+  }
+
+  "MessageInfo" should "work getting a valid List[MMessageInfoResponse] (async client)" in {
+    val res = Await.result(MandrillAsyncClient.messageInfo(MMessageInfo(id = idOfMailForInfoTest)), DefaultConfig.defaultTimeout)
+    res.getClass shouldBe classOf[MMessageInfoResponse]
+    res._id shouldBe idOfMailForInfoTest
+    res.subject shouldBe "subject test"
+    res.email shouldBe "test@example.com"
+  }
+  it should "work getting a valid List[MMessageInfoResponse] (blocking client)" in {
+    MandrillBlockingClient.messageInfo(MMessageInfo(id = idOfMailForInfoTest)) match {
+      case Success(res) =>
+        res.getClass shouldBe classOf[MMessageInfoResponse]
+        res._id shouldBe idOfMailForInfoTest
+        res.subject shouldBe "subject test"
+        res.email shouldBe "test@example.com"
+      case Failure(ex) => fail(ex)
+    }
+  }
+  it should "fail if the id does not exists, with an 'Unknown_Message' code" in {
+    MandrillBlockingClient.messageInfo(MMessageInfo(id = "invalid")) match {
+      case Success(res) =>
+        fail("This operation should be unsuccessful")
+      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+        val inernalError = MandrillError("error", 11, "Unknown_Message", """No message exists with the id 'invalid'""")
+        val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
+        checkError(expected, MandrillResponseException(ex))
+      case Failure(ex) =>
+        fail("should return an UnsuccessfulResponseException that can be parsed as MandrillResponseException")
+    }
+  }
+  it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
+    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.messageInfo(MMessageInfo(key = "invalid", id = idOfMailForInfoTest)))
   }
 }

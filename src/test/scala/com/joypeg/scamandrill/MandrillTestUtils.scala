@@ -1,29 +1,11 @@
 package com.joypeg.scamandrill
 
-import com.joypeg.scamandrill.models.{MSearch, MTo, MSendMsg}
+import com.joypeg.scamandrill.models.{MSearchTimeSeries, MSearch, MTo, MSendMsg}
 import com.joypeg.scamandrill.client.{MandrillError, MandrillResponseException}
 import org.scalatest.Matchers
 import scala.util.{Failure, Success, Try}
 
 object MandrillTestUtils extends Matchers {
-
-  val validMessage = new MSendMsg(
-    html = "<h1>test</h1>",
-    text = "test",
-    subject = "subject test",
-    from_email = "scamandrill@test.com",
-    from_name = "Scamandrill",
-    to = List(MTo("test@recipient.com")),
-    bcc_address = "somebcc@address.com",
-    tracking_domain = "fromname",
-    signing_domain = "fromname",
-    return_path_domain = "fromname"
-  )
-
-  val validSearch = MSearch(
-    query = "email:gmail.com",
-    date_from = "2013-01-01",
-    date_to = "2018-01-01")
 
   /**
    * A simple fuction to check equality of the errors from mandrill, but it also
@@ -55,4 +37,29 @@ object MandrillTestUtils extends Matchers {
     case Failure(ex) =>
       fail("should return an UnsuccessfulResponseException that can be parsed as MandrillResponseException")
   }
+
+  val idOfMailForInfoTest = "acf0a530caca4301bb433161ae9a68ac"
+
+  val validMessage = new MSendMsg(
+    html = "<h1>test</h1>",
+    text = "test",
+    subject = "subject test",
+    from_email = "scamandrill@test.com",
+    from_name = "Scamandrill",
+    to = List(MTo("test@recipient.com")),
+    bcc_address = "somebcc@address.com",
+    tracking_domain = "fromname",
+    signing_domain = "fromname",
+    return_path_domain = "fromname"
+  )
+
+  val validSearch = MSearch(
+    query = "email:gmail.com",
+    date_from = "2013-01-01",
+    date_to = "2018-01-01")
+
+  val validSearchTimeSeries = MSearchTimeSeries(
+    query = "email:gmail.com",
+    date_from = "2013-01-01",
+    date_to = "2018-01-01")
 }
