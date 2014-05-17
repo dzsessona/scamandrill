@@ -132,8 +132,8 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[MWhitelistDeleteResponse](Endpoints.wlistdelete.endpoint, marshal(mail))(unmarshal[MWhitelistDeleteResponse])
   }
 
-  override def whitelistList(mail: MWhitelist): Future[MWhitelistListResponse] = {
-    executeQuery[MWhitelistListResponse](Endpoints.wlistlist.endpoint, marshal(mail))(unmarshal[MWhitelistListResponse])
+  override def whitelistList(mail: MWhitelist): Future[List[MWhitelistListResponse]] = {
+    executeQuery[List[MWhitelistListResponse]](Endpoints.wlistlist.endpoint, marshal(mail))(unmarshal[List[MWhitelistListResponse]])
   }
 
   ///////////////////////////////////////////////////////////////////////

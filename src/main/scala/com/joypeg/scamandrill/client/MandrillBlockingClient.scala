@@ -130,7 +130,7 @@ object MandrillBlockingClient extends MandrillClient {
     Await.result(MandrillAsyncClient.whitelistDelete(mail), DefaultConfig.defaultTimeout)
   }
 
-  override def whitelistList(mail: MWhitelist): Try[MWhitelistListResponse] = Try {
+  override def whitelistList(mail: MWhitelist): Try[List[MWhitelistListResponse]] = Try {
     Await.result(MandrillAsyncClient.whitelistList(mail), DefaultConfig.defaultTimeout)
   }
 

@@ -1,7 +1,7 @@
 package com.joypeg.scamandrill.models
 
-
-case class MWhitelistAddResponse(email: String, whether: Boolean) extends MandrillResponse
+//TODO: not whether as in documentation
+case class MWhitelistAddResponse(email: String, added: Boolean) extends MandrillResponse
 
 case class MWhitelistListResponse(email: String,
                                   detail: String,
