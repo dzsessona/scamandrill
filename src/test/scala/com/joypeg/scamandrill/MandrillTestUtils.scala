@@ -48,6 +48,28 @@ object MandrillTestUtils extends Matchers {
 
   val validRawMessage = MSendRaw(raw_message =  """From: sender@example.com""")
 
+  val validNonPublidhedTemplate = MTemplate(
+    name = "templatetest",
+    from_email = "from_email@example.com",
+    from_name = "Example Name",
+    subject = "example subject",
+    code = "<div>example code</div>",
+    text = "Example text content",
+    publish = false,
+    labels = List("templatetest")
+  )
+
+  val validNonPublidhedTemplate2 = MTemplate(
+    name = "templatetest2",
+    from_email = "from_email@example.com",
+    from_name = "Example Name",
+    subject = "example subject",
+    code = "<div>example code</div>",
+    text = "Example text content",
+    publish = false,
+    labels = List("templatetest2")
+  )
+
   val validMessage = new MSendMsg(
     html = "<h1>test</h1>",
     text = "test",
