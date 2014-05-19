@@ -1,6 +1,6 @@
 package com.joypeg.scamandrill.models
 
-case class MTemplateRenderResponse(html: String) extends MandrillResponse
+case class MTemplateRenderResponse(html: Option[String]) extends MandrillResponse
 
 case class MTemplateAddResponses(slug: String,
                                  name: String,

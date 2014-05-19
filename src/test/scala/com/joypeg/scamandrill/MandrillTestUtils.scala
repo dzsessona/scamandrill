@@ -59,6 +59,13 @@ object MandrillTestUtils extends Matchers {
     labels = List("templatetest")
   )
 
+  val validTemplateRender = MTemplateRender(
+    template_name = "templatetest",
+    template_content = List(MTemplateCnt(name = "editable" , content = "<div>content to inject *|MERGE1|*</div>")),
+    merge_vars = List(MTemplateCnt(name = "merge1" , content = "merge1 content"))
+  )
+
+
   val validNonPublidhedTemplate2 = MTemplate(
     name = "templatetest2",
     from_email = "from_email@example.com",
