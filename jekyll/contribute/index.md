@@ -1,7 +1,7 @@
 ---
 layout: nothome
 active: contribute
-title: Sbt Neo Dependencies - contribute
+title: Scamandrill - contribute
 ---
 
 ## Write code

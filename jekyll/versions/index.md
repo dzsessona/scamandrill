@@ -1,7 +1,7 @@
 ---
 layout: nothome
 active: versions
-title: Sbt Neo Dependencies - versions
+title: Scamandrill - versions
 ---
 ## 1.1.0 <small> Released on 2/4/2014</small> 
 
