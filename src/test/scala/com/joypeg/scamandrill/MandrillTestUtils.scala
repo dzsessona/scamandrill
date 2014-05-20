@@ -44,6 +44,12 @@ object MandrillTestUtils extends Matchers {
       fail("should return an UnsuccessfulResponseException that can be parsed as MandrillResponseException")
   }
 
+  val validRoute = MInboundRoute(
+    domain= "example.com",
+    pattern= "mailbox-*",
+    url= "http://example.com"
+  )
+
   val validSubaccount = MSubaccount(
     id = "testingsubaccount",
     name = "testingsubaccount",
