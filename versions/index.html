@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+   <title>Sbt Neo Dependencies - versions</title>
+   <meta name="viewport" content="width=device-width">
+   <link rel="stylesheet" href="http://dzsessona.github.io/sbt-neo-dependencies/assets/css/bootstrap.css">
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+   <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+   <link rel="stylesheet" href="http://dzsessona.github.io/sbt-neo-dependencies/css/syntax.css">
+   <link rel="stylesheet" href="http://dzsessona.github.io/sbt-neo-dependencies/css/main.css">
+   <link rel="icon" type="image/png" href="http://dzsessona.github.io/sbt-neo-dependencies/assets/img/fav.png">
+</head>
+
+<body>
+   <div id="wrap">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+   <div class="container">
+      <div class="navbar-header">
+         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+         <span class="sr-only">Toggle navigation</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         </button>
+         <a class="navbar-brand" style="padding:0 10px" href="/"><img src="http://dzsessona.github.io/sbt-neo-dependencies/assets/img/logo.png"/></a>
+      </div>
+      <div class="navbar-collapse collapse">
+         <ul class="nav navbar-nav" style="margin-left:60px">
+            <li ><a href="http://dzsessona.github.io/sbt-neo-dependencies/">Home</a></li>
+            <li class="dropdown ">
+               <a href="http://dzsessona.github.io/sbt-neo-dependencies/manual" class="dropdown-toggle" data-toggle="dropdown">Manual <b class="caret"></b></a>
+               <ul class="dropdown-menu">
+                  <li><a href="http://dzsessona.github.io/sbt-neo-dependencies/manual/#installation">Installation</a></li>
+                  <li><a href="http://dzsessona.github.io/sbt-neo-dependencies/manual/#tasks">Tasks</a></li>
+                  <li><a href="http://dzsessona.github.io/sbt-neo-dependencies/manual/#settings">Settings</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Usage</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                  <li class="dropdown-header">Example</li>
+               </ul>
+            </li>
+            <li ><a href="http://dzsessona.github.io/sbt-neo-dependencies/contribute">Contribute</a></li>
+            <li  class="active" ><a href="http://dzsessona.github.io/sbt-neo-dependencies/versions">Versions</a></li>
+         </ul>
+         <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://github.com/dzsessona/sbt-neo-dependencies" style="padding:10px 0">
+                <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-github fa-lg"></i> View on Github</button></a></li>
+            <li><a style="padding:10px 0;margin-left:30px;" href="https://github.com/dzsessona/sbt-neo-dependencies/archive/master.tar.gz">
+                <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download fa-lg"></i> TAR</button></a></li>
+            <li><a style="padding:10px 0;margin-left:2px;"  href="https://github.com/dzsessona/sbt-neo-dependencies/archive/master.zip">
+                <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download fa-lg"></i> ZIP</button></a></li>
+         </ul>
+      </div>
+   </div>
+</div>
+
+    <div class="container" style="margin-top:70px;">
+        <div style="text-align: left">
+            <h2>1.1.0 <small> Released on 2/4/2014</small></h2>
+
+<p>Set the version of the project in the node properties, also add extra properties (as the cross compiled version) 
+when adding a new project. If the node exists already (maybe it is a dependency of another project), no extra nodes
+will be created, instead the same node will be matched, adding the properties. 
+This is done using the cypher syntax MERGE - ON CREATE - ON MATCH</p>
+
+<p><a href="http://central.maven.org/maven2/com/github/dzsessona/sbt-neo-dependencies_2.10_0.13/1.1.0/">Maven central for scala 2.10 link</a></p>
+
+<p><a href="http://central.maven.org/maven2/com/github/dzsessona/sbt-neo-dependencies_2.9.2_0.12/1.1.0/">Maven central for scala 2.9 link</a></p>
+
+<h2>1.0.0 <small> Released on 1/4/2014</small></h2>
+
+<p>If a project is cross compiled for multiple versions of scala, the plugin will add the list of versions as a property of the node.</p>
+
+<p><a href="http://central.maven.org/maven2/com/github/dzsessona/sbt-neo-dependencies_2.10_0.13/1.0.0/">Maven central for scala 2.10 link</a></p>
+
+<p><a href="http://central.maven.org/maven2/com/github/dzsessona/sbt-neo-dependencies_2.9.2_0.12/1.0.0/">Maven central for scala 2.9 link</a></p>
+
+<h2>0.1.2 <small> Released on 29/3/2014</small></h2>
+
+<p>This is the first version, with the tags to show, write and load the nodes and relations
+into neo4j. It also adds the extra information on each dependency. For sbt 0.12.x and 0.13.x , scala 2.9 and 2.10</p>
+
+<p><a href="http://central.maven.org/maven2/com/github/dzsessona/sbt-neo-dependencies_2.10_0.13/0.1.2/">Maven central for scala 2.10 link</a></p>
+
+<p><a href="http://central.maven.org/maven2/com/github/dzsessona/sbt-neo-dependencies_2.9.2_0.12/0.1.2/">Maven central for scala 2.9 link</a></p>
+
+        </div>
+    </div>
+     <div id="push"></div>
+   </div><!-- wrap -->
+   <div id="footer">
+  <div class="container">
+    <div class="row" style="padding-top:2px;">
+      <div class="col-md-4" style="padding-top:3px;"><p class="text-left" style="margin:0;font-size: 11px;">Hosted on GitHub Pages</p></div>
+      <div class="col-md-4"><p class="text-center" style="margin:0">
+        <a href="https://twitter.com/intent/tweet?button_hashtag=SbtNeoDependencies" class="twitter-hashtag-button" data-related="DiegoZambelliS" data-url="http://github.com/dzsessona/sbt-neo-dependencies">Tweet #SbtNeoDependencies</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      </div>
+      <div class="col-md-4"
+      style="padding-top:2px;"><p class="text-right" style="margin:0;font-size: 11px;">Project maintained by 
+        <a href="https://github.com/dzsessona"
+        style="color: #000; font-size:12px;"><strong>dzsessona</strong></a>
+        <a href="http://twitter.com/DiegoZambelliS" style="color: #55ACEE"><i class="fa fa-twitter fa-lg"></i></a>
+        <a href="http://ie.linkedin.com/in/diegozambellisessona/" style="color: #1A84BC"><i class="fa fa-linkedin-square fa-lg"></i></a>
+      </p></div>
+    </div>
+  </div>
+</div>
+
+   <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49573452-1', 'dzsessona.github.io');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
