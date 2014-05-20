@@ -21,7 +21,7 @@ case class MIspDelete(ip: String, deleted: Boolean) extends MandrillResponse
 
 case class MIspInfoPool(name: String,
                          created_at: String,
-                         isp: List[MIspResponse]) extends MandrillResponse
+                         ips: List[MIspResponse]) extends MandrillResponse
 
 case class MIspDnsResponse(valid: Boolean, error: String) extends MandrillResponse
 

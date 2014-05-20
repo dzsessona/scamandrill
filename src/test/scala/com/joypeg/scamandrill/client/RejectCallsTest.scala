@@ -20,7 +20,7 @@ class RejectCallsTest extends FlatSpec with Matchers with SimpleLogger {
     res.getClass shouldBe classOf[MRejectAddResponse]
     res shouldBe MRejectAddResponse("reject@example.com",true)
   }
-  it should "work getting a valid List[MTagResponse] (blocking client)" in {
+  it should "work getting a valid MRejectAdd (blocking client)" in {
     MandrillBlockingClient.rejectAdd(MRejectAdd(email = "reject2@example.com")) match {
       case Success(res) =>
         res.getClass shouldBe classOf[MRejectAddResponse]
