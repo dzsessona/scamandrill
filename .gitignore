@@ -1,0 +1,9 @@
+.idea/
+.idea_modules/
+.classpath
+.settings/
+.DS_Store
+.cache
+target/
+logs/
+report/
