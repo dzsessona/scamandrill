@@ -4,13 +4,10 @@ import org.scalatest.FlatSpec
 import org.scalatest.Matchers
 import scala.concurrent.Await
 import com.joypeg.scamandrill.models._
-import scala.util.Success
 import com.joypeg.scamandrill.utils._
 import com.joypeg.scamandrill.MandrillTestUtils._
 import scala.util.Failure
-import com.joypeg.scamandrill.models.MRejectAdd
 import scala.util.Success
-import com.joypeg.scamandrill.models.MRejectAddResponse
 
 class TemplateCallsTest extends FlatSpec with Matchers with SimpleLogger {
 

@@ -44,6 +44,20 @@ object MandrillTestUtils extends Matchers {
       fail("should return an UnsuccessfulResponseException that can be parsed as MandrillResponseException")
   }
 
+  val validWebhook = MWebhook(
+    url = "http://example/webhook-url",
+    description = "My Example Webhook",
+    events = List("send", "open", "click")
+  )
+
+  val validWebhookUpdate = MWebhookUpdate(
+    url = "http://example/webhook-url",
+    description = "My Example Webhook",
+    id = 4,
+    events = List("send", "open", "click")
+  )
+
+
   val idOfMailForInfoTest = "acf0a530caca4301bb433161ae9a68ac"
 
   val validRawMessage = MSendRaw(raw_message =  """From: sender@example.com""")
