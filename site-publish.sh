@@ -1,5 +1,5 @@
 #!/bin/bash
-DIR="/Users/dzsessona/Projects/github/sbt-neo-dependencies"
+DIR="/Users/dzsessona/Projects/github/scamandrill"
 cd $DIR
 SOURCE_BRANCH="docs"
 DEST_BRANCH="gh-pages"
@@ -9,7 +9,7 @@ DEST_BRANCH="gh-pages"
 # -----------------------------------------------------------
 git checkout $SOURCE_BRANCH
 jekyll build -d $DIR/jekyll-site/ -s $DIR/jekyll/ --config $DIR/_config.yml
-cp -R $DIR/jekyll-site/ /tmp/jekyll-site
+cp -R $DIR/jekyll-site/ /tmp/scamandrill/jekyll-site
 git add -A
 git commit -m "documentation and site"
 
@@ -17,7 +17,7 @@ git commit -m "documentation and site"
 # SWITCH TO GH-PAGES, COPY THE SITE FROM TEMP AND  COMMIT 
 #--------------------------------------------------------
 git checkout $DEST_BRANCH
-cp -R /tmp/jekyll-site/* ./
+cp -R /tmp/scamandrill/jekyll-site/* ./
 git add -A
 git commit -m "Published updated site"
 
