@@ -148,7 +148,7 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
   implicit val MSubaccountListj           = jsonFormat2(MSubaccountList)
   implicit val MSubaccountInfoj           = jsonFormat2(MSubaccountInfo)
   implicit val MSubaccountj               = jsonFormat5(MSubaccount)
-  implicit val MSubaccountsResponsej      = jsonFormat10(MSubaccountsResponse)
+  implicit val MSubaccountsResponsej      = jsonFormat9(MSubaccountsResponse)
   implicit val MSubaccountsInfoResponsej  = jsonFormat14(MSubaccountsInfoResponse)
 
   implicit val MInboundDomainj            = jsonFormat2(MInboundDomain)

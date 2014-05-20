@@ -44,6 +44,20 @@ object MandrillTestUtils extends Matchers {
       fail("should return an UnsuccessfulResponseException that can be parsed as MandrillResponseException")
   }
 
+  val validSubaccount = MSubaccount(
+    id = "testingsubaccount",
+    name = "testingsubaccount",
+    notes = "subaccount test",
+    custom_quota = 250
+  )
+
+  val validSubaccount2 = MSubaccount(
+    id = "testingsubaccount2",
+    name = "testingsubaccount2",
+    notes = "subaccount test",
+    custom_quota = 250
+  )
+
   val validWebhook = MWebhook(
     url = "http://example/webhook-url",
     description = "My Example Webhook",
