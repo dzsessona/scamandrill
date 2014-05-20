@@ -1,10 +1,10 @@
-name: sbt-neo-dependencies
+name: scamandrill
 markdown: redcarpet
 pygments: true
 license: http://www.apache.org/licenses/LICENSE-2.0.html
-url: http://dzsessona.github.io/sbt-neo-dependencies
+url: http://dzsessona.github.io/scamandrill
     
 github:
   author: dzsessona
-  project: sbt-neo-dependencies
+  project: scamandrill
   
