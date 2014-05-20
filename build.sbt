@@ -1,10 +1,18 @@
+import SonatypeKeys._
+
+sonatypeSettings
+
 name := "scamandrill"
 
-organization := "com.joypeg"
+organization := "com.github.dzsessona"
 
-version := "1.0"
+profileName := "com.github.dzsessona"
 
-scalaVersion := "2.10.2"
+description := "Scala client for Mandrill api"
+
+scalaVersion := "2.10.4"
+
+crossScalaVersions := Seq("2.10.4")
 
 scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8")
 
@@ -34,3 +42,33 @@ libraryDependencies ++= {
 }
 
 //seq(Revolver.settings: _*)
+
+publishArtifact in Test := false
+
+publishMavenStyle := true
+
+pomIncludeRepository := { _ => false }
+
+pgpPublicRing := file("/Users/dzsessona/Documents/mykeys/diegopgp.asc")
+
+pomExtra := (
+  <url>http://github.com/dzsessona/scamandrill</url>
+    <licenses>
+      <license>
+        <name>Apache License 2.0</name>
+        <url>http://opensource.org/licenses/Apache-2.0</url>
+      </license>
+    </licenses>
+    <scm>
+      <connection>scm:git:github.com/dzsessona/scamandrill.git</connection>
+      <developerConnection>scm:git:git@github.com:dzsessona/scamandrill.git</developerConnection>
+      <url>github.com/dzsessona/scamandrill</url>
+    </scm>
+    <developers>
+      <developer>
+        <id>dzsessona</id>
+        <name>Diego Zambelli Sessona</name>
+        <url>https://www.linkedin.com/in/diegozambellisessona</url>
+      </developer>
+    </developers>
+  )
