@@ -1,0 +1,47 @@
+---
+layout: default
+active: home
+title: Sbt Neo Dependencies
+---
+<section class="jumbotron" style="margin-top:50px; background-color: #1A1A1A; padding: 25px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2 class="frontTitle">Query your dependencies.</h2><br/>
+                <h4 class="text-left" style="color: #999">NOSQL movement is not only about key value stores... so why not taking advantage of a graph database like neo4j to show and query the dependencies of your project?</h4>
+                <h4 class="text-left" style="color: #999">Or even better, all the dependencies of all the projects of your organization?</h4>
+                <h5 style="color: #CCC"> If you are using sbt...</h5><br/>
+                <a href="{{ site.url }}/manual/#installation"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-repeat fa-spin"></i> Installation</button></a>
+                <a href="{{ site.url }}/manual/#example"><button type="button" class="btn btn-primary btn-lg">View Example</button></a>
+            </div>
+            <div class="col-sm-6">
+                <img src="{{ site.url }}/assets/img/neodesktop1.png" class="img-responsive animated fadeInDown" style="margin-top: 30px; display: initial;" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container marketing">
+    <div class="row">
+        <div class="col-lg-4">
+            <h2>Last version</h2>
+            <p class="center">The artifacts have been uploaded to maven central, so you can just add the plugin with: </p>
+            <p class="center"> <!--class="text-left"-->
+                groupID: <code>com.github.dzsessona</code> </br>
+                artifactID: <code>sbt-neo-dependencies</code> </br>
+                revision: <code>1.1.0</code>
+            </p>
+            <p class="center"><a class="btn btn-default" href="{{ site.url }}/versions" role="button">View all versions »</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <h2>Last change</h2>
+            <p class="center">Add more properties (as the cross compiled version) when loading a project. If the node exists already (maybe it is a dependency of another project), the same node will be matched, adding the properties. 
+This is done using the cypher syntax MERGE - ON CREATE - ON MATCH </p>
+            <p class="center"><a class="btn btn-default" href="https://github.com/{{ site.github.author }}/{{ site.github.project }}/issues?state=closed" role="button">View all changes »</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <h2>Contribute</h2>
+            <p class="center">Yes, your help is welcome! And you can do it in many ways; suggest a feature, write code, write documentation, donate or just tell your friends.</p>
+            <p class="center"><a class="btn btn-default" href="{{ site.url }}/contribute" role="button">See how »</a></p>
+        </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+</div>

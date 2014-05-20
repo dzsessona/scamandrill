@@ -1,0 +1,51 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', '-g', 'grunt-cli' ]
+2 info using npm@1.1.33
+3 info using node@v0.8.1
+4 verbose config file /Users/dzsessona/.npmrc
+5 verbose config file /usr/local/etc/npmrc
+6 verbose config file /usr/local/lib/node_modules/npm/npmrc
+7 verbose read json /usr/local/lib/package.json
+8 verbose read json /usr/local/lib/package.json
+9 verbose cache add [ 'grunt-cli', null ]
+10 silly cache add name=undefined spec="grunt-cli" args=["grunt-cli",null]
+11 verbose parsed url { pathname: 'grunt-cli', path: 'grunt-cli', href: 'grunt-cli' }
+12 verbose lock grunt-cli /Users/dzsessona/.npm/671ef8ac3cc85c93453a27fca04d646070df6b11-grunt-cli.lock
+13 verbose addNamed [ 'grunt-cli', '' ]
+14 verbose addNamed [ null, '' ]
+15 verbose lock grunt-cli@ /Users/dzsessona/.npm/d63f3d0bdb7bbeab49e7c4001661f4c79f34c004-grunt-cli-.lock
+16 silly addNameRange { name: 'grunt-cli', range: '', hasData: false }
+17 verbose url raw grunt-cli
+18 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-cli' ]
+19 verbose url resolved https://registry.npmjs.org/grunt-cli
+20 info retry registry request attempt 1 at 22:59:07
+21 http GET https://registry.npmjs.org/grunt-cli
+22 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+23 info retry registry request attempt 2 at 22:59:18
+24 http GET https://registry.npmjs.org/grunt-cli
+25 info retry will retry, error on last attempt: Error: SSL Error: CERT_UNTRUSTED
+26 info retry registry request attempt 3 at 23:00:18
+27 http GET https://registry.npmjs.org/grunt-cli
+28 error Error: SSL Error: CERT_UNTRUSTED
+28 error     at ClientRequest.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/main.js:409:26)
+28 error     at ClientRequest.g (events.js:185:14)
+28 error     at ClientRequest.EventEmitter.emit (events.js:88:17)
+28 error     at HTTPParser.parserOnIncomingClient [as onIncoming] (http.js:1445:7)
+28 error     at HTTPParser.parserOnHeadersComplete [as onHeadersComplete] (http.js:111:23)
+28 error     at CleartextStream.socketOnData [as ondata] (http.js:1356:20)
+28 error     at CleartextStream.CryptoStream._push (tls.js:396:27)
+28 error     at SecurePair.cycle (tls.js:751:20)
+28 error     at EncryptedStream.CryptoStream.write (tls.js:131:13)
+28 error     at Socket.ondata (stream.js:38:26)
+28 error  [Error: SSL Error: CERT_UNTRUSTED]
+29 error You may report this log at:
+29 error     <http://github.com/isaacs/npm/issues>
+29 error or email it to:
+29 error     <npm-@googlegroups.com>
+30 error System Darwin 12.5.0
+31 error command "node" "/usr/local/bin/npm" "install" "-g" "grunt-cli"
+32 error cwd /Users/dzsessona/Projects/github/sbt-neo-dependencies/jekyll
+33 error node -v v0.8.1
+34 error npm -v 1.1.33
+35 error message SSL Error: CERT_UNTRUSTED
+36 verbose exit [ 1, true ]

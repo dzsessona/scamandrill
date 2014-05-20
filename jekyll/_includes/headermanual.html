@@ -1,0 +1,61 @@
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+   <title>{{ page.title }}</title>
+   <meta name="viewport" content="width=device-width">
+   <link rel="stylesheet" href="{{ site.url }}/assets/css/bootstrap.css">
+   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+   <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+   <link rel="stylesheet" href="{{ site.url }}/css/syntax.css">
+   <link rel="stylesheet" href="{{ site.url }}/css/main.css">
+   <link rel="icon" type="image/png" href="{{ site.url }}/assets/img/fav.png">
+   <script type="text/javascript">
+    $(document).ready(function() {
+      // when a link with class="cls" is clicked, alert the link text
+      $('a.spy').click(function() {
+        event.preventDefault();
+        $($(this).attr('href'))[0].scrollIntoView();
+        scrollBy(0, -90);
+      });
+    });
+   </script>
+   <style type="text/css">
+   /* Custom Styles */
+   ul.nav-tabs {
+       width: 100%;
+       margin-top: 20px;
+       margin-left: 40px;
+       border-radius: 4px;
+       box-shadow: none;
+       border: none;
+   }
+   ul.nav-tabs li {
+       margin: 0;
+       text-align: left;
+       border: none;
+   }
+   ul.nav-tabs li a {
+       margin: 0;
+       padding: 0;
+       border-radius: 0;
+       border: none;
+   }
+   ul.nav-tabs li a:hover {
+       color: #B42C30;       
+       border: none;
+       padding-left: 22px;
+       background-color: #fff;
+   }
+   ul.nav-tabs li.active a, ul.nav-tabs li.active a:hover {
+       color: #B42C30;       
+       border: none;
+       padding-left: 20px;
+       border-left: 2px solid #B42C30;
+   }
+   ul.nav-tabs.affix {
+       top: 70px; 
+   }
+   </style>
+</head>

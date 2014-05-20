@@ -1,0 +1,10 @@
+name: sbt-neo-dependencies
+markdown: redcarpet
+pygments: true
+license: http://www.apache.org/licenses/LICENSE-2.0.html
+url:
+    
+github:
+  author: dzsessona
+  project: sbt-neo-dependencies
+  

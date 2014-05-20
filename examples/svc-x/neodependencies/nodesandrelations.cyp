@@ -1,0 +1,11 @@
+MATCH (n: ACOMPANY_Web {name:"svc-x-web", org:"a.company"}) OPTIONAL MATCH (n)-[r]-() DELETE r;
+MATCH a WHERE NOT (a)-[:Depends]-() DELETE a;
+MERGE (a: ACOMPANY_Web {name:"svc-x-web", org:"a.company"}) ON MATCH SET a.crossCompiled="2.10.2", a.lastVersion="1.0" ON CREATE SET a.crossCompiled="2.10.2", a.lastVersion="1.0";
+MERGE (a: ACOMPANY_Client {name:"svc-user-client", org:"a.company"});
+MERGE (a: External {name:"c3p0", org:"c3p0"});
+MERGE (a: External {name:"logback-classic", org:"ch.qos.logback"});
+MERGE (a: External {name:"scala-library", org:"org.scala-lang"});
+MATCH (a {name:"c3p0", org:"c3p0"}), (b {name:"svc-x-web", org:"a.company"}) CREATE UNIQUE (b)-[r:Depends {version:"0.9.1.2", declaration:"c3p0:c3p0:0.9.1.2"}]->(a);
+MATCH (a {name:"logback-classic", org:"ch.qos.logback"}), (b {name:"svc-x-web", org:"a.company"}) CREATE UNIQUE (b)-[r:Depends {version:"1.0.6", declaration:"ch.qos.logback:logback-classic:1.0.6"}]->(a);
+MATCH (a {name:"scala-library", org:"org.scala-lang"}), (b {name:"svc-x-web", org:"a.company"}) CREATE UNIQUE (b)-[r:Depends {version:"2.9.2", declaration:"org.scala-lang:scala-library:2.9.2"}]->(a);
+MATCH (a {name:"svc-user-client", org:"a.company"}), (b {name:"svc-x-web", org:"a.company"}) CREATE UNIQUE (b)-[r:Depends {version:"1.0", declaration:"a.company:svc-user-client:1.0", onScalaVersion:"2.9"}]->(a);

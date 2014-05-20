@@ -1,0 +1,51 @@
+node {
+  diameter: 40px;
+  color: #DFE1E3;
+  border-color: #D4D6D7;
+  border-width: 2px;
+  text-color-internal: #000000;
+  caption: '{name}';
+  font-size: 10px;
+}
+
+relationship {
+  color: #D4D6D7;
+  shaft-width: 1px;
+  font-size: 6px;
+  padding: 2px;
+  text-color-external: #000000;
+  text-color-internal: #000000;
+}
+
+node.External {
+  color: #FFFFCC;
+  border-color: #FFFFCC;
+  text-color-external: #000000;
+  text-color-internal: #000000;
+  diameter: 30px;
+  border-width: 2px;
+  font-size: 8px;
+}
+
+node.ACOMPANY {
+  color: #F25A29;
+  border-color: #DC4717;
+  text-color-external: #000000;
+  text-color-internal: #000000;
+  font-size: 11px;
+  diameter: 80px;
+  border-width: 2px;
+  caption: '{name}';
+}
+
+node.ACOMPANY_Service {
+  color: #4356C0;
+  border-color: #4356C0;
+  text-color-external: #000000;
+  text-color-internal: #FFFFFF;
+  diameter: 100px;
+  border-width: 2px;
+  caption: '{name}';
+  font-size: 10px;
+}
+

@@ -1,0 +1,17 @@
+MATCH (n: ACOMPANY {name:"svc-user-server", org:"a.company"}) OPTIONAL MATCH (n)-[r]-() DELETE r;
+MATCH a WHERE NOT (a)-[:Depends]-() DELETE a;
+MERGE (a: ACOMPANY {name:"svc-user-server", org:"a.company"}) ON MATCH SET a.crossCompiled="2.9.2, 2.10.2", a.lastVersion="1.0" ON CREATE SET a.crossCompiled="2.9.2, 2.10.2", a.lastVersion="1.0";
+MERGE (a: External {name:"c3p0", org:"c3p0"});
+MERGE (a: External {name:"config", org:"com.typesafe"});
+MERGE (a: External {name:"lift-json", org:"net.liftweb"});
+MERGE (a: External {name:"logback-classic", org:"ch.qos.logback"});
+MERGE (a: External {name:"postgresql", org:"postgresql"});
+MERGE (a: External {name:"scala-library", org:"org.scala-lang"});
+MERGE (a: External {name:"slick", org:"com.typesafe.slick"});
+MATCH (a {name:"c3p0", org:"c3p0"}), (b {name:"svc-user-server", org:"a.company"}) CREATE UNIQUE (b)-[r:Depends {version:"0.9.1.2", declaration:"c3p0:c3p0:0.9.1.2"}]->(a);
+MATCH (a {name:"config", org:"com.typesafe"}), (b {name:"svc-user-server", org:"a.company"}) CREATE UNIQUE (b)-[r:Depends {version:"1.0.2", declaration:"com.typesafe:config:1.0.2"}]->(a);
+MATCH (a {name:"lift-json", org:"net.liftweb"}), (b {name:"svc-user-server", org:"a.company"}) CREATE UNIQUE (b)-[r:Depends {version:"2.5.1", declaration:"net.liftweb:lift-json:2.5.1", onScalaVersion:"2.10"}]->(a);
+MATCH (a {name:"logback-classic", org:"ch.qos.logback"}), (b {name:"svc-user-server", org:"a.company"}) CREATE UNIQUE (b)-[r:Depends {version:"1.0.6", declaration:"ch.qos.logback:logback-classic:1.0.6"}]->(a);
+MATCH (a {name:"postgresql", org:"postgresql"}), (b {name:"svc-user-server", org:"a.company"}) CREATE UNIQUE (b)-[r:Depends {version:"9.1-901.jdbc4", declaration:"postgresql:postgresql:9.1-901.jdbc4"}]->(a);
+MATCH (a {name:"scala-library", org:"org.scala-lang"}), (b {name:"svc-user-server", org:"a.company"}) CREATE UNIQUE (b)-[r:Depends {version:"2.10.3", declaration:"org.scala-lang:scala-library:2.10.3"}]->(a);
+MATCH (a {name:"slick", org:"com.typesafe.slick"}), (b {name:"svc-user-server", org:"a.company"}) CREATE UNIQUE (b)-[r:Depends {version:"2.0.0", declaration:"com.typesafe.slick:slick:2.0.0", onScalaVersion:"2.10"}]->(a);

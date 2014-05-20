@@ -1,0 +1,41 @@
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+   <div class="container">
+      <div class="navbar-header">
+         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+         <span class="sr-only">Toggle navigation</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         </button>
+         <a class="navbar-brand" style="padding:0 10px" href="/"><img src="{{ site.url }}/assets/img/logo.png"/></a>
+      </div>
+      <div class="navbar-collapse collapse">
+         <ul class="nav navbar-nav" style="margin-left:60px">
+            <li {% if include.active == 'home' %} class="active" {% endif %}><a href="{{ site.url }}/">Home</a></li>
+            <li class="dropdown {% if include.active == 'manual' %} active {% endif %}">
+               <a href="{{ site.url }}/manual" class="dropdown-toggle" data-toggle="dropdown">Manual <b class="caret"></b></a>
+               <ul class="dropdown-menu">
+                  <li><a href="{{ site.url }}/manual/#installation">Installation</a></li>
+                  <li><a href="{{ site.url }}/manual/#tasks">Tasks</a></li>
+                  <li><a href="{{ site.url }}/manual/#settings">Settings</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Usage</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                  <li class="dropdown-header">Example</li>
+               </ul>
+            </li>
+            <li {% if include.active == 'contribute' %} class="active" {% endif %}><a href="{{ site.url }}/contribute">Contribute</a></li>
+            <li {% if include.active == 'versions' %} class="active" {% endif %}><a href="{{ site.url }}/versions">Versions</a></li>
+         </ul>
+         <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://github.com/{{ site.github.author }}/{{ site.github.project }}" style="padding:10px 0">
+                <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-github fa-lg"></i> View on Github</button></a></li>
+            <li><a style="padding:10px 0;margin-left:30px;" href="https://github.com/{{ site.github.author }}/{{ site.github.project }}/archive/master.tar.gz">
+                <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download fa-lg"></i> TAR</button></a></li>
+            <li><a style="padding:10px 0;margin-left:2px;"  href="https://github.com/{{ site.github.author }}/{{ site.github.project }}/archive/master.zip">
+                <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download fa-lg"></i> ZIP</button></a></li>
+         </ul>
+      </div>
+   </div>
+</div>
