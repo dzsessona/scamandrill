@@ -1,0 +1,30 @@
+[0m[[0minfo[0m] [0m[32mSubaccountCallsTest:[0m[0m
+[0m[[0minfo[0m] [0m[32mSubaccountAdd[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MSubaccountsResponse (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MSubaccountsResponse (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if a subaccount wioth the same id already exists, with a code of ValidationError[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mSubaccountPause[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MSubaccountsResponse (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MSubaccountsResponse (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mSubaccountResume[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MSubaccountsResponse (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MSubaccountsResponse (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mSubaccountUpdate[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MSubaccountsResponse (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MSubaccountsResponse (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mSubaccountInfo[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MSubaccountsResponse (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MSubaccountsResponse (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mSubaccountList[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid List[MSubaccountsResponse] (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid List[MSubaccountsResponse] (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mSubaccountDelete[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MSubaccountsResponse (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MSubaccountsResponse (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m

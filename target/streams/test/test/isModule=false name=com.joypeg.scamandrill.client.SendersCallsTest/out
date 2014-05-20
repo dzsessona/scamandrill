@@ -1,0 +1,29 @@
+[0m[[0minfo[0m] [0m[32mSendersCallsTest:[0m[0m
+[0m[[0minfo[0m] [0m[32mSendersList[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid List[MSendersListResp] (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid List[MSendersListResp] (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mSendersDomains[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid List[MSendersDomainResponses] (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a validList[MSendersDomainResponses] (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mSendersAddDomain[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MSendersDomainResponses (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MSendersDomainResponses (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mSendersCheckDomain[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MSendersDomainResponses (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MSendersDomainResponses (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mSendersVerifyDomain[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MSendersVerifyDomResp (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MSendersDomainResponses (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mSendersInfo[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MSendersInfoResp (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MSendersInfoResp (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mSendersTimeSeries[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid List[MSenderTSResponse] (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid List[MSenderTSResponse] (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m

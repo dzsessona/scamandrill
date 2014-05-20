@@ -1,0 +1,29 @@
+[0m[[0minfo[0m] [0m[32mInboundCallsTest:[0m[0m
+[0m[[0minfo[0m] [0m[32mInboundAddDomains[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MInboundDomainResponse (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid  MInboundDomainResponse (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mInboundDomains[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid List[MInboundDomainResponse] (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid  List[MInboundDomainResponse] (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mInboundCheckDomain[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MInboundDomainResponse (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid  MInboundDomainResponse (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mInboundDeleteDomains[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MInboundDomainResponse (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid  MInboundDomainResponse (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mInboundAddRoute[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the url is not valid, with an , with an 'Unknown_InboundDomain' code[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mInboundDeleteRoute[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the url is not valid, with an , with an 'Unknown_InboundRoute' code[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mInboundUpdateRoute[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the url is not valid, with an , with an 'Unknown_InboundRoute' code[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mInboundRoutes[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the url is not valid, with an , with an 'Unknown_InboundDomain' code[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m

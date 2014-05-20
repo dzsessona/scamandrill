@@ -1,0 +1,49 @@
+[0m[[0minfo[0m] [0m[32mMessageCallsTest:[0m[0m
+[0m[[0minfo[0m] [0m[32mSend[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid List[MSendResponse] (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should return as many MSendResponse as the recipients list size[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid List[MSendResponse] (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the subaccount passed is invalid, with an 'Unknown_Subaccount' code[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the operation is not allowed for the account, with an 'PaymentRequired' code[0m[0m
+[0m[[0minfo[0m] [0m[32m- should return a message as 'queued' in case async=true[0m[0m
+[0m[[0minfo[0m] [0m[32mSendTemplate[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid List[MSendResponse] (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should return as many MSendResponse as the recipients list size[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the template does not exists, with an 'Unknown_Template' code[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mSearch[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid List[MSearchResponse] (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid List[MSearchResponse] (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mSearchTimeSeries[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid List[MSearchResponse] (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid List[MSearchResponse] (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mMessageInfo[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MMessageInfoResponse (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MMessageInfoResponse (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the id does not exists, with an 'Unknown_Message' code[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mContent[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the id does not exists, with an 'Unknown_Message' code[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mParse[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MParseResponse (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MParseResponse (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mSendRaw[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MParseResponse (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MParseResponse (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mListSchedule[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid List[MScheduleResponse] (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid List[MScheduleResponse] (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mCancelSchedule[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the id does not exists, with an 'Unknown_Message' code[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mReschedule[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the date is not valid, with an 'ValidationError' code[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the id of the message does not exist, with an 'Unknown_Message' code[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m

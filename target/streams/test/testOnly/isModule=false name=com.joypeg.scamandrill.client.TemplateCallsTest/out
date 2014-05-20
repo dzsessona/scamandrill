@@ -1,0 +1,35 @@
+[0m[[0minfo[0m] [0m[32mTemplateCallsTest:[0m[0m
+[0m[[0minfo[0m] [0m[32mTemplateAdd[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MTemplateAddResponses (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MTemplateAddResponses (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the operation is the template already exists, with an 'Invalid_Template' code[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mTemplatePublish[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MTemplateAddResponses (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MTemplateAddResponses (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the template does not exists, with an 'Unknown_Template' code[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mTemplateInfo[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MTemplateAddResponses (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MTemplateAddResponses (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the the template does not exists, with an 'Unknown_Template' code[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mTemplateList[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid List[MTemplateAddResponses] (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid List[MTemplateAddResponses] (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mTemplateUpdate[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MTemplateAddResponses (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MTemplateAddResponses (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mTemplateTimeSeries[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mTemplateRender[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MTemplateRenderResponse (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MTemplateAddResponses (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the template does not exists, with an 'Unknown_Template' code[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mTemplateDelete[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MTemplateAddResponses (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MTemplateAddResponses (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m

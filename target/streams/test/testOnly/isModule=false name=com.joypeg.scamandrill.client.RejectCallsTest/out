@@ -1,0 +1,16 @@
+[0m[[0minfo[0m] [0m[32mRejectCallsTest:[0m[0m
+[0m[[0minfo[0m] [0m[32mRejectAdd[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MRejectAdd (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid List[MTagResponse] (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the subaccount passed is invalid, with an 'Unknown_Subaccount' code[0m[0m
+[0m[[0minfo[0m] [0m[32mRejectList[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MRejectListResponse (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid List[MRejectListResponse] (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the subaccount passed is invalid, with an 'Unknown_Subaccount' code[0m[0m
+[0m[[0minfo[0m] [0m[32mRejecDelete[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MRejectDeleteResponse (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid MRejectDeleteResponse (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the subaccount passed is invalid, with an 'Unknown_Subaccount' code[0m[0m

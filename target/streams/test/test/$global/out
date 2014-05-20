@@ -1,0 +1,46 @@
+[0m[[0mdebug[0m] [0mRunning TaskDef(com.joypeg.scamandrill.client.TagsCallsTest, org.scalatest.tools.Framework$$anon$1@3744b0de, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(com.joypeg.scamandrill.client.TemplateCallsTest, org.scalatest.tools.Framework$$anon$1@3744b0de, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(com.joypeg.scamandrill.models.MandrillJsonProtocolTest, org.scalatest.tools.Framework$$anon$1@3744b0de, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(com.joypeg.scamandrill.client.RejectCallsTest, org.scalatest.tools.Framework$$anon$1@3744b0de, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(com.joypeg.scamandrill.client.InboundCallsTest, org.scalatest.tools.Framework$$anon$1@3744b0de, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(com.joypeg.scamandrill.client.IspCallsTest, org.scalatest.tools.Framework$$anon$1@3744b0de, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(com.joypeg.scamandrill.client.WebhookCallsTest, org.scalatest.tools.Framework$$anon$1@3744b0de, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(com.joypeg.scamandrill.client.SendersCallsTest, org.scalatest.tools.Framework$$anon$1@3744b0de, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(com.joypeg.scamandrill.client.UrlCallsTest, org.scalatest.tools.Framework$$anon$1@3744b0de, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(com.joypeg.scamandrill.PreparationTest, org.scalatest.tools.Framework$$anon$1@3744b0de, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(com.joypeg.scamandrill.client.SubaccountCallsTest, org.scalatest.tools.Framework$$anon$1@3744b0de, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(com.joypeg.scamandrill.client.MetadataCallsTest, org.scalatest.tools.Framework$$anon$1@3744b0de, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(com.joypeg.scamandrill.client.WhitelistCallsTest, org.scalatest.tools.Framework$$anon$1@3744b0de, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(com.joypeg.scamandrill.client.MessageCallsTest, org.scalatest.tools.Framework$$anon$1@3744b0de, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(com.joypeg.scamandrill.client.UserCallsTest, org.scalatest.tools.Framework$$anon$1@3744b0de, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(com.joypeg.scamandrill.client.ExportCallsTest, org.scalatest.tools.Framework$$anon$1@3744b0de, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mRunning TaskDef(com.joypeg.scamandrill.models.DefaultConfigTest, org.scalatest.tools.Framework$$anon$1@3744b0de, false, [SuiteSelector])[0m
+[0m[[0mdebug[0m] [0mSummary for ScalaCheck not available.[0m
+[0m[[0mdebug[0m] [0mSummary for specs2 not available.[0m
+[0m[[0minfo[0m] [0mScalaTest[0m
+[0m[[0minfo[0m] [0m[36mRun completed in 22 seconds, 693 milliseconds.[0m[0m
+[0m[[0minfo[0m] [0m[36mTotal number of tests run: 237[0m[0m
+[0m[[0minfo[0m] [0m[36mSuites: completed 17, aborted 0[0m[0m
+[0m[[0minfo[0m] [0m[36mTests: succeeded 235, failed 2, canceled 0, ignored 2, pending 0[0m[0m
+[0m[[0minfo[0m] [0m[31m*** 2 TESTS FAILED ***[0m[0m
+[0m[[31merror[0m] [0mFailed: Total 237, Failed 2, Errors 0, Passed 235, Ignored 2[0m
+[0m[[0mdebug[0m] [0mPassed tests:[0m
+[0m[[0mdebug[0m] [0m	com.joypeg.scamandrill.client.ExportCallsTest[0m
+[0m[[0mdebug[0m] [0m	com.joypeg.scamandrill.client.InboundCallsTest[0m
+[0m[[0mdebug[0m] [0m	com.joypeg.scamandrill.models.MandrillJsonProtocolTest[0m
+[0m[[0mdebug[0m] [0m	com.joypeg.scamandrill.client.WhitelistCallsTest[0m
+[0m[[0mdebug[0m] [0m	com.joypeg.scamandrill.client.TemplateCallsTest[0m
+[0m[[0mdebug[0m] [0m	com.joypeg.scamandrill.models.DefaultConfigTest[0m
+[0m[[0mdebug[0m] [0m	com.joypeg.scamandrill.client.UrlCallsTest[0m
+[0m[[0mdebug[0m] [0m	com.joypeg.scamandrill.client.TagsCallsTest[0m
+[0m[[0mdebug[0m] [0m	com.joypeg.scamandrill.client.WebhookCallsTest[0m
+[0m[[0mdebug[0m] [0m	com.joypeg.scamandrill.client.UserCallsTest[0m
+[0m[[0mdebug[0m] [0m	com.joypeg.scamandrill.client.IspCallsTest[0m
+[0m[[0mdebug[0m] [0m	com.joypeg.scamandrill.client.SendersCallsTest[0m
+[0m[[0mdebug[0m] [0m	com.joypeg.scamandrill.client.MetadataCallsTest[0m
+[0m[[0mdebug[0m] [0m	com.joypeg.scamandrill.client.SubaccountCallsTest[0m
+[0m[[0mdebug[0m] [0m	com.joypeg.scamandrill.client.MessageCallsTest[0m
+[0m[[0mdebug[0m] [0m	com.joypeg.scamandrill.PreparationTest[0m
+[0m[[31merror[0m] [0mFailed tests:[0m
+[0m[[31merror[0m] [0m	com.joypeg.scamandrill.client.RejectCallsTest[0m
+[0m[[31merror[0m] [0m(test:[31mtest[0m) sbt.TestsFailedException: Tests unsuccessful[0m

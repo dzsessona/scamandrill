@@ -1,0 +1,13 @@
+[0m[[0minfo[0m] [0m[32mWebhookCallsTest:[0m[0m
+[0m[[0minfo[0m] [0m[32mWebhookList[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid List[MWebhooksResponse] (async client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should work getting a valid List[MWebhooksResponse] (blocking client)[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the key passed is invalid, with an 'Invalid_Key' code[0m[0m
+[0m[[0minfo[0m] [0m[32mWebhookAdd[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the url is not valid, with an 'ValidationError' code[0m[0m
+[0m[[0minfo[0m] [0m[32mWebhookInfo[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the webhook specified with the id does not exists[0m[0m
+[0m[[0minfo[0m] [0m[32mWebhookDelete[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the webhook specified with the id does not exists[0m[0m
+[0m[[0minfo[0m] [0m[32mWebhookUpdate[0m[0m
+[0m[[0minfo[0m] [0m[32m- should fail if the webhook specified with the id does not exists[0m[0m
