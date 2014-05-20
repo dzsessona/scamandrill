@@ -8,13 +8,33 @@ trait MandrillClient {
   //USER calls https://mandrillapp.com/api/docs/users.JSON.html
   /////////////////////////////////////////////////////////////
 
-  def ping(ping: MKey): Any
+  /**
+   * Validate an API key and respond to a ping
+   * @param key - the key of the account to use
+   * @return - the string "PONG!" if successful
+   */
+  def usersPing(key: MKey): Any
 
-  def ping2(ping: MKey): Any
+  /**
+   * Validate an API key and respond to a ping (anal JSON parser version)
+   * @param key - the key of the account to use
+   * @return - the string "PONG!" if successful
+   */
+  def usersPing2(key: MKey): Any
 
-  def senders(ping: MKey): Any
+  /**
+   * Return the senders that have tried to use this account, both verified and unverified
+   * @param key - the key of the account to use
+   * @return the senders that have tried to use this account, both verified and unverified
+   */
+  def usersSenders(key: MKey): Any
 
-  def info(ping: MKey): Any
+  /**
+   * Return the information about the API-connected user
+   * @param key - the key of the account to use
+   * @return the information about the API-connected user 
+   */
+  def usersInfo(key: MKey): Any
 
   ////////////////////////////////////////////////////////////////////
   //MESSAGES calls https://mandrillapp.com/api/docs/messages.JSON.html

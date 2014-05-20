@@ -18,50 +18,50 @@ import scala.util.Failure
 class UserCallsTest extends FlatSpec with Matchers with SimpleLogger{
 
   "Ping" should "work getting a valid MPingResponse (async client)" in {
-    val res = Await.result(MandrillAsyncClient.ping(MKey()), DefaultConfig.defaultTimeout)
+    val res = Await.result(MandrillAsyncClient.usersPing(MKey()), DefaultConfig.defaultTimeout)
     res shouldBe MPingResponse("\"PONG!\"")
   }
   it should "work getting a valid MPingResponse (blocking client)" in {
-    MandrillBlockingClient.ping(MKey()) match {
+    MandrillBlockingClient.usersPing(MKey()) match {
       case Success(res) => res shouldBe MPingResponse("\"PONG!\"")
       case Failure(ex) => fail(ex)
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.ping(MKey("invalidkeytest")))
+    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.usersPing(MKey("invalidkeytest")))
   }
 
   "Ping (version 2)" should "work getting a valid MPingResponse" in {
-    val res1 = Await.result(MandrillAsyncClient.ping2(MKey()), DefaultConfig.defaultTimeout)
+    val res1 = Await.result(MandrillAsyncClient.usersPing2(MKey()), DefaultConfig.defaultTimeout)
     res1 shouldBe MPingResponse("PONG!")
   }
   it should "work getting a valid MPingResponse (blocking client)" in {
-    MandrillBlockingClient.ping2(MKey()) match {
+    MandrillBlockingClient.usersPing2(MKey()) match {
       case Success(res) => res shouldBe MPingResponse("PONG!")
       case Failure(ex) => fail(ex)
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.ping2(MKey("invalidkeytest")))
+    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.usersPing2(MKey("invalidkeytest")))
   }
 
   "Sender" should "work getting a valid List[MSenderDataResponse] (async client)" in {
-    val res = Await.result(MandrillAsyncClient.senders(MKey()), DefaultConfig.defaultTimeout)
+    val res = Await.result(MandrillAsyncClient.usersSenders(MKey()), DefaultConfig.defaultTimeout)
     res.head.getClass shouldBe classOf[MSenderDataResponse]
     res.exists(_.address == "scamandrill@test.com") shouldBe true
   }
   it should "work getting a valid List[MSenderDataResponse] (blocking client)" in {
-    MandrillBlockingClient.senders(MKey()) match {
+    MandrillBlockingClient.usersSenders(MKey()) match {
       case Success(res) => res.head.getClass shouldBe classOf[MSenderDataResponse]
       case Failure(ex) => fail(ex)
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.senders(MKey("invalidkeytest")))
+    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.usersSenders(MKey("invalidkeytest")))
   }
 
   "Info" should "work getting a valid MInfoResponse (async client)" in {
-    val res = Await.result(MandrillAsyncClient.info(MKey()), DefaultConfig.defaultTimeout)
+    val res = Await.result(MandrillAsyncClient.usersInfo(MKey()), DefaultConfig.defaultTimeout)
     res.getClass shouldBe classOf[MInfoResponse]
     res.username shouldBe "joypegtech@gmail.com"
     res.created_at shouldBe "2014-05-13 12:59:13.93756"
@@ -69,7 +69,7 @@ class UserCallsTest extends FlatSpec with Matchers with SimpleLogger{
     res.public_id shouldBe "L-NrI-gTRL774TxZ_GS9oA"
   }
   it should "work getting a valid MInfoResponse (blocking client)" in {
-    MandrillBlockingClient.info(MKey()) match {
+    MandrillBlockingClient.usersInfo(MKey()) match {
       case Success(res: MInfoResponse) =>
         res.getClass shouldBe classOf[MInfoResponse]
         res.username shouldBe "joypegtech@gmail.com"
@@ -81,6 +81,6 @@ class UserCallsTest extends FlatSpec with Matchers with SimpleLogger{
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.info(MKey("invalidkeytest")))
+    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.usersInfo(MKey("invalidkeytest")))
   }
 }

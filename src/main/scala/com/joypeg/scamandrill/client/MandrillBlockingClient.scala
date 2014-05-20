@@ -14,20 +14,20 @@ object MandrillBlockingClient extends MandrillClient {
   //USER calls https://mandrillapp.com/api/docs/users.JSON.html
   /////////////////////////////////////////////////////////////
 
-  override def ping(ping: MKey): Try[MPingResponse] = Try {
-    Await.result(MandrillAsyncClient.ping(ping), DefaultConfig.defaultTimeout)
+  override def usersPing(ping: MKey): Try[MPingResponse] = Try {
+    Await.result(MandrillAsyncClient.usersPing(ping), DefaultConfig.defaultTimeout)
   }
 
-  override def ping2(ping: MKey): Try[MPingResponse] = Try {
-    Await.result(MandrillAsyncClient.ping2(ping), DefaultConfig.defaultTimeout)
+  override def usersPing2(ping: MKey): Try[MPingResponse] = Try {
+    Await.result(MandrillAsyncClient.usersPing2(ping), DefaultConfig.defaultTimeout)
   }
 
-  override def senders(ping: MKey): Try[List[MSenderDataResponse]] = Try {
-    Await.result(MandrillAsyncClient.senders(ping), DefaultConfig.defaultTimeout)
+  override def usersSenders(ping: MKey): Try[List[MSenderDataResponse]] = Try {
+    Await.result(MandrillAsyncClient.usersSenders(ping), DefaultConfig.defaultTimeout)
   }
 
-  override def info(ping: MKey): Try[MInfoResponse] = Try {
-    Await.result(MandrillAsyncClient.info(ping), DefaultConfig.defaultTimeout)
+  override def usersInfo(ping: MKey): Try[MInfoResponse] = Try {
+    Await.result(MandrillAsyncClient.usersInfo(ping), DefaultConfig.defaultTimeout)
   }
 
   ////////////////////////////////////////////////////////////////////

@@ -16,19 +16,19 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
   //USER calls https://mandrillapp.com/api/docs/users.JSON.html
   /////////////////////////////////////////////////////////////
 
-  override def ping(ping: MKey): Future[MPingResponse] = {
+  override def usersPing(ping: MKey): Future[MPingResponse] = {
     executeQuery[MPingResponse](Endpoints.ping.endpoint, marshal(ping))(unmarshal[String].andThen(MPingResponse))
   }
 
-  override def ping2(ping: MKey): Future[MPingResponse] = {
+  override def usersPing2(ping: MKey): Future[MPingResponse] = {
     executeQuery[MPingResponse](Endpoints.ping2.endpoint, marshal(ping))(unmarshal[MPingResponse])
   }
 
-  override def senders(ping: MKey): Future[List[MSenderDataResponse]] = {
+  override def usersSenders(ping: MKey): Future[List[MSenderDataResponse]] = {
     executeQuery[List[MSenderDataResponse]](Endpoints.senders.endpoint, marshal(ping))(unmarshal[List[MSenderDataResponse]])
   }
 
-  override def info(ping: MKey): Future[MInfoResponse] = {
+  override def usersInfo(ping: MKey): Future[MInfoResponse] = {
     executeQuery[MInfoResponse](Endpoints.info.endpoint, marshal(ping))(unmarshal[MInfoResponse])
   }
 
