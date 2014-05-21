@@ -49,12 +49,12 @@ class ExportCallsTest extends FlatSpec with Matchers with SimpleLogger {
 
 //  "ExportReject" should "work getting a valid MExportResponse (async client)" in {
 //    val res = Await.result(MandrillAsyncClient.exportReject(MExportNotify(notify_email = "examplereject@example.com")), DefaultConfig.defaultTimeout)
-//    res.`type` shouldBe "reject"
+//    res.`type` shouldBe "add"
 //  }
 //  it should "work getting a valid  MExportResponse (blocking client)" in {
 //    MandrillBlockingClient.exportReject(MExportNotify(notify_email = "examplereject@example.com")) match {
 //      case Success(res) =>
-//        res.`type` shouldBe "reject"
+//        res.`type` shouldBe "add"
 //      case Failure(ex) => fail(ex)
 //    }
 //  }

@@ -164,20 +164,56 @@ trait MandrillClient {
   //REJECT calls https://mandrillapp.com/api/docs/rejects.JSON.html
   /////////////////////////////////////////////////////////////////
 
-  def rejectAdd(reject: MRejectAdd): Any
+  /**
+   * Adds an email to your email rejection blacklist. Addresses that you add manually will never expire and there is no
+   * reputation penalty for removing them from your blacklist. Attempting to blacklist an address that has been
+   * whitelisted will have no effect.
+   * @param add - info about the mail to blacklist
+   * @return an object containing the address and the result of the operation
+   */
+  def rejectAdd(add: MRejectAdd): Any
 
-  def rejectDelete(reject: MRejectDelete): Any
+  /**
+   * Deletes an email rejection. There is no limit to how many rejections you can remove from your blacklist,
+   * but keep in mind that each deletion has an affect on your reputation.
+   * @param delete - the mail to delete from the blacklist
+   * @return - an object containing the address and whether the deletion succeeded.
+   */
+  def rejectDelete(delete: MRejectDelete): Any
 
-  def rejectList(reject: MRejectList): Any
+  /**
+   * Retrieves your email rejection blacklist. You can provide an email address to limit the results.
+   * Returns up to 1000 results. By default, entries that have expired are excluded from the results;
+   * set include_expired to true to include them.
+   * @param list - information about the list of mails to retrieve
+   * @return up to 1000 results
+   */
+  def rejectList(list: MRejectList): Any
 
   ///////////////////////////////////////////////////////////////////////
   //WHITELIST calls https://mandrillapp.com/api/docs/whitelists.JSON.html
   ///////////////////////////////////////////////////////////////////////
 
+  /**
+   * Adds an email to your email rejection whitelist. If the address is currently on your blacklist,
+   * that blacklist entry will be removed automatically.
+   * @param mail - the mail to be added to the whitelist
+   * @return an object containing the address and the result of the operation
+   */
   def whitelistAdd(mail: MWhitelist): Any
 
+  /**
+   * Removes an email address from the whitelist.
+   * @param mail - the mail to be removed from the whitelist
+   * @return a status object containing the address and whether the deletion succeeded
+   */
   def whitelistDelete(mail: MWhitelist): Any
 
+  /**
+   * Retrieves your email rejection whitelist. You can provide an email address or search prefix to limit the results.
+   * @param mail - the list of mails to be returned
+   * @return up to 1000 results
+   */
   def whitelistList(mail: MWhitelist): Any
 
   //////////////////////////////////////////////////////////////////

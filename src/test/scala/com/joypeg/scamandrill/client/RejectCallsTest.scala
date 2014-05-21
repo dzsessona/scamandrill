@@ -16,9 +16,9 @@ import com.joypeg.scamandrill.models.MRejectAddResponse
 class RejectCallsTest extends FlatSpec with Matchers with SimpleLogger {
 
   "RejectAdd" should "work getting a valid MRejectAdd (async client)" in {
-    val res = Await.result(MandrillAsyncClient.rejectAdd(MRejectAdd(email = "reject@example.com")), DefaultConfig.defaultTimeout)
+    val res = Await.result(MandrillAsyncClient.rejectAdd(MRejectAdd(email = "add@example.com")), DefaultConfig.defaultTimeout)
     res.getClass shouldBe classOf[MRejectAddResponse]
-    res shouldBe MRejectAddResponse("reject@example.com",true)
+    res shouldBe MRejectAddResponse("add@example.com",true)
   }
   it should "work getting a valid MRejectAdd (blocking client)" in {
     MandrillBlockingClient.rejectAdd(MRejectAdd(email = "reject2@example.com")) match {
@@ -32,7 +32,7 @@ class RejectCallsTest extends FlatSpec with Matchers with SimpleLogger {
     checkFailedBecauseOfInvalidKey(MandrillBlockingClient.rejectAdd(MRejectAdd(email = "reject2@example.com", key="invalid")))
   }
   it should "fail if the subaccount passed is invalid, with an 'Unknown_Subaccount' code" in {
-    MandrillBlockingClient.rejectAdd(MRejectAdd(email = "reject@example.com", subaccount = Some("nonexisting"))) match {
+    MandrillBlockingClient.rejectAdd(MRejectAdd(email = "add@example.com", subaccount = Some("nonexisting"))) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
       case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
@@ -45,9 +45,9 @@ class RejectCallsTest extends FlatSpec with Matchers with SimpleLogger {
   }
 
   "RejectList" should "work getting a valid MRejectListResponse (async client)" in {
-    val res = Await.result(MandrillAsyncClient.rejectList(MRejectList(email = "reject@example.com")), DefaultConfig.defaultTimeout)
+    val res = Await.result(MandrillAsyncClient.rejectList(MRejectList(email = "add@example.com")), DefaultConfig.defaultTimeout)
     res.head.getClass shouldBe classOf[MRejectListResponse]
-    res.head.email shouldBe "reject@example.com"
+    res.head.email shouldBe "add@example.com"
   }
   it should "work getting a valid List[MRejectListResponse] (blocking client)" in {
     MandrillBlockingClient.rejectList(MRejectList(email = "reject2@example.com")) match {
@@ -61,7 +61,7 @@ class RejectCallsTest extends FlatSpec with Matchers with SimpleLogger {
     checkFailedBecauseOfInvalidKey(MandrillBlockingClient.rejectList(MRejectList(email = "reject2@example.com", key="invalid")))
   }
   it should "fail if the subaccount passed is invalid, with an 'Unknown_Subaccount' code" in {
-    MandrillBlockingClient.rejectList(MRejectList(email = "reject@example.com", subaccount = Some("nonexisting"))) match {
+    MandrillBlockingClient.rejectList(MRejectList(email = "add@example.com", subaccount = Some("nonexisting"))) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
       case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
@@ -74,9 +74,9 @@ class RejectCallsTest extends FlatSpec with Matchers with SimpleLogger {
   }
 
   "RejecDelete" should "work getting a valid MRejectDeleteResponse (async client)" in {
-    val res = Await.result(MandrillAsyncClient.rejectDelete(MRejectDelete(email = "reject@example.com")), DefaultConfig.defaultTimeout)
+    val res = Await.result(MandrillAsyncClient.rejectDelete(MRejectDelete(email = "add@example.com")), DefaultConfig.defaultTimeout)
     res.getClass shouldBe classOf[MRejectDeleteResponse]
-    res shouldBe MRejectDeleteResponse("reject@example.com", true, None)
+    res shouldBe MRejectDeleteResponse("add@example.com", true, None)
   }
   it should "work getting a valid MRejectDeleteResponse (blocking client)" in {
     MandrillBlockingClient.rejectDelete(MRejectDelete(email = "reject2@example.com")) match {
@@ -90,7 +90,7 @@ class RejectCallsTest extends FlatSpec with Matchers with SimpleLogger {
     checkFailedBecauseOfInvalidKey(MandrillBlockingClient.rejectDelete(MRejectDelete(email = "reject2@example.com", key="invalid")))
   }
   it should "fail if the subaccount passed is invalid, with an 'Unknown_Subaccount' code" in {
-    MandrillBlockingClient.rejectDelete(MRejectDelete(email = "reject@example.com", subaccount = Some("nonexisting"))) match {
+    MandrillBlockingClient.rejectDelete(MRejectDelete(email = "add@example.com", subaccount = Some("nonexisting"))) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
       case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
