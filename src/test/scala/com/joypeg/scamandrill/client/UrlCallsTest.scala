@@ -45,11 +45,11 @@ class UrlCallsTest extends FlatSpec with Matchers with SimpleLogger {
   }
 
 //  "UrlsTimeSeries" should "work getting a valid List[MUrlTimeResponse] (async client)" in {
-//    val res = Await.result(MandrillAsyncClient.urlsTimeSeries(MUrlTimeSeries(url = "http://example.com/example")), DefaultConfig.defaultTimeout)
+//    val res = Await.result(MandrillAsyncClient.urlsTimeSeries(MUrlTimeSeries(key = "http://example.com/example")), DefaultConfig.defaultTimeout)
 //    res shouldBe Nil
 //  }
 //  it should "work getting a valid List[MUrlTimeResponse] (blocking client)" in {
-//    MandrillBlockingClient.urlsTimeSeries(MUrlTimeSeries(url = "http://example.com/example")) match {
+//    MandrillBlockingClient.urlsTimeSeries(MUrlTimeSeries(key = "http://example.com/example")) match {
 //      case Success(res) =>
 //        res shouldBe Nil
 //      case Failure(ex) => fail(ex)

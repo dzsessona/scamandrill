@@ -287,7 +287,7 @@ object MandrillBlockingClient extends MandrillClient {
   }
 
   ////////////////////////////////////////////////////////////
-  //INBOUND https://mandrillapp.com/api/docs/inbound.JSON.html
+  //INBOUND https://mandrillapp.com/api/docs/key.JSON.html
   ////////////////////////////////////////////////////////////
 
   override def inboundDomains(inbound: MKey): Try[List[MInboundDomainResponse]] = Try {

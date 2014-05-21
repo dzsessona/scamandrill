@@ -289,7 +289,7 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
   }
 
   ////////////////////////////////////////////////////////////
-  //INBOUND https://mandrillapp.com/api/docs/inbound.JSON.html
+  //INBOUND https://mandrillapp.com/api/docs/key.JSON.html
   ////////////////////////////////////////////////////////////
 
   override def inboundDomains(inbound: MKey): Future[List[MInboundDomainResponse]] = {

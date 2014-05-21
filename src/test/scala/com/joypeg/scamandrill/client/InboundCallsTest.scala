@@ -82,7 +82,7 @@ class InboundCallsTest extends FlatSpec with Matchers with SimpleLogger {
     checkFailedBecauseOfInvalidKey(MandrillBlockingClient.inboundDeleteDomain(MInboundDomain(domain = "testingdomain", key="invalid")))
   }
 
-  "InboundAddRoute" should "fail if the url is not valid, with an , with an 'Unknown_InboundDomain' code" in {
+  "InboundAddRoute" should "fail if the key is not valid, with an , with an 'Unknown_InboundDomain' code" in {
     MandrillBlockingClient.inboundAddRoute(validRoute) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
@@ -98,7 +98,7 @@ class InboundCallsTest extends FlatSpec with Matchers with SimpleLogger {
     checkFailedBecauseOfInvalidKey(MandrillBlockingClient.inboundAddRoute(validRoute.copy(key = "invalid")))
   }
 
-  "InboundDeleteRoute" should "fail if the url is not valid, with an , with an 'Unknown_InboundRoute' code" in {
+  "InboundDeleteRoute" should "fail if the key is not valid, with an , with an 'Unknown_InboundRoute' code" in {
     MandrillBlockingClient.inboundDeleteRoute(MInboundDelRoute(id = "nonexisting")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
@@ -114,7 +114,7 @@ class InboundCallsTest extends FlatSpec with Matchers with SimpleLogger {
     checkFailedBecauseOfInvalidKey(MandrillBlockingClient.inboundDeleteRoute(MInboundDelRoute(id = "nonexisting",key = "invalid")))
   }
 
-  "InboundUpdateRoute" should "fail if the url is not valid, with an , with an 'Unknown_InboundRoute' code" in {
+  "InboundUpdateRoute" should "fail if the key is not valid, with an , with an 'Unknown_InboundRoute' code" in {
     MandrillBlockingClient.inboundUpdateRoute(MInboundUpdateRoute(id ="nonexisting", pattern="", url = "example")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
@@ -130,7 +130,7 @@ class InboundCallsTest extends FlatSpec with Matchers with SimpleLogger {
     checkFailedBecauseOfInvalidKey(MandrillBlockingClient.inboundUpdateRoute(MInboundUpdateRoute(id ="nonexisting", pattern="", url = "example",key = "invalid")))
   }
 
-  "InboundRoutes" should "fail if the url is not valid, with an , with an 'Unknown_InboundDomain' code" in {
+  "InboundRoutes" should "fail if the key is not valid, with an , with an 'Unknown_InboundDomain' code" in {
     MandrillBlockingClient.inboundRoutes(MInboundDomain(domain = "testingdomain")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")

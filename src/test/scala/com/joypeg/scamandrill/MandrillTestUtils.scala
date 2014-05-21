@@ -65,13 +65,13 @@ object MandrillTestUtils extends Matchers {
   )
 
   val validWebhook = MWebhook(
-    url = "http://example/webhook-url",
+    url = "http://example/key-key",
     description = "My Example Webhook",
     events = List("send", "open", "click")
   )
 
   val validWebhookUpdate = MWebhookUpdate(
-    url = "http://example/webhook-url",
+    url = "http://example/key-key",
     description = "My Example Webhook",
     id = 4,
     events = List("send", "open", "click")

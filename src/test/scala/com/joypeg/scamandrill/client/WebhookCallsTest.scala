@@ -26,12 +26,12 @@ class WebhookCallsTest extends FlatSpec with Matchers with SimpleLogger {
     checkFailedBecauseOfInvalidKey(MandrillBlockingClient.webhookList(MKey(key="invalid")))
   }
 
-  "WebhookAdd" should "fail if the url is not valid, with an 'ValidationError' code" in {
+  "WebhookAdd" should "fail if the key is not valid, with an 'ValidationError' code" in {
     MandrillBlockingClient.webhookAdd(validWebhook) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
       case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
-        val inernalError = MandrillError("error", -2, "ValidationError", "Validation error: {\"url\":\"That is not a valid URL\"}")
+        val inernalError = MandrillError("error", -2, "ValidationError", "Validation error: {\"key\":\"That is not a valid URL\"}")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
       case Failure(ex) =>
@@ -39,7 +39,7 @@ class WebhookCallsTest extends FlatSpec with Matchers with SimpleLogger {
     }
   }
 
-  "WebhookInfo" should "fail if the webhook specified with the id does not exists" in {
+  "WebhookInfo" should "fail if the key specified with the id does not exists" in {
     MandrillBlockingClient.webhookInfo(MWebhookInfo(id = 4)) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
@@ -52,7 +52,7 @@ class WebhookCallsTest extends FlatSpec with Matchers with SimpleLogger {
     }
   }
 
-  "WebhookDelete" should "fail if the webhook specified with the id does not exists" in {
+  "WebhookDelete" should "fail if the key specified with the id does not exists" in {
     MandrillBlockingClient.webhookDelete(MWebhookInfo(id = 4)) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
@@ -65,12 +65,12 @@ class WebhookCallsTest extends FlatSpec with Matchers with SimpleLogger {
     }
   }
 
-  "WebhookUpdate" should "fail if the webhook specified with the id does not exists" in {
+  "WebhookUpdate" should "fail if the key specified with the id does not exists" in {
     MandrillBlockingClient.webhookUpdate(validWebhookUpdate) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
       case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
-        val inernalError = MandrillError("error", -2, "ValidationError", "Validation error: {\"url\":\"That is not a valid URL\"}")
+        val inernalError = MandrillError("error", -2, "ValidationError", "Validation error: {\"key\":\"That is not a valid URL\"}")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
       case Failure(ex) =>
