@@ -34,48 +34,48 @@ object MandrillBlockingClient extends MandrillClient {
   //MESSAGES calls https://mandrillapp.com/api/docs/messages.JSON.html
   ////////////////////////////////////////////////////////////////////
 
-  override def send(msg: MSendMessage): Try[List[MSendResponse]] = Try {
-    Await.result(MandrillAsyncClient.send(msg), DefaultConfig.defaultTimeout)
+  override def messagesSend(msg: MSendMessage): Try[List[MSendResponse]] = Try {
+    Await.result(MandrillAsyncClient.messagesSend(msg), DefaultConfig.defaultTimeout)
   }
 
-  override def sendTemplate(msg: MSendTemplateMessage): Try[List[MSendResponse]] = Try {
-    Await.result(MandrillAsyncClient.sendTemplate(msg), DefaultConfig.defaultTimeout)
+  override def messagesSendTemplate(msg: MSendTemplateMessage): Try[List[MSendResponse]] = Try {
+    Await.result(MandrillAsyncClient.messagesSendTemplate(msg), DefaultConfig.defaultTimeout)
   }
 
-  override def search(q: MSearch): Try[List[MSearchResponse]] = Try {
-    Await.result(MandrillAsyncClient.search(q), DefaultConfig.defaultTimeout)
+  override def messagesSearch(q: MSearch): Try[List[MSearchResponse]] = Try {
+    Await.result(MandrillAsyncClient.messagesSearch(q), DefaultConfig.defaultTimeout)
   }
 
-  override def searchTimeSeries(q: MSearchTimeSeries): Try[List[MTimeSeriesResponse]] = Try {
-    Await.result(MandrillAsyncClient.searchTimeSeries(q), DefaultConfig.defaultTimeout)
+  override def messagesSearchTimeSeries(q: MSearchTimeSeries): Try[List[MTimeSeriesResponse]] = Try {
+    Await.result(MandrillAsyncClient.messagesSearchTimeSeries(q), DefaultConfig.defaultTimeout)
   }
 
-  override def messageInfo(q: MMessageInfo): Try[MMessageInfoResponse] = Try {
-    Await.result(MandrillAsyncClient.messageInfo(q), DefaultConfig.defaultTimeout)
+  override def messagesInfo(q: MMessageInfo): Try[MMessageInfoResponse] = Try {
+    Await.result(MandrillAsyncClient.messagesInfo(q), DefaultConfig.defaultTimeout)
   }
 
-  override def content(q: MMessageInfo): Try[MContentResponse] = Try {
-    Await.result(MandrillAsyncClient.content(q), DefaultConfig.defaultTimeout)
+  override def messagesContent(q: MMessageInfo): Try[MContentResponse] = Try {
+    Await.result(MandrillAsyncClient.messagesContent(q), DefaultConfig.defaultTimeout)
   }
 
-  override def parse(raw: MParse): Try[MParseResponse] = Try {
-    Await.result(MandrillAsyncClient.parse(raw), DefaultConfig.defaultTimeout)
+  override def messagesParse(raw: MParse): Try[MParseResponse] = Try {
+    Await.result(MandrillAsyncClient.messagesParse(raw), DefaultConfig.defaultTimeout)
   }
 
-  override def sendRaw(raw: MSendRaw): Try[List[MSendResponse]] = Try{
-    Await.result(MandrillAsyncClient.sendRaw(raw), DefaultConfig.defaultTimeout)
+  override def messagesSendRaw(raw: MSendRaw): Try[List[MSendResponse]] = Try{
+    Await.result(MandrillAsyncClient.messagesSendRaw(raw), DefaultConfig.defaultTimeout)
   }
 
-  override def listSchedule(sc: MListSchedule): Try[List[MScheduleResponse]] = Try {
-    Await.result(MandrillAsyncClient.listSchedule(sc), DefaultConfig.defaultTimeout)
+  override def messagesListSchedule(sc: MListSchedule): Try[List[MScheduleResponse]] = Try {
+    Await.result(MandrillAsyncClient.messagesListSchedule(sc), DefaultConfig.defaultTimeout)
   }
 
-  override def cancelSchedule(sc: MCancelSchedule): Try[MScheduleResponse] = Try {
-    Await.result(MandrillAsyncClient.cancelSchedule(sc), DefaultConfig.defaultTimeout)
+  override def messagesCancelSchedule(sc: MCancelSchedule): Try[MScheduleResponse] = Try {
+    Await.result(MandrillAsyncClient.messagesCancelSchedule(sc), DefaultConfig.defaultTimeout)
   }
 
-  override def reSchedule(sc: MReSchedule): Try[MScheduleResponse] = Try {
-    Await.result(MandrillAsyncClient.reSchedule(sc), DefaultConfig.defaultTimeout)
+  override def messagesReschedule(sc: MReSchedule): Try[MScheduleResponse] = Try {
+    Await.result(MandrillAsyncClient.messagesReschedule(sc), DefaultConfig.defaultTimeout)
   }
 
   ////////////////////////////////////////////////////////////

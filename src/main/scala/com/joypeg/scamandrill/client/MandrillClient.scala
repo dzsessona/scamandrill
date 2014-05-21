@@ -40,27 +40,85 @@ trait MandrillClient {
   //MESSAGES calls https://mandrillapp.com/api/docs/messages.JSON.html
   ////////////////////////////////////////////////////////////////////
 
-  def send(msg: MSendMessage): Any
+  /**
+   * Send a new transactional message through Mandrill
+   * @param msg - the message to send
+   * @return - an of structs for each recipient containing the key "email" with the email address and "status" as either "sent", "queued", or "rejected"
+   */
+  def messagesSend(msg: MSendMessage): Any
 
-  def sendTemplate(msg: MSendTemplateMessage): Any
+  /**
+   * Send a new transactional message through Mandrill using a template
+   * @param msg - the message to send
+   * @return - an of structs for each recipient containing the key "email" with the email address and "status" as either "sent", "queued", or "rejected"
+   */
+  def messagesSendTemplate(msg: MSendTemplateMessage): Any
 
-  def search(q: MSearch): Any
+  /**
+   * Search the content of recently sent messages and optionally narrow by date range, tags and senders.
+   * This method may be called up to 20 times per minute. If you need the data more often, you can use
+   * /messages/info.json to get the information for a single message, or webhooks to push activity to
+   * your own application for querying.
+   * @param q - the search values
+   * @return an array of information for a single matching message
+   */
+  def messagesSearch(q: MSearch): Any
 
-  def searchTimeSeries(q: MSearchTimeSeries): Any
+  /**
+   * Search the content of recently sent messages and return the aggregated hourly stats for matching messages
+   * @param q - the search values
+   * @return the history information
+   */
+  def messagesSearchTimeSeries(q: MSearchTimeSeries): Any
 
-  def messageInfo(q: MMessageInfo): Any
+  /**
+   * Get the information for a single recently sent message
+   * @param q - the message info (containing unique id)
+   * @return the information for the message
+   */
+  def messagesInfo(q: MMessageInfo): Any
 
-  def content(q: MMessageInfo): Any
+  /**
+   * Get the full content of a recently sent message
+   * @param q - the message info (containing unique id)
+   * @return the content of the message
+   */
+  def messagesContent(q: MMessageInfo): Any
 
-  def parse(raw: MParse): Any
+  /**
+   * Parse the full MIME document for an email message, returning the content of the message broken into its constituent pieces
+   * @param raw - the full MIME document of an email message
+   * @return the parsed message
+   */
+  def messagesParse(raw: MParse): Any
 
-  def sendRaw(raw: MSendRaw): Any
+  /**
+   * Take a raw MIME document for a message, and send it exactly as if it were sent through Mandrill's SMTP servers
+   * @param raw - the full MIME document of an email message
+   * @return an array for each recipient containing the key "email" with the email address and "status" as either "sent", "queued", or "rejected"
+   */
+  def messagesSendRaw(raw: MSendRaw): Any
 
-  def listSchedule(sc: MListSchedule): Any
+  /**
+   * Queries your scheduled emails by sender or recipient, or both.
+   * @param to - the recipient address to restrict results to
+   * @return a list of up to 1000 scheduled emails
+   */
+  def messagesListSchedule(to: MListSchedule): Any
 
-  def cancelSchedule(sc: MCancelSchedule): Any
+  /**
+   * Cancels a scheduled email
+   * @param sc - the scheduled mail
+   * @return information about the scheduled email that was cancelled.
+   */
+  def messagesCancelSchedule(sc: MCancelSchedule): Any
 
-  def reSchedule(sc: MReSchedule): Any
+  /**
+   * Reschedules a scheduled email.
+   * @param sc - the mail to reschedule
+   * @return information about the scheduled email that was rescheduled.
+   */
+  def messagesReschedule(sc: MReSchedule): Any
 
   ////////////////////////////////////////////////////////////
   //TAGS calls https://mandrillapp.com/api/docs/tags.JSON.html

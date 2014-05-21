@@ -51,7 +51,7 @@ class PreparationTest extends FlatSpec with Matchers with BeforeAndAfterAll with
       signing_domain = "fromname",
       return_path_domain = "fromname"
     )
-    MandrillBlockingClient.send(MSendMessage(message = msg, key = "REPLACE this with your valid (non testing) KEY")) match {
+    MandrillBlockingClient.messagesSend(MSendMessage(message = msg, key = "REPLACE this with your valid (non testing) KEY")) match {
       case Success(res) =>
         println("your id of the mail just sent is the following: " + res.head._id +
           " you should set the value of MandrillTestUtils.idOfMailForInfoTest to this value")

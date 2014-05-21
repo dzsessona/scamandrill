@@ -36,47 +36,47 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
   //MESSAGES calls https://mandrillapp.com/api/docs/messages.JSON.html
   ////////////////////////////////////////////////////////////////////
 
-  override def send(msg: MSendMessage): Future[List[MSendResponse]] = {
+  override def messagesSend(msg: MSendMessage): Future[List[MSendResponse]] = {
     executeQuery[List[MSendResponse]](Endpoints.send.endpoint, marshal(msg))(unmarshal[List[MSendResponse]])
   }
 
-  override def sendTemplate(msg: MSendTemplateMessage): Future[List[MSendResponse]] = {
+  override def messagesSendTemplate(msg: MSendTemplateMessage): Future[List[MSendResponse]] = {
     executeQuery[List[MSendResponse]](Endpoints.sendTemplate.endpoint, marshal(msg))(unmarshal[List[MSendResponse]])
   }
 
-  override def search(q: MSearch): Future[List[MSearchResponse]] = {
+  override def messagesSearch(q: MSearch): Future[List[MSearchResponse]] = {
     executeQuery[List[MSearchResponse]](Endpoints.search.endpoint, marshal(q))(unmarshal[List[MSearchResponse]])
   }
 
-  override def searchTimeSeries(q: MSearchTimeSeries): Future[List[MTimeSeriesResponse]] = {
+  override def messagesSearchTimeSeries(q: MSearchTimeSeries): Future[List[MTimeSeriesResponse]] = {
     executeQuery[List[MTimeSeriesResponse]](Endpoints.searchTimeS.endpoint, marshal(q))(unmarshal[List[MTimeSeriesResponse]])
   }
 
-  override def messageInfo(q: MMessageInfo): Future[MMessageInfoResponse] = {
+  override def messagesInfo(q: MMessageInfo): Future[MMessageInfoResponse] = {
     executeQuery[MMessageInfoResponse](Endpoints.msginfo.endpoint, marshal(q))(unmarshal[MMessageInfoResponse])
   }
 
-  override def content(q: MMessageInfo): Future[MContentResponse] = {
+  override def messagesContent(q: MMessageInfo): Future[MContentResponse] = {
     executeQuery[MContentResponse](Endpoints.content.endpoint, marshal(q))(unmarshal[MContentResponse])
   }
 
-  override def parse(raw: MParse): Future[MParseResponse] = {
+  override def messagesParse(raw: MParse): Future[MParseResponse] = {
     executeQuery[MParseResponse](Endpoints.parse.endpoint, marshal(raw))(unmarshal[MParseResponse])
   }
 
-  override def sendRaw(raw: MSendRaw): Future[List[MSendResponse]] = {
+  override def messagesSendRaw(raw: MSendRaw): Future[List[MSendResponse]] = {
     executeQuery[List[MSendResponse]](Endpoints.sendraw.endpoint, marshal(raw))(unmarshal[List[MSendResponse]])
   }
 
-  override def listSchedule(sc: MListSchedule): Future[List[MScheduleResponse]] = {
+  override def messagesListSchedule(sc: MListSchedule): Future[List[MScheduleResponse]] = {
     executeQuery[List[MScheduleResponse]](Endpoints.listSchedule.endpoint, marshal(sc))(unmarshal[List[MScheduleResponse]])
   }
 
-  override def cancelSchedule(sc: MCancelSchedule): Future[MScheduleResponse] = {
+  override def messagesCancelSchedule(sc: MCancelSchedule): Future[MScheduleResponse] = {
     executeQuery[MScheduleResponse](Endpoints.cancelSchedule.endpoint, marshal(sc))(unmarshal[MScheduleResponse])
   }
 
-  override def reSchedule(sc: MReSchedule): Future[MScheduleResponse] = {
+  override def messagesReschedule(sc: MReSchedule): Future[MScheduleResponse] = {
     executeQuery[MScheduleResponse](Endpoints.reschedule.endpoint, marshal(sc))(unmarshal[MScheduleResponse])
   }
 
