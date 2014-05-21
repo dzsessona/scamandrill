@@ -63,19 +63,19 @@ class UserCallsTest extends FlatSpec with Matchers with SimpleLogger{
   "Info" should "work getting a valid MInfoResponse (async client)" in {
     val res = Await.result(MandrillAsyncClient.usersInfo(MKey()), DefaultConfig.defaultTimeout)
     res.getClass shouldBe classOf[MInfoResponse]
-    res.username shouldBe "joypegtech@gmail.com"
-    res.created_at shouldBe "2014-05-13 12:59:13.93756"
+    res.username shouldBe "scamandrill@gmail.com"
+    res.created_at shouldBe "2014-05-21 21:04:21.73604"
     res.hourly_quota shouldBe 250
-    res.public_id shouldBe "L-NrI-gTRL774TxZ_GS9oA"
+    res.public_id shouldBe "Y5eZitt8VBjItiKUgkNhjg"
   }
   it should "work getting a valid MInfoResponse (blocking client)" in {
     MandrillBlockingClient.usersInfo(MKey()) match {
       case Success(res: MInfoResponse) =>
         res.getClass shouldBe classOf[MInfoResponse]
-        res.username shouldBe "joypegtech@gmail.com"
-        res.created_at shouldBe "2014-05-13 12:59:13.93756"
+        res.username shouldBe "scamandrill@gmail.com"
+        res.created_at shouldBe "2014-05-21 21:04:21.73604"
         res.hourly_quota shouldBe 250
-        res.public_id shouldBe "L-NrI-gTRL774TxZ_GS9oA"
+        res.public_id shouldBe "Y5eZitt8VBjItiKUgkNhjg"
       case Success(res) => fail("Excpecting a MInfoResponse object")
       case Failure(ex) => fail(ex)
     }

@@ -17,13 +17,13 @@ class SendersCallsTest extends FlatSpec with Matchers with SimpleLogger {
   "SendersList" should "work getting a valid List[MSendersListResp] (async client)" in {
     val res = Await.result(MandrillAsyncClient.sendersList(MKey()), DefaultConfig.defaultTimeout)
     res.head.getClass shouldBe classOf[MSendersListResp]
-    res.head.address shouldBe "joypegtech@gmail.com"
+    res.head.address shouldBe "scamandrill@test.com"
   }
   it should "work getting a valid List[MSendersListResp] (blocking client)" in {
     MandrillBlockingClient.sendersList(MKey()) match {
       case Success(res) =>
         res.head.getClass shouldBe classOf[MSendersListResp]
-        res.head.address shouldBe "joypegtech@gmail.com"
+        res.head.address shouldBe "scamandrill@test.com"
       case Failure(ex) => fail(ex)
     }
   }
@@ -88,7 +88,7 @@ class SendersCallsTest extends FlatSpec with Matchers with SimpleLogger {
     res.domain shouldBe "gmail.com"
   }
   it should "work getting a valid MSendersDomainResponses (blocking client)" in {
-    MandrillBlockingClient.sendersVerifyDomain(MSenderVerifyDomain(mailbox="joypeg.tech",domain ="gmail.com")) match {
+    MandrillBlockingClient.sendersVerifyDomain(MSenderVerifyDomain(mailbox="scamandrill",domain ="gmail.com")) match {
       case Success(res) =>
         res.getClass shouldBe classOf[MSendersVerifyDomResp]
         res.domain shouldBe "gmail.com"
@@ -96,33 +96,33 @@ class SendersCallsTest extends FlatSpec with Matchers with SimpleLogger {
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.sendersVerifyDomain(MSenderVerifyDomain(mailbox="joypeg.tech",domain ="test.com",key="invalid")))
+    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.sendersVerifyDomain(MSenderVerifyDomain(mailbox="scamandrill",domain ="test.com",key="invalid")))
   }
 
   "SendersInfo" should "work getting a valid MSendersInfoResp (async client)" in {
-    val res = Await.result(MandrillAsyncClient.sendersInfo(MSenderAddress(address ="joypegtech@gmail.com")), DefaultConfig.defaultTimeout)
+    val res = Await.result(MandrillAsyncClient.sendersInfo(MSenderAddress(address ="scamandrill@test.com")), DefaultConfig.defaultTimeout)
     res.getClass shouldBe classOf[MSendersInfoResp]
-    res.address shouldBe "joypegtech@gmail.com"
+    res.address shouldBe "scamandrill@test.com"
   }
   it should "work getting a valid MSendersInfoResp (blocking client)" in {
-    MandrillBlockingClient.sendersInfo(MSenderAddress(address ="joypegtech@gmail.com")) match {
+    MandrillBlockingClient.sendersInfo(MSenderAddress(address ="scamandrill@test.com")) match {
       case Success(res) =>
         res.getClass shouldBe classOf[MSendersInfoResp]
-        res.address shouldBe "joypegtech@gmail.com"
+        res.address shouldBe "scamandrill@test.com"
       case Failure(ex) => fail(ex)
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.sendersInfo(MSenderAddress(address ="joypegtech@gmail.com",key="invalid")))
+    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.sendersInfo(MSenderAddress(address ="scamandrill@test.com",key="invalid")))
   }
 
   "SendersTimeSeries" should "work getting a valid List[MSenderTSResponse] (async client)" in {
-    val res = Await.result(MandrillAsyncClient.sendersTimeSeries(MSenderAddress(address ="joypegtech@gmail.com")), DefaultConfig.defaultTimeout)
+    val res = Await.result(MandrillAsyncClient.sendersTimeSeries(MSenderAddress(address ="scamandrill@test.com")), DefaultConfig.defaultTimeout)
     res.head.getClass shouldBe classOf[MSenderTSResponse]
     res.head.clicks shouldBe 0
   }
   it should "work getting a valid List[MSenderTSResponse] (blocking client)" in {
-    MandrillBlockingClient.sendersTimeSeries(MSenderAddress(address ="joypegtech@gmail.com")) match {
+    MandrillBlockingClient.sendersTimeSeries(MSenderAddress(address ="scamandrill@test.com")) match {
       case Success(res) =>
         res.head.getClass shouldBe classOf[MSenderTSResponse]
         res.head.clicks shouldBe 0
@@ -130,7 +130,7 @@ class SendersCallsTest extends FlatSpec with Matchers with SimpleLogger {
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.sendersTimeSeries(MSenderAddress(address ="joypegtech@gmail.com",key="invalid")))
+    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.sendersTimeSeries(MSenderAddress(address ="scamandrill@gmail.com",key="invalid")))
   }
 
 }

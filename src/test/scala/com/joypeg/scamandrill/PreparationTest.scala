@@ -19,8 +19,11 @@ import com.joypeg.scamandrill.models.MSendMessage
 
 class PreparationTest extends FlatSpec with Matchers with BeforeAndAfterAll with SimpleLogger {
 
+  val realKey = "REPLACEME" //ADD YOUR REAL (NON TESTING) KEY HERE
+
   ignore should "create the testing template" in {
     MandrillBlockingClient.templateAdd(MTemplate(
+      key = realKey,
       name = "testtemplate",
       from_email = "from_email@example.com",
       from_name = "Example Name",
@@ -49,9 +52,10 @@ class PreparationTest extends FlatSpec with Matchers with BeforeAndAfterAll with
       bcc_address = "",
       tracking_domain = "fromname",
       signing_domain = "fromname",
-      return_path_domain = "fromname"
+      return_path_domain = "fromname",
+      tags = List("exampletag1", "exampletag2")
     )
-    MandrillBlockingClient.messagesSend(MSendMessage(message = msg, key = "REPLACE this with your valid (non testing) KEY")) match {
+    MandrillBlockingClient.messagesSend(MSendMessage(message = msg, key = realKey)) match {
       case Success(res) =>
         println("your id of the mail just sent is the following: " + res.head._id +
           " you should set the value of MandrillTestUtils.idOfMailForInfoTest to this value")

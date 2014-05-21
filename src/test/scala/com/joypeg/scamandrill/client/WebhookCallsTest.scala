@@ -31,7 +31,7 @@ class WebhookCallsTest extends FlatSpec with Matchers with SimpleLogger {
       case Success(res) =>
         fail("This operation should be unsuccessful")
       case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
-        val inernalError = MandrillError("error", -2, "ValidationError", "Validation error: {\"key\":\"That is not a valid URL\"}")
+        val inernalError = MandrillError("error", -2, "ValidationError", "Validation error: {\"url\":\"That is not a valid URL\"}")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
       case Failure(ex) =>
@@ -70,7 +70,7 @@ class WebhookCallsTest extends FlatSpec with Matchers with SimpleLogger {
       case Success(res) =>
         fail("This operation should be unsuccessful")
       case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
-        val inernalError = MandrillError("error", -2, "ValidationError", "Validation error: {\"key\":\"That is not a valid URL\"}")
+        val inernalError = MandrillError("error", -2, "ValidationError", "Validation error: {\"url\":\"That is not a valid URL\"}")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
       case Failure(ex) =>

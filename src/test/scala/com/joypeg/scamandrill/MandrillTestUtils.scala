@@ -78,7 +78,7 @@ object MandrillTestUtils extends Matchers {
   )
 
 
-  val idOfMailForInfoTest = "acf0a530caca4301bb433161ae9a68ac"
+  val idOfMailForInfoTest = "3edaed120eb144debb843893f4d92179"
 
   val validRawMessage = MSendRaw(raw_message =  """From: sender@example.com""")
 
