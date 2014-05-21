@@ -32,7 +32,28 @@ case class MSendTemplateMessage(key: String = DefaultConfig.defaultKeyFromConfig
                                 ip_pool: Option[String] = None,
                                 send_at: Option[String] = None) extends MandrillRequest
 
-//TODO: metadata and headers and recipient_metadata and check options
+/**
+ * An Header
+ * @param name - the key the header
+ * @param value - the value of the header
+ */
+case class MHeader(name: String, value: String)
+
+/**
+ * A metadata wrapper
+ * @param name - the key the metadata
+ * @param value - the value of the metadata
+ */
+case class MMetadata(name: String, value: String)
+
+/**
+ * metadata for a single recipient
+ * @param rcpt - the email address of the recipient that the metadata is associated with
+ * @param values - an associated array containing the recipient's unique metadata. If a key exists in both the per-recipient metadata and the global metadata, the per-recipient metadata will be used.
+ */
+case class MRecipientMetadata(rcpt: String, values: List[MMetadata])
+
+
 /**
  * The message to be sent
  * @param html - the full HTML content to be sent
@@ -41,6 +62,7 @@ case class MSendTemplateMessage(key: String = DefaultConfig.defaultKeyFromConfig
  * @param from_email - the sender email address.
  * @param from_name - optional from name to be used
  * @param to - list of recipient information
+ * @param headers - optional extra headers to add to the message (most headers are allowed)
  * @param important - whether or not this message is important, and should be delivered ahead of non-important messages
  * @param track_opens - whether or not to turn on open tracking for the message
  * @param track_clicks - whether or not to turn on click tracking for the message
@@ -70,6 +92,7 @@ class MSendMsg( val html: String,
                 val from_email: String,
                 val from_name: String,
                 val to: List[MTo],
+                val headers: Option[List[MHeader]] = None,
                 val important: Boolean = false,
                 val track_opens: Boolean = false,
                 val track_clicks: Boolean = false,
@@ -90,6 +113,8 @@ class MSendMsg( val html: String,
                 val subaccount: Option[String] = None,
                 val google_analytics_domains: List[String] = List.empty,
                 val google_analytics_campaign: Option[String] = None,
+                val metadata: List[MMetadata] = List.empty,
+                val recipient_metadata: List[MRecipientMetadata] = List.empty,
                 val attachments: List[MAttachmetOrImage] = List.empty,
                 val images: List[MAttachmetOrImage] = List.empty){
   
@@ -99,6 +124,7 @@ class MSendMsg( val html: String,
             from_email: String = this.from_email ,
             from_name: String = this.from_name ,
             to: List[MTo] = this.to ,
+            headers: Option[List[MHeader]] = this.headers,
             important: Boolean = this.important ,
             track_opens: Boolean = this.track_opens ,
             track_clicks: Boolean = this.track_clicks ,
@@ -119,6 +145,8 @@ class MSendMsg( val html: String,
             subaccount: Option[String] = this.subaccount ,
             google_analytics_domains: List[String] = this.google_analytics_domains ,
             google_analytics_campaign: Option[String] = this.google_analytics_campaign ,
+            metadata: List[MMetadata] = this.metadata,
+            recipient_metadata: List[MRecipientMetadata] = this.recipient_metadata,
             attachments: List[MAttachmetOrImage] = this.attachments ,
             images: List[MAttachmetOrImage] = this.images): MSendMsg = {
 
@@ -128,6 +156,7 @@ class MSendMsg( val html: String,
                   from_email,
                   from_name,
                   to,
+                  headers,
                   important,
                   track_opens,
                   track_clicks,
@@ -148,6 +177,8 @@ class MSendMsg( val html: String,
                   subaccount,
                   google_analytics_domains,
                   google_analytics_campaign,
+                  metadata,
+                  recipient_metadata,
                   attachments,
                   images)
   }
@@ -161,6 +192,7 @@ class MSendMsg( val html: String,
       o.from_email == this.from_email &&
       o.from_name == this.from_name &&
       o.to == this.to &&
+      o.headers == this.headers &&
       o.important == this.important &&
       o.track_opens == this.track_opens &&
       o.track_clicks == this.track_clicks &&
@@ -180,6 +212,8 @@ class MSendMsg( val html: String,
       o.subaccount == this.subaccount &&
       o.google_analytics_domains == this.google_analytics_domains &&
       o.google_analytics_campaign == this.google_analytics_campaign &&
+      o.metadata == this.metadata &&
+      o.recipient_metadata == this.recipient_metadata &&
       o.attachments == this.attachments &&
       o.images == this.images
     case _ => false
@@ -282,7 +316,7 @@ case class MSendRaw(key: String = DefaultConfig.defaultKeyFromConfig,
                     raw_message: String,
                     from_email: Option[String] = None,
                     from_name: Option[String] = None,
-                    to: Option[List[String]] = None,
+                    to: List[String] = List.empty,
                     async: Boolean = false,
                     ip_pool: Option[String] = None,
                     send_at: Option[String] = None,
@@ -293,7 +327,7 @@ case class MSendRaw(key: String = DefaultConfig.defaultKeyFromConfig,
  * @param key - a valid API key
  * @param to - an optional recipient address to restrict results to
  */
-case class MListSchedule(key: String = DefaultConfig.defaultKeyFromConfig, to: Option[String]) extends MandrillRequest
+case class MListSchedule(key: String = DefaultConfig.defaultKeyFromConfig, to: String) extends MandrillRequest
 
 /**
  * Info about the mail to cancel the schedule
