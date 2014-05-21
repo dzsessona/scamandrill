@@ -124,15 +124,41 @@ trait MandrillClient {
   //TAGS calls https://mandrillapp.com/api/docs/tags.JSON.html
   ////////////////////////////////////////////////////////////
 
-  def tagList(tag: MKey): Any
+  /**
+   * Return all of the user-defined key information
+   * @param key - the key of the account to use
+   * @return all of the user-defined key information
+   */
+  def tagList(key: MKey): Any
 
+  /**
+   * Deletes a tag permanently. Deleting a tag removes the tag from any messages that have been sent, and also deletes the tag's stats.
+   * There is no way to undo this operation, so use it carefully.
+   * @param tag - the existing tag info
+   * @return the tag that was deleted
+   */
   def tagDelete(tag: MTagRequest): Any
 
+  /**
+   * Return more detailed information about a single tag, including aggregates of recent stats
+   * @param tag - the existing tag info
+   * @return the tag asked
+   */
   def tagInfo(tag: MTagRequest): Any
 
+  /**
+   * Return the recent history (hourly stats for the last 30 days) for a tag
+   * @param tag - the existing tag info
+   * @return the recent history (hourly stats for the last 30 days) for a tag
+   */
   def tagTimeSeries(tag: MTagRequest): Any
 
-  def tagAllTimeSeries(tag: MKey): Any
+  /**
+   * Return the recent history (hourly stats for the last 30 days) for all tags
+   * @param key - the key of the account to use
+   * @return the recent history (hourly stats for the last 30 days) for all tags
+   */
+  def tagAllTimeSeries(key: MKey): Any
 
   /////////////////////////////////////////////////////////////////
   //REJECT calls https://mandrillapp.com/api/docs/rejects.JSON.html

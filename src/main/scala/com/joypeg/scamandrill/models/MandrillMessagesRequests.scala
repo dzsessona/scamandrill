@@ -47,7 +47,7 @@ case class MHeader(name: String, value: String)
 case class MMetadata(name: String, value: String)
 
 /**
- * metadata for a single recipient
+ * Metadata for a single recipient
  * @param rcpt - the email address of the recipient that the metadata is associated with
  * @param values - an associated array containing the recipient's unique metadata. If a key exists in both the per-recipient metadata and the global metadata, the per-recipient metadata will be used.
  */
@@ -79,7 +79,7 @@ case class MRecipientMetadata(rcpt: String, values: List[MMetadata])
  * @param merge - whether to evaluate merge tags in the message. Will automatically be set to true if either merge_vars or global_merge_vars are provided.
  * @param global_merge_vars - global merge variables to use for all recipients. You can override these per recipient.
  * @param merge_vars - per-recipient merge variables, which override global merge variables with the same name.
- * @param tags - an array of string to tag the message with. Stats are accumulated using tags, though we only store the first 100 we see, so this should not be unique or change frequently. Tags should be 50 characters or less. Any tags starting with an underscore are reserved for internal use and will cause errors.
+ * @param tags - an array of string to key the message with. Stats are accumulated using tags, though we only store the first 100 we see, so this should not be unique or change frequently. Tags should be 50 characters or less. Any tags starting with an underscore are reserved for internal use and will cause errors.
  * @param subaccount - the unique id of a subaccount for this message - must already exist or will fail with an error
  * @param google_analytics_domains - an array of strings indicating for which any matching URLs will automatically have Google Analytics parameters appended to their query string automatically.
  * @param google_analytics_campaign - optional string indicating the value to set for the utm_campaign tracking parameter. If this isn't provided the email's from address will be used instead.
@@ -256,7 +256,7 @@ case class MTo(email: String, name: Option[String] = None, `type`: String = "to"
  * @param query - the search terms to find matching messages for
  * @param date_from - start date
  * @param date_to - end date
- * @param tags - an array of tag names to narrow the search to, will return messages that contain ANY of the tags
+ * @param tags - an array of key names to narrow the search to, will return messages that contain ANY of the tags
  * @param senders - an array of sender addresses to narrow the search to, will return messages sent by ANY of the senders
  * @param api_keys - an array of API keys to narrow the search to, will return messages sent by ANY of the keys
  * @param limit - the maximum number of results to return, defaults to 100, 1000 is the maximum
@@ -276,7 +276,7 @@ case class MSearch(key: String = DefaultConfig.defaultKeyFromConfig,
  * @param query - the search terms to find matching messages for
  * @param date_from - start date
  * @param date_to - end date
- * @param tags - an array of tag names to narrow the search to, will return messages that contain ANY of the tags
+ * @param tags - an array of key names to narrow the search to, will return messages that contain ANY of the tags
  * @param senders - an array of sender addresses to narrow the search to, will return messages sent by ANY of the senders
  */
 case class MSearchTimeSeries(key: String = DefaultConfig.defaultKeyFromConfig,
