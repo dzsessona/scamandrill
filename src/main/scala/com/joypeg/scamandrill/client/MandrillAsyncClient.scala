@@ -10,6 +10,14 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
   import spray.httpx.SprayJsonSupport._
   import com.joypeg.scamandrill.models.MandrillJsonProtocol._
 
+  /**
+   * Asks all the underlying actors to close (waiting for 1 second)
+   * and then shut down the system. Because the blocking client is
+   * basically a wrapper of the async one, bot the async and blocking
+   * client are supposed to call this method when they are not required
+   * or the application using them exit.
+   * @see [[com.joypeg.scamandrill.client.ScamandrillSendReceive]]
+   */
   override def shutdownSystem(): Unit = shutdown()
 
   /////////////////////////////////////////////////////////////

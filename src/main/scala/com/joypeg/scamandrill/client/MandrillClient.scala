@@ -2,6 +2,12 @@ package com.joypeg.scamandrill.client
 
 import com.joypeg.scamandrill.models._
 
+/**
+ * Trait to define the operations that are allowed by either the Blocking or Async client.
+ * Note that each operation return either a Future (in case of the async client) or a
+ * Try (in case of the blocking client). It also contains the list of endpoints of the
+ * Mandrill API.
+ */
 trait MandrillClient {
 
   /////////////////////////////////////////////////////////////
@@ -711,9 +717,20 @@ trait MandrillClient {
   def metadataDelete(meta: MMeteadatapDelete): Any
 
 
-
+  /**
+   * Asks all the underlying actors to close (waiting for 1 second)
+   * and then shut down the system. Because the blocking client is
+   * basically a wrapper of the async one, bot the async and blocking
+   * client are supposed to call this method when they are not required
+   * or the application using them exit.
+   * @see [[com.joypeg.scamandrill.client.ScamandrillSendReceive]]
+   */
   def shutdownSystem(): Unit
 
+  /**
+   * An enumeration of the endpoints for Mandrill API
+   * @see https://mandrillapp.com/api/docs/
+   */
   object Endpoints extends Enumeration {
     //users
     val ping            = Value("ping",         "/users/ping.json")

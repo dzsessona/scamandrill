@@ -3,6 +3,10 @@ package com.joypeg.scamandrill.models
 import spray.json._
 import scala.util.Try
 
+/**
+ * This object contains all the implicits necessary to marshall and unmarshall
+ * the model classes into and from json.
+ */
 object MandrillJsonProtocol extends DefaultJsonProtocol {
   implicit val MUserPingJson          = jsonFormat1(MKey)
   implicit val MUserResponseJson      = jsonFormat1(MPingResponse)
@@ -204,7 +208,14 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
   implicit val MIMetadataResponsej        = jsonFormat3(MIMetadataResponse)
 }
 
-
+/**
+ * A marker trait denoting an http response from Mandrill API
+ */
 trait MandrillResponse
 
+/**
+ * A marker trait denoting an http request to Mandrill API
+ * @note as from mandrill docs, All API calls should be made with HTTP POST and you can consider
+ *       any non-200 HTTP response code an error - the returned data will contain more detailed
+ */
 trait MandrillRequest
