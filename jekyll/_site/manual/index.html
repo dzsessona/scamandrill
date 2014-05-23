@@ -72,7 +72,7 @@
          <span class="icon-bar"></span>
          <span class="icon-bar"></span>
          </button>
-         <a class="navbar-brand" style="padding:0 10px" href="/"><img src="/assets/img/logo.png"/></a>
+         <a class="navbar-brand" style="padding:0 10px" href="/scamandrill/"><img src="/assets/img/logo.png"/></a>
       </div>
       <div class="navbar-collapse collapse">
          <ul class="nav navbar-nav" style="margin-left:60px">
@@ -110,65 +110,39 @@
             <div class="col-md-9" role="main" style="text-align: left">
                 <h2 id="installation">Installation</h2>
 
-<p><strong>The artifacts of this plugin are uploaded in Maven Central.</strong> </p>
+<p><strong>The artifacts of this project are uploaded in Maven Central.</strong> </p>
 
 <p>As from the <a href="http://www.scala-sbt.org/release/docs/Detailed-Topics/Resolvers.html">sbt documentation</a> 
 the DefaultMavenRepository is the main Maven repository at http://repo1.maven.org/maven2/ and is included by default. 
-Therefore you don&#39;t need to add any resolvers to your build definition; you can simply add the plugin the <em>project/plugins.sbt</em> file as follow: </p>
+Therefore you don&#39;t need to add any resolvers to your build definition; you can simply add the scamandrill client 
+in your build definition <strong>libraryDependencies</strong> as follow: </p>
 
-<p><code>addSbtPlugin(&quot;com.github.dzsessona&quot; %% &quot;sbt-neo-dependencies&quot; % &quot;version&quot;)</code></p>
+<p><code>&quot;com.github.dzsessona&quot;     %% &quot;scamandrill&quot;          % &quot;version&quot;</code></p>
 
-<p>Replace <strong>version</strong> with the last version of this plugin. All versions for this plugin can be found <a href="/versions">here</a>. In order to enable
-the tasks of this plugin in your project you also have to modify your build definition; An sbt build definition can contain files ending in .sbt, located in the base directory, 
-and files ending in .scala, located in the project/ subdirectory the base directory. In case you are confused about the difference between build.sbt and Build.scala read <a href="http://www.scala-sbt.org/release/docs/Getting-Started/Full-Def.html">this</a>.</p>
+<p>Replace <strong>version</strong> with the last version of this project (1.0.0 at the time of writing this document). 
+All versions for this plugin can be found <a href="/versions">here</a>. In case you are confused about the difference
+ between build.sbt and Build.scala read <a href="http://www.scala-sbt.org/release/docs/Getting-Started/Full-Def.html">this</a>.</p>
 
-<p><h3 id="buildsbt" style="margin-top: 20px;">build.sbt</h4></p>
+<h4 id="configuration" style="margin-top: 20px;">Configuration</h4>
 
-<p>In your build definition you need to import the settings defined in the plugin, and override the settings keys for <strong>neo4jInternalName, neo4jInternalOrgs, neo4jTagsLabels</strong> as in this example snippet:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">import com.joypeg.graphdeps.neo4j.Neo4jGraphDependencies
-
-Neo4jGraphDependencies.neo4jDepsSetting
-
-neo4jInternalName := &quot;ACOMPANY&quot;
-
-neo4jInternalOrgs := Seq(&quot;a.company&quot;)
-
-neo4jTagsLabels  := Map(&quot;service&quot; -&gt; &quot;Service&quot;)
+<p>All the requests that you can make to Mandrill API require that you provide your api key. In fact, consider the following
+snippet of code with the bare minimum instructions to make a request to madrill api:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">import com.joypeg.scamandrill.client.MandrillAsyncClient
+...
+MandrillAsyncClient.usersPing(MKey(key = &quot;THEKEY&quot;))
 </code></pre></div>
-<p>Look up the section <strong>Settings</strong> for more information about what each of this setting represent.</p>
-
-<p><h3 id="buildscala" style="margin-top: 20px;">project/Build.scala</h4></p>
-
-<p>If you have a full definition (maybe with multiple subproject) you can import the settings defined 
-in the plugin (and override the settings keys for <strong>neo4jInternalName, neo4jInternalOrgs, neo4jTagsLabels</strong>) for all the
-subproject as follow:</p>
-<div class="highlight"><pre><code class="text language-text" data-lang="text">import sbt._
-import Keys._
-import com.joypeg.graphdeps.neo4j.Neo4jGraphDependencies
-import com.joypeg.graphdeps.neo4j.Neo4jGraphDependencies._
-
-object BuildSettings {
-
-  val neoSettings = neo4jDepsSetting ++ Seq(
-    neo4jInternalName := &quot;ACOMPANY&quot;,
-    neo4jInternalOrgs := Seq(&quot;a.company&quot;),
-    neo4jTagsLabels   := Map(&quot;client&quot; -&gt; &quot;Service_Client&quot;, &quot;web&quot; -&gt; &quot;Web&quot;)
-  )
-
-  val buildSettings = Defaults.defaultSettings ++ Seq(
-    ...
-  ) ++ neoSettings
+<p>So you need to replace &#39;THEKEY&#39; with your own api key. But because you usually always use the same key in your application,
+you can simply write the previous intruction as : <code>MandrillAsyncClient.usersPing(MKey())</code> . Scamandrill in this case
+uses the default key in the configuration. The configuration uses the conventions of <a href="https://github.com/typesafehub/config">typesafe config</a> and should 
+specify the key and the default timeout for the blocking client (discussed later). So an example of <strong>application.conf</strong> should look like:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">Mandrill {
+    key=&quot;MANDRILLKEY&quot;,
+    timoutInSeconds=5
 }
 </code></pre></div>
-<p>Note that if your build.scala contains multiple projects the previous snippet to apply to each of the subproject. 
-Because of the way that the plugin loads the dependencies into the graph database though, 
-I will suggest you to run the plugin for multiple project definition not from the root project, 
-but by selecting the project and call the task, rather than calling the task on the root project. </p>
-
-<p>For example, for the <a href="http://github.com/dzsessona/sbt-neo-dependencies/blob/docs/examples/svc-user/project/Build.scala">full Build.scala</a> definition of the svc-user example, 
-that contains the subproject core, service and client, I load the dependencies with the following <a href="http://github.com/dzsessona/sbt-neo-dependencies/blob/docs/examples/load_acompany.sh">script</a></p>
-
-<p>Look up the <strong>Settings</strong> section for more information about what each of this setting.</p>
+<p>If you look at the output of the <a href="https://github.com/dzsessona/scamandrill/blob/master/src/test/scala/com/joypeg/scamandrill/client/UserCallsTest.scala">tests for users calls</a> for example 
+you will see that if you will get an error message from mandrill if the key is not passed to method, or if a configuration file is not defined. Btw I choose this 
+approach to alllow the user to override the default key for each call (specifying it when building your request object).</p>
 
 <h2 id="tasks">Tasks</h2>
 
