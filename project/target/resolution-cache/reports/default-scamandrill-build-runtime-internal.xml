@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="default"
+		module="scamandrill-build"
+		revision="0.1-SNAPSHOT"
+		extra-sbtVersion="0.13"
+		extra-scalaVersion="2.10"
+		conf="runtime-internal"
+		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
+		date="20140523124900"/>
+	<dependencies>
+		<module organisation="com.typesafe.sbt" name="sbt-pgp">
+			<revision name="0.8.1" status="release" pubdate="20130715234825" resolver="sbt-chain" artresolver="sbt-chain" extra-sbtVersion="0.13" extra-scalaVersion="2.10" downloaded="false" searched="false" default="false" conf="default(compile), compile" position="7">
+				<metadata-artifact status="no" details="" size="1999" time="0" location="/Users/dzsessona/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-pgp/ivy-0.8.1.xml" searched="false" origin-is-local="false" origin-location="http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-pgp/scala_2.10/sbt_0.13/0.8.1/ivys/ivy.xml"/>
+				<caller organisation="default" name="scamandrill-build" conf="optional, compile, runtime, runtime-internal" rev="0.8.1" rev-constraint-default="0.8.1" rev-constraint-dynamic="0.8.1" callerrev="0.1-SNAPSHOT" extra-sbtVersion="0.13" extra-scalaVersion="2.10"/>
+				<artifacts>
+					<artifact name="sbt-pgp" type="jar" ext="jar" status="no" details="" size="271209" time="0" location="/Users/dzsessona/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.sbt/sbt-pgp/jars/sbt-pgp-0.8.1.jar">
+						<origin-location is-local="false" location="http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/com.typesafe.sbt/sbt-pgp/scala_2.10/sbt_0.13/0.8.1/jars/sbt-pgp.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.jsuereth" name="gpg-library_2.10">
+			<revision name="0.8.1" status="release" pubdate="20130716044831" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://scala-sbt.org/sbt-pgp/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="8">
+				<license name="BSD" url="http://www.opensource.org/licenses/bsd-license.php"/>
+				<metadata-artifact status="no" details="" size="2805" time="0" location="/Users/dzsessona/.ivy2/cache/com.jsuereth/gpg-library_2.10/ivy-0.8.1.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/com/jsuereth/gpg-library_2.10/0.8.1/gpg-library_2.10-0.8.1.pom"/>
+				<caller organisation="com.typesafe.sbt" name="sbt-pgp" conf="compile" rev="0.8.1" rev-constraint-default="0.8.1" rev-constraint-dynamic="0.8.1" callerrev="0.8.1"/>
+				<artifacts>
+					<artifact name="gpg-library_2.10" type="jar" ext="jar" status="no" details="" size="218362" time="0" location="/Users/dzsessona/.ivy2/cache/com.jsuereth/gpg-library_2.10/jars/gpg-library_2.10-0.8.1.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/jsuereth/gpg-library_2.10/0.8.1/gpg-library_2.10-0.8.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.databinder" name="dispatch-http_2.10">
+			<revision name="0.8.10" status="release" pubdate="20130629041417" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://dispatch-classic.databinder.net/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, master(*), runtime, compile(*), runtime(*), master" position="12">
+				<license name="LGPL v3" url="http://www.gnu.org/licenses/lgpl.txt"/>
+				<metadata-artifact status="no" details="" size="3134" time="0" location="/Users/dzsessona/.ivy2/cache/net.databinder/dispatch-http_2.10/ivy-0.8.10.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/net/databinder/dispatch-http_2.10/0.8.10/dispatch-http_2.10-0.8.10.pom"/>
+				<caller organisation="com.jsuereth" name="gpg-library_2.10" conf="default, compile, runtime, master" rev="0.8.10" rev-constraint-default="0.8.10" rev-constraint-dynamic="0.8.10" callerrev="0.8.1"/>
+				<caller organisation="com.typesafe.sbt" name="sbt-pgp" conf="compile" rev="0.8.10" rev-constraint-default="0.8.10" rev-constraint-dynamic="0.8.10" callerrev="0.8.1"/>
+				<artifacts>
+					<artifact name="dispatch-http_2.10" type="jar" ext="jar" status="no" details="" size="33787" time="0" location="/Users/dzsessona/.ivy2/cache/net.databinder/dispatch-http_2.10/jars/dispatch-http_2.10-0.8.10.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/net/databinder/dispatch-http_2.10/0.8.10/dispatch-http_2.10-0.8.10.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.databinder" name="dispatch-futures_2.10">
+			<revision name="0.8.10" status="release" pubdate="20130629041401" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://dispatch-classic.databinder.net/" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="14">
+				<license name="LGPL v3" url="http://www.gnu.org/licenses/lgpl.txt"/>
+				<metadata-artifact status="no" details="" size="2826" time="0" location="/Users/dzsessona/.ivy2/cache/net.databinder/dispatch-futures_2.10/ivy-0.8.10.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/net/databinder/dispatch-futures_2.10/0.8.10/dispatch-futures_2.10-0.8.10.pom"/>
+				<caller organisation="net.databinder" name="dispatch-http_2.10" conf="compile, runtime" rev="0.8.10" rev-constraint-default="0.8.10" rev-constraint-dynamic="0.8.10" callerrev="0.8.10"/>
+				<artifacts>
+					<artifact name="dispatch-futures_2.10" type="jar" ext="jar" status="no" details="" size="13759" time="0" location="/Users/dzsessona/.ivy2/cache/net.databinder/dispatch-futures_2.10/jars/dispatch-futures_2.10-0.8.10.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/net/databinder/dispatch-futures_2.10/0.8.10/dispatch-futures_2.10-0.8.10.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-actors">
+			<revision name="2.10.2" status="release" pubdate="20130606190651" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" extra-info.apiURL="http://www.scala-lang.org/api/2.10.2/" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="15">
+				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html          "/>
+				<metadata-artifact status="no" details="" size="2741" time="0" location="/Users/dzsessona/.ivy2/cache/org.scala-lang/scala-actors/ivy-2.10.2.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/scala-lang/scala-actors/2.10.2/scala-actors-2.10.2.pom"/>
+				<caller organisation="net.databinder" name="dispatch-futures_2.10" conf="compile, runtime" rev="2.10.2" rev-constraint-default="2.10.2" rev-constraint-dynamic="2.10.2" callerrev="0.8.10"/>
+				<artifacts>
+					<artifact name="scala-actors" type="jar" ext="jar" status="no" details="" size="477112" time="0" location="/Users/dzsessona/.ivy2/cache/org.scala-lang/scala-actors/jars/scala-actors-2.10.2.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/scala-lang/scala-actors/2.10.2/scala-actors-2.10.2.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="net.databinder" name="dispatch-core_2.10">
+			<revision name="0.8.10" status="release" pubdate="20130629041353" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://dispatch-classic.databinder.net/" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="13">
+				<license name="LGPL v3" url="http://www.gnu.org/licenses/lgpl.txt"/>
+				<metadata-artifact status="no" details="" size="2854" time="0" location="/Users/dzsessona/.ivy2/cache/net.databinder/dispatch-core_2.10/ivy-0.8.10.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/net/databinder/dispatch-core_2.10/0.8.10/dispatch-core_2.10-0.8.10.pom"/>
+				<caller organisation="net.databinder" name="dispatch-http_2.10" conf="compile, runtime" rev="0.8.10" rev-constraint-default="0.8.10" rev-constraint-dynamic="0.8.10" callerrev="0.8.10"/>
+				<artifacts>
+					<artifact name="dispatch-core_2.10" type="jar" ext="jar" status="no" details="" size="128100" time="0" location="/Users/dzsessona/.ivy2/cache/net.databinder/dispatch-core_2.10/jars/dispatch-core_2.10-0.8.10.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/net/databinder/dispatch-core_2.10/0.8.10/dispatch-core_2.10-0.8.10.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.bouncycastle" name="bcpg-jdk15on">
+			<revision name="1.49" status="release" pubdate="20130601055904" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.bouncycastle.org/java.html" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="10">
+				<license name="Bouncy Castle Licence" url="http://www.bouncycastle.org/licence.html"/>
+				<license name="Apache Software License, Version 1.1" url="http://www.apache.org/licenses/LICENSE-1.1"/>
+				<metadata-artifact status="no" details="" size="2873" time="0" location="/Users/dzsessona/.ivy2/cache/org.bouncycastle/bcpg-jdk15on/ivy-1.49.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/bouncycastle/bcpg-jdk15on/1.49/bcpg-jdk15on-1.49.pom"/>
+				<caller organisation="com.jsuereth" name="gpg-library_2.10" conf="default, compile, runtime, master" rev="1.49" rev-constraint-default="1.49" rev-constraint-dynamic="1.49" callerrev="0.8.1"/>
+				<artifacts>
+					<artifact name="bcpg-jdk15on" type="jar" ext="jar" status="no" details="" size="248366" time="0" location="/Users/dzsessona/.ivy2/cache/org.bouncycastle/bcpg-jdk15on/jars/bcpg-jdk15on-1.49.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/bouncycastle/bcpg-jdk15on/1.49/bcpg-jdk15on-1.49.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.bouncycastle" name="bcprov-jdk15on">
+			<revision name="1.49" status="release" pubdate="20130601055547" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.bouncycastle.org/java.html" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="11">
+				<license name="Bouncy Castle Licence" url="http://www.bouncycastle.org/licence.html"/>
+				<metadata-artifact status="no" details="" size="2550" time="0" location="/Users/dzsessona/.ivy2/cache/org.bouncycastle/bcprov-jdk15on/ivy-1.49.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/bouncycastle/bcprov-jdk15on/1.49/bcprov-jdk15on-1.49.pom"/>
+				<caller organisation="org.bouncycastle" name="bcpg-jdk15on" conf="compile, runtime" rev="1.49" rev-constraint-default="1.49" rev-constraint-dynamic="1.49" callerrev="1.49"/>
+				<artifacts>
+					<artifact name="bcprov-jdk15on" type="jar" ext="jar" status="no" details="" size="2476362" time="0" location="/Users/dzsessona/.ivy2/cache/org.bouncycastle/bcprov-jdk15on/jars/bcprov-jdk15on-1.49.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/bouncycastle/bcprov-jdk15on/1.49/bcprov-jdk15on-1.49.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.xerial.sbt" name="sbt-sonatype">
+			<revision name="0.2.1" status="release" pubdate="20140226043827" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/xerial/sbt-sonatype" extra-sbtVersion="0.13" extra-scalaVersion="2.10" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="2">
+				<license name="Apache 2" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="3226" time="0" location="/Users/dzsessona/.ivy2/cache/scala_2.10/sbt_0.13/org.xerial.sbt/sbt-sonatype/ivy-0.2.1.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/xerial/sbt/sbt-sonatype_2.10_0.13/0.2.1/sbt-sonatype-0.2.1.pom"/>
+				<caller organisation="default" name="scamandrill-build" conf="optional, compile, runtime, runtime-internal" rev="0.2.1" rev-constraint-default="0.2.1" rev-constraint-dynamic="0.2.1" callerrev="0.1-SNAPSHOT" extra-sbtVersion="0.13" extra-scalaVersion="2.10"/>
+				<artifacts>
+					<artifact name="sbt-sonatype" type="jar" ext="jar" status="no" details="" size="162280" time="0" location="/Users/dzsessona/.ivy2/cache/scala_2.10/sbt_0.13/org.xerial.sbt/sbt-sonatype/jars/sbt-sonatype-0.2.1.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/xerial/sbt/sbt-sonatype_2.10_0.13/0.2.1/sbt-sonatype-0.2.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.apache.httpcomponents" name="httpclient">
+			<revision name="4.2.6" status="release" pubdate="20130904191608" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://hc.apache.org/httpcomponents-client" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="3">
+				<metadata-artifact status="no" details="" size="10113" time="0" location="/Users/dzsessona/.ivy2/cache/org.apache.httpcomponents/httpclient/ivy-4.2.6.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.2.6/httpclient-4.2.6.pom"/>
+				<caller organisation="org.xerial.sbt" name="sbt-sonatype" conf="default, compile, runtime, master" rev="4.2.6" rev-constraint-default="4.2.6" rev-constraint-dynamic="4.2.6" callerrev="0.2.1"/>
+				<caller organisation="net.databinder" name="dispatch-http_2.10" conf="compile, runtime" rev="4.1.3" rev-constraint-default="4.1.3" rev-constraint-dynamic="4.1.3" callerrev="0.8.10"/>
+				<caller organisation="net.databinder" name="dispatch-core_2.10" conf="compile, runtime" rev="4.1.3" rev-constraint-default="4.1.3" rev-constraint-dynamic="4.1.3" callerrev="0.8.10"/>
+				<artifacts>
+					<artifact name="httpclient" type="jar" ext="jar" status="no" details="" size="435628" time="0" location="/Users/dzsessona/.ivy2/cache/org.apache.httpcomponents/httpclient/jars/httpclient-4.2.6.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.2.6/httpclient-4.2.6.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+			<revision name="4.1.3" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="-1">
+				<evicted-by rev="4.2.6"/>
+				<caller organisation="net.databinder" name="dispatch-http_2.10" conf="compile, runtime" rev="4.1.3" rev-constraint-default="4.1.3" rev-constraint-dynamic="4.1.3" callerrev="0.8.10"/>
+				<caller organisation="net.databinder" name="dispatch-core_2.10" conf="compile, runtime" rev="4.1.3" rev-constraint-default="4.1.3" rev-constraint-dynamic="4.1.3" callerrev="0.8.10"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="commons-codec" name="commons-codec">
+			<revision name="1.6" status="release" pubdate="20111203023826" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://commons.apache.org/codec/" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="6">
+				<metadata-artifact status="no" details="" size="7555" time="0" location="/Users/dzsessona/.ivy2/cache/commons-codec/commons-codec/ivy-1.6.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/commons-codec/commons-codec/1.6/commons-codec-1.6.pom"/>
+				<caller organisation="org.apache.httpcomponents" name="httpclient" conf="compile, runtime" rev="1.6" rev-constraint-default="1.6" rev-constraint-dynamic="1.6" callerrev="4.2.6"/>
+				<artifacts>
+					<artifact name="commons-codec" type="jar" ext="jar" status="no" details="" size="232771" time="0" location="/Users/dzsessona/.ivy2/cache/commons-codec/commons-codec/jars/commons-codec-1.6.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/commons-codec/commons-codec/1.6/commons-codec-1.6.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="commons-logging" name="commons-logging">
+			<revision name="1.1.1" status="release" pubdate="20071126202410" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://commons.apache.org/logging" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="5">
+				<metadata-artifact status="no" details="" size="3941" time="0" location="/Users/dzsessona/.ivy2/cache/commons-logging/commons-logging/ivy-1.1.1.xml" searched="false" origin-is-local="false" origin-location="https://nexus.gilt.com/nexus/content/groups/gilt.common/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.pom"/>
+				<caller organisation="org.apache.httpcomponents" name="httpclient" conf="compile, runtime" rev="1.1.1" rev-constraint-default="1.1.1" rev-constraint-dynamic="1.1.1" callerrev="4.2.6"/>
+				<artifacts>
+					<artifact name="commons-logging" type="jar" ext="jar" status="no" details="" size="60686" time="0" location="/Users/dzsessona/.ivy2/cache/commons-logging/commons-logging/jars/commons-logging-1.1.1.jar">
+						<origin-location is-local="false" location="https://nexus.gilt.com/nexus/content/groups/gilt.common/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.apache.httpcomponents" name="httpcore">
+			<revision name="4.2.5" status="release" pubdate="20130729161428" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://hc.apache.org/httpcomponents-core-ga" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="4">
+				<metadata-artifact status="no" details="" size="7580" time="0" location="/Users/dzsessona/.ivy2/cache/org.apache.httpcomponents/httpcore/ivy-4.2.5.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/apache/httpcomponents/httpcore/4.2.5/httpcore-4.2.5.pom"/>
+				<caller organisation="org.apache.httpcomponents" name="httpclient" conf="compile, runtime" rev="4.2.5" rev-constraint-default="4.2.5" rev-constraint-dynamic="4.2.5" callerrev="4.2.6"/>
+				<artifacts>
+					<artifact name="httpcore" type="jar" ext="jar" status="no" details="" size="227708" time="0" location="/Users/dzsessona/.ivy2/cache/org.apache.httpcomponents/httpcore/jars/httpcore-4.2.5.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/apache/httpcomponents/httpcore/4.2.5/httpcore-4.2.5.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.github.mpeltonen" name="sbt-idea">
+			<revision name="1.5.1" status="release" pubdate="20130727223622" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://your.project.url" extra-sbtVersion="0.13" extra-scalaVersion="2.10" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="0">
+				<license name="BSD-style" url="http://www.opensource.org/licenses/BSD-3-Clause"/>
+				<metadata-artifact status="no" details="" size="2990" time="0" location="/Users/dzsessona/.ivy2/cache/scala_2.10/sbt_0.13/com.github.mpeltonen/sbt-idea/ivy-1.5.1.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/com/github/mpeltonen/sbt-idea_2.10_0.13/1.5.1/sbt-idea-1.5.1.pom"/>
+				<caller organisation="default" name="scamandrill-build" conf="optional, compile, runtime, runtime-internal" rev="1.5.1" rev-constraint-default="1.5.1" rev-constraint-dynamic="1.5.1" callerrev="0.1-SNAPSHOT" extra-sbtVersion="0.13" extra-scalaVersion="2.10"/>
+				<artifacts>
+					<artifact name="sbt-idea" type="jar" ext="jar" status="no" details="" size="337943" time="0" location="/Users/dzsessona/.ivy2/cache/scala_2.10/sbt_0.13/com.github.mpeltonen/sbt-idea/jars/sbt-idea-1.5.1.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/github/mpeltonen/sbt-idea_2.10_0.13/1.5.1/sbt-idea-1.5.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="commons-io" name="commons-io">
+			<revision name="2.0.1" status="release" pubdate="20101226171931" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://commons.apache.org/io/" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="1">
+				<metadata-artifact status="no" details="" size="6238" time="0" location="/Users/dzsessona/.ivy2/cache/commons-io/commons-io/ivy-2.0.1.xml" searched="false" origin-is-local="false" origin-location="https://nexus.gilt.com/nexus/content/groups/gilt.common/commons-io/commons-io/2.0.1/commons-io-2.0.1.pom"/>
+				<caller organisation="com.github.mpeltonen" name="sbt-idea" conf="default, compile, runtime, master" rev="2.0.1" rev-constraint-default="2.0.1" rev-constraint-dynamic="2.0.1" callerrev="1.5.1"/>
+				<artifacts>
+					<artifact name="commons-io" type="jar" ext="jar" status="no" details="" size="159509" time="0" location="/Users/dzsessona/.ivy2/cache/commons-io/commons-io/jars/commons-io-2.0.1.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/commons-io/commons-io/2.0.1/commons-io-2.0.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-library">
+			<revision name="2.10.2" status="release" pubdate="20130606190543" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="9">
+				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html          "/>
+				<metadata-artifact status="no" details="" size="2487" time="0" location="/Users/dzsessona/.ivy2/cache/org.scala-lang/scala-library/ivy-2.10.2.xml" searched="false" origin-is-local="false" origin-location="https://nexus.gilt.com/nexus/content/groups/gilt.common/org/scala-lang/scala-library/2.10.2/scala-library-2.10.2.pom"/>
+				<caller organisation="com.jsuereth" name="gpg-library_2.10" conf="default, compile, runtime, master" rev="2.10.2" rev-constraint-default="2.10.2" rev-constraint-dynamic="2.10.2" callerrev="0.8.1"/>
+				<caller organisation="org.scala-lang" name="scala-actors" conf="compile, runtime" rev="2.10.2" rev-constraint-default="2.10.2" rev-constraint-dynamic="2.10.2" callerrev="2.10.2"/>
+				<caller organisation="net.databinder" name="dispatch-http_2.10" conf="compile, runtime" rev="2.10.2" rev-constraint-default="2.10.2" rev-constraint-dynamic="2.10.2" callerrev="0.8.10"/>
+				<caller organisation="net.databinder" name="dispatch-core_2.10" conf="compile, runtime" rev="2.10.2" rev-constraint-default="2.10.2" rev-constraint-dynamic="2.10.2" callerrev="0.8.10"/>
+				<caller organisation="net.databinder" name="dispatch-futures_2.10" conf="compile, runtime" rev="2.10.2" rev-constraint-default="2.10.2" rev-constraint-dynamic="2.10.2" callerrev="0.8.10"/>
+				<artifacts>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>
