@@ -24,18 +24,18 @@ libraryDependencies ++= {
   val akkaV = "2.3.4"
   val sprayV = "1.3.1"
   Seq(
-    "io.spray"          %% "spray-can"       % sprayV,
-    "io.spray"          %% "spray-routing"   % sprayV,
-    "io.spray"          %% "spray-json"     % "1.2.6",
-    "io.spray"          %% "spray-testkit"   % sprayV,
-    "io.spray"          %%"spray-client"    % sprayV,
-    "com.typesafe.akka" %% "akka-actor"     % akkaV,
-    "com.typesafe.akka" %% "akka-testkit"   % akkaV,
-    "com.typesafe"      % "config"          % "1.2.1",
-    "ch.qos.logback"    % "logback-classic" % "1.0.6"
+    "io.spray"                    %% "spray-can"          % sprayV,
+    "io.spray"                    %% "spray-routing"    % sprayV,
+    "io.spray"                    %% "spray-json"         % "1.2.6",
+    "io.spray"                    %% "spray-testkit"      % sprayV,
+    "io.spray"                    %%"spray-client"        % sprayV,
+    "com.typesafe.akka"    %% "akka-actor"        % akkaV,
+    "com.typesafe.akka"    %% "akka-testkit"      % akkaV,
+    "com.typesafe"            % "config"                 % "1.2.1",
+    "ch.qos.logback"         % "logback-classic"   % "1.0.6"
   ) ++ Seq(
-    "org.specs2"        %%  "specs2"        % "2.3.13"    % "test",
-    "org.scalatest"     %%  "scalatest"     % "2.1.6"    % "test->*"
+    "org.specs2"                %%  "specs2"             % "2.3.13"    % "test",
+    "org.scalatest"             %%  "scalatest"          % "2.1.6"    % "test->*"
   )
 }
 //
