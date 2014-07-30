@@ -10,9 +10,9 @@ profileName := "com.github.dzsessona"
 
 description := "Scala client for Mandrill api"
 
-scalaVersion := "2.10.4"
+scalaVersion := "2.11.2"
 
-crossScalaVersions := Seq("2.10.4") //, "2.9.3")
+crossScalaVersions := Seq("2.10.4", "2.11.2")
 
 scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8")
 
@@ -21,20 +21,20 @@ resolvers ++= Seq("spray repo" at "http://repo.spray.io/")
 parallelExecution in Test := true
 
 libraryDependencies ++= {
-  val akkaV = "2.2.3"
-  val sprayV = "1.3.0"
+  val akkaV = "2.3.4"
+  val sprayV = "1.3.1"
   Seq(
-    "io.spray"          % "spray-can"       % sprayV,
-    "io.spray"          % "spray-routing"   % sprayV,
-    "io.spray"          %% "spray-json"     % "1.2.5",
-    "io.spray"          % "spray-testkit"   % sprayV,
-    "io.spray"          % "spray-client"    % sprayV,
+    "io.spray"          %% "spray-can"       % sprayV,
+    "io.spray"          %% "spray-routing"   % sprayV,
+    "io.spray"          %% "spray-json"     % "1.2.6",
+    "io.spray"          %% "spray-testkit"   % sprayV,
+    "io.spray"          %%"spray-client"    % sprayV,
     "com.typesafe.akka" %% "akka-actor"     % akkaV,
     "com.typesafe.akka" %% "akka-testkit"   % akkaV,
     "com.typesafe"      % "config"          % "1.2.1",
     "ch.qos.logback"    % "logback-classic" % "1.0.6"
   ) ++ Seq(
-    "org.specs2"        %%  "specs2"        % "2.2.3"    % "test",
+    "org.specs2"        %%  "specs2"        % "2.3.13"    % "test",
     "org.scalatest"     %%  "scalatest"     % "2.1.6"    % "test->*"
   )
 }
