@@ -150,14 +150,14 @@ class MessageCallsTest extends FlatSpec with Matchers with SimpleLogger {
     checkFailedBecauseOfInvalidKey(MandrillBlockingClient.messagesSearch(validSearch.copy(key = "invalid")))
   }
 
-  "MessageInfo" should "work getting a valid MMessageInfoResponse (async client)" in {
+  "MessageInfo" should "work getting a valid MMessageInfoResponse (async client)" ignore {
     val res = Await.result(MandrillAsyncClient.messagesInfo(MMessageInfo(id = idOfMailForInfoTest)), DefaultConfig.defaultTimeout)
     res.getClass shouldBe classOf[MMessageInfoResponse]
     res._id shouldBe idOfMailForInfoTest
     res.subject shouldBe "subject test"
     res.email shouldBe "test@example.com"
   }
-  it should "work getting a valid MMessageInfoResponse (blocking client)" in {
+  ignore should "work getting a valid MMessageInfoResponse (blocking client)" in {
     MandrillBlockingClient.messagesInfo(MMessageInfo(id = idOfMailForInfoTest)) match {
       case Success(res) =>
         res.getClass shouldBe classOf[MMessageInfoResponse]

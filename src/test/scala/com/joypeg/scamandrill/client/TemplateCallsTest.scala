@@ -173,7 +173,6 @@ class TemplateCallsTest extends FlatSpec with Matchers with SimpleLogger {
     val res = Await.result(MandrillAsyncClient.templateRender(validTemplateRender), DefaultConfig.defaultTimeout)
     res.getClass shouldBe classOf[MTemplateRenderResponse]
     res.html shouldBe Some("<div>example code</div>")
-    println(res)
   }
   it should "work getting a valid MTemplateAddResponses (blocking client)" in {
     MandrillBlockingClient.templateRender(validTemplateRender) match {

@@ -12,6 +12,6 @@ class DefaultConfigTest extends FlatSpec with Matchers with SimpleLogger {
 
   it should "read the defaut timeout duration from the configuration" in {
     DefaultConfig.defaultTimeout.getClass shouldBe classOf[FiniteDuration]
-    DefaultConfig.defaultTimeout shouldBe 5.seconds
+    DefaultConfig.defaultTimeout shouldBe 10.seconds
   }
 }

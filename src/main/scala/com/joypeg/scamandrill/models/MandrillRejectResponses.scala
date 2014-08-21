@@ -15,7 +15,6 @@ case class MRejectAddResponse(email: String, added: Boolean) extends MandrillRes
  */
 case class MRejectDeleteResponse(email: String, deleted: Boolean, subaccount: Option[String]) extends MandrillResponse
 
-//TODO: expires at = false???
 /**
  * The information for each rejection blacklist entry
  * @param email - the email that is blocked
@@ -33,7 +32,7 @@ case class MRejectListResponse(email: String,
                                detail: Option[String],
                                created_at: String,
                                last_event_at: String,
-                               expires_at: Boolean,
+                               expires_at: Option[Boolean],
                                expired: Boolean,
                                subaccount: Option[String],
                                sender: Option[MSenderDataResponse]) extends MandrillResponse
