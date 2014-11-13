@@ -16,19 +16,19 @@ class ExportCallsTest extends FlatSpec with Matchers with SimpleLogger {
 //    res shouldBe Nil
 //  }
 //  it should "work getting a valid  MExportResponse (blocking client)" in {
-//    MandrillBlockingClient.exportList(MKey()) match {
+//    mandrillBlockingClient.exportList(MKey()) match {
 //      case Success(res) =>
 //        res shouldBe Nil
 //      case Failure(ex) => fail(ex)
 //    }
 //  }
   "ExportList" should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.exportList(MKey(key="invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.exportList(MKey(key="invalid")))
   }
 
 
   "ExportInfo" should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.exportInfo(MExportInfo(id = "exmaple", key="invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.exportInfo(MExportInfo(id = "exmaple", key="invalid")))
   }
 
 
@@ -37,14 +37,14 @@ class ExportCallsTest extends FlatSpec with Matchers with SimpleLogger {
 //    res.`type` shouldBe "whitelist"
 //  }
 //  it should "work getting a valid  MExportResponse (blocking client)" in {
-//    MandrillBlockingClient.exportWhitelist(MExportNotify(notify_email = "example@example.com")) match {
+//    mandrillBlockingClient.exportWhitelist(MExportNotify(notify_email = "example@example.com")) match {
 //      case Success(res) =>
 //        res.`type` shouldBe "whitelist"
 //      case Failure(ex) => fail(ex)
 //    }
 //  }
   "ExportWhitelist" should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.exportWhitelist(MExportNotify(notify_email = "example@example.com", key="invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.exportWhitelist(MExportNotify(notify_email = "example@example.com", key="invalid")))
   }
 
 //  "ExportReject" should "work getting a valid MExportResponse (async client)" in {
@@ -52,13 +52,13 @@ class ExportCallsTest extends FlatSpec with Matchers with SimpleLogger {
 //    res.`type` shouldBe "add"
 //  }
 //  it should "work getting a valid  MExportResponse (blocking client)" in {
-//    MandrillBlockingClient.exportReject(MExportNotify(notify_email = "examplereject@example.com")) match {
+//    mandrillBlockingClient.exportReject(MExportNotify(notify_email = "examplereject@example.com")) match {
 //      case Success(res) =>
 //        res.`type` shouldBe "add"
 //      case Failure(ex) => fail(ex)
 //    }
 //  }
   "ExportReject" should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.exportReject(MExportNotify(notify_email = "examplereject@example.com", key="invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.exportReject(MExportNotify(notify_email = "examplereject@example.com", key="invalid")))
   }
 }

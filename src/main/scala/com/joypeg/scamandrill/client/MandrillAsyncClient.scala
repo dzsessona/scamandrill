@@ -1,11 +1,13 @@
 package com.joypeg.scamandrill.client
 
+import akka.actor.ActorSystem
+
 import scala.concurrent.Future
 import spray.httpx.marshalling._
 import spray.client.pipelining._
 import com.joypeg.scamandrill.models._
 
-object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
+class MandrillAsyncClient(val system: ActorSystem = ActorSystem("scamandrill")) extends MandrillClient with ScamandrillSendReceive {
 
   import spray.httpx.SprayJsonSupport._
   import com.joypeg.scamandrill.models.MandrillJsonProtocol._

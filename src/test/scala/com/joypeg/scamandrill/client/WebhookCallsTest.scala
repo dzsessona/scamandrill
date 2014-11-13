@@ -12,22 +12,22 @@ import scala.util.Success
 class WebhookCallsTest extends FlatSpec with Matchers with SimpleLogger {
 
   "WebhookList" should "work getting a valid List[MWebhooksResponse] (async client)" in {
-    val res = Await.result(MandrillAsyncClient.webhookList(MKey()), DefaultConfig.defaultTimeout)
+    val res = Await.result(mandrillAsyncClient.webhookList(MKey()), DefaultConfig.defaultTimeout)
     res shouldBe Nil
   }
   it should "work getting a valid List[MWebhooksResponse] (blocking client)" in {
-    MandrillBlockingClient.webhookList(MKey()) match {
+    mandrillBlockingClient.webhookList(MKey()) match {
       case Success(res) =>
         res shouldBe Nil
       case Failure(ex) => fail(ex)
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.webhookList(MKey(key="invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.webhookList(MKey(key="invalid")))
   }
 
   "WebhookAdd" should "fail if the key is not valid, with an 'ValidationError' code" in {
-    MandrillBlockingClient.webhookAdd(validWebhook) match {
+    mandrillBlockingClient.webhookAdd(validWebhook) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
       case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
@@ -40,7 +40,7 @@ class WebhookCallsTest extends FlatSpec with Matchers with SimpleLogger {
   }
 
   "WebhookInfo" should "fail if the key specified with the id does not exists" in {
-    MandrillBlockingClient.webhookInfo(MWebhookInfo(id = 4)) match {
+    mandrillBlockingClient.webhookInfo(MWebhookInfo(id = 4)) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
       case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
@@ -53,7 +53,7 @@ class WebhookCallsTest extends FlatSpec with Matchers with SimpleLogger {
   }
 
   "WebhookDelete" should "fail if the key specified with the id does not exists" in {
-    MandrillBlockingClient.webhookDelete(MWebhookInfo(id = 4)) match {
+    mandrillBlockingClient.webhookDelete(MWebhookInfo(id = 4)) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
       case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
@@ -66,7 +66,7 @@ class WebhookCallsTest extends FlatSpec with Matchers with SimpleLogger {
   }
 
   "WebhookUpdate" should "fail if the key specified with the id does not exists" in {
-    MandrillBlockingClient.webhookUpdate(validWebhookUpdate) match {
+    mandrillBlockingClient.webhookUpdate(validWebhookUpdate) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
       case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>

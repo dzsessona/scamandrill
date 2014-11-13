@@ -13,13 +13,13 @@ import scala.util.Success
 class SubaccountCallsTest extends FlatSpec with Matchers with SimpleLogger {
 
   "SubaccountAdd" should "work getting a valid MSubaccountsResponse (async client)" in {
-    val res = Await.result(MandrillAsyncClient.subaccountAdd(validSubaccount), DefaultConfig.defaultTimeout)
+    val res = Await.result(mandrillAsyncClient.subaccountAdd(validSubaccount), DefaultConfig.defaultTimeout)
     res.getClass shouldBe classOf[MSubaccountsResponse]
     res.id shouldBe validSubaccount.id
     res.name shouldBe validSubaccount.name
   }
   it should "work getting a valid MSubaccountsResponse (blocking client)" in {
-    MandrillBlockingClient.subaccountAdd(validSubaccount2) match {
+    mandrillBlockingClient.subaccountAdd(validSubaccount2) match {
       case Success(res) =>
         res.getClass shouldBe classOf[MSubaccountsResponse]
         res.id shouldBe validSubaccount2.id
@@ -28,7 +28,7 @@ class SubaccountCallsTest extends FlatSpec with Matchers with SimpleLogger {
     }
   }
   it should "fail if a subaccount wioth the same id already exists, with a code of ValidationError" in {
-    MandrillBlockingClient.subaccountAdd(validSubaccount) match {
+    mandrillBlockingClient.subaccountAdd(validSubaccount) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
       case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
@@ -40,19 +40,19 @@ class SubaccountCallsTest extends FlatSpec with Matchers with SimpleLogger {
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.subaccountAdd(validSubaccount.copy(key="invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.subaccountAdd(validSubaccount.copy(key="invalid")))
   }
 
 
   "SubaccountPause" should "work getting a valid MSubaccountsResponse (async client)" in {
-    val res = Await.result(MandrillAsyncClient.subaccountPause(MSubaccountInfo(id = validSubaccount.id)), DefaultConfig.defaultTimeout)
+    val res = Await.result(mandrillAsyncClient.subaccountPause(MSubaccountInfo(id = validSubaccount.id)), DefaultConfig.defaultTimeout)
     res.getClass shouldBe classOf[MSubaccountsResponse]
     res.id shouldBe validSubaccount.id
     res.name shouldBe validSubaccount.name
     res.status shouldBe "paused"
   }
   it should "work getting a valid MSubaccountsResponse (blocking client)" in {
-    MandrillBlockingClient.subaccountPause(MSubaccountInfo(id = validSubaccount2.id)) match {
+    mandrillBlockingClient.subaccountPause(MSubaccountInfo(id = validSubaccount2.id)) match {
       case Success(res) =>
         res.getClass shouldBe classOf[MSubaccountsResponse]
         res.id shouldBe validSubaccount2.id
@@ -62,19 +62,19 @@ class SubaccountCallsTest extends FlatSpec with Matchers with SimpleLogger {
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.subaccountPause(MSubaccountInfo(id = validSubaccount.id,key="invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.subaccountPause(MSubaccountInfo(id = validSubaccount.id,key="invalid")))
   }
 
 
   "SubaccountResume" should "work getting a valid MSubaccountsResponse (async client)" in {
-    val res = Await.result(MandrillAsyncClient.subaccountResume(MSubaccountInfo(id = validSubaccount.id)), DefaultConfig.defaultTimeout)
+    val res = Await.result(mandrillAsyncClient.subaccountResume(MSubaccountInfo(id = validSubaccount.id)), DefaultConfig.defaultTimeout)
     res.getClass shouldBe classOf[MSubaccountsResponse]
     res.id shouldBe validSubaccount.id
     res.name shouldBe validSubaccount.name
     res.status shouldBe "active"
   }
   it should "work getting a valid MSubaccountsResponse (blocking client)" in {
-    MandrillBlockingClient.subaccountResume(MSubaccountInfo(id = validSubaccount2.id)) match {
+    mandrillBlockingClient.subaccountResume(MSubaccountInfo(id = validSubaccount2.id)) match {
       case Success(res) =>
         res.getClass shouldBe classOf[MSubaccountsResponse]
         res.id shouldBe validSubaccount2.id
@@ -84,18 +84,18 @@ class SubaccountCallsTest extends FlatSpec with Matchers with SimpleLogger {
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.subaccountResume(MSubaccountInfo(id = validSubaccount.id,key="invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.subaccountResume(MSubaccountInfo(id = validSubaccount.id,key="invalid")))
   }
 
 
   "SubaccountUpdate" should "work getting a valid MSubaccountsResponse (async client)" in {
-    val res = Await.result(MandrillAsyncClient.subaccountUpdate(validSubaccount.copy(notes = "updated")), DefaultConfig.defaultTimeout)
+    val res = Await.result(mandrillAsyncClient.subaccountUpdate(validSubaccount.copy(notes = "updated")), DefaultConfig.defaultTimeout)
     res.getClass shouldBe classOf[MSubaccountsResponse]
     res.id shouldBe validSubaccount.id
     res.name shouldBe validSubaccount.name
   }
   it should "work getting a valid MSubaccountsResponse (blocking client)" in {
-    MandrillBlockingClient.subaccountUpdate(validSubaccount2.copy(notes = "updated")) match {
+    mandrillBlockingClient.subaccountUpdate(validSubaccount2.copy(notes = "updated")) match {
       case Success(res) =>
         res.getClass shouldBe classOf[MSubaccountsResponse]
         res.id shouldBe validSubaccount2.id
@@ -104,50 +104,50 @@ class SubaccountCallsTest extends FlatSpec with Matchers with SimpleLogger {
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.subaccountUpdate(validSubaccount.copy(key="invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.subaccountUpdate(validSubaccount.copy(key="invalid")))
   }
 
 
   "SubaccountInfo" should "work getting a valid MSubaccountsResponse (async client)" in {
-    val res = Await.result(MandrillAsyncClient.subaccountInfo(MSubaccountInfo(id = validSubaccount.id)), DefaultConfig.defaultTimeout)
+    val res = Await.result(mandrillAsyncClient.subaccountInfo(MSubaccountInfo(id = validSubaccount.id)), DefaultConfig.defaultTimeout)
     res.getClass shouldBe classOf[MSubaccountsInfoResponse]
   }
   it should "work getting a valid MSubaccountsResponse (blocking client)" in {
-    MandrillBlockingClient.subaccountInfo(MSubaccountInfo(id = validSubaccount2.id)) match {
+    mandrillBlockingClient.subaccountInfo(MSubaccountInfo(id = validSubaccount2.id)) match {
       case Success(res) =>
         res.getClass shouldBe classOf[MSubaccountsInfoResponse]
       case Failure(ex) => fail(ex)
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.subaccountInfo(MSubaccountInfo(id = validSubaccount.id,key="invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.subaccountInfo(MSubaccountInfo(id = validSubaccount.id,key="invalid")))
   }
 
 
   "SubaccountList" should "work getting a valid List[MSubaccountsResponse] (async client)" in {
-    val res = Await.result(MandrillAsyncClient.subaccountList(MSubaccountList(q = "test")), DefaultConfig.defaultTimeout)
+    val res = Await.result(mandrillAsyncClient.subaccountList(MSubaccountList(q = "test")), DefaultConfig.defaultTimeout)
     res.head.getClass shouldBe classOf[MSubaccountsResponse]
   }
   it should "work getting a valid List[MSubaccountsResponse] (blocking client)" in {
-    MandrillBlockingClient.subaccountList(MSubaccountList(q = "test")) match {
+    mandrillBlockingClient.subaccountList(MSubaccountList(q = "test")) match {
       case Success(res) =>
         res.head.getClass shouldBe classOf[MSubaccountsResponse]
       case Failure(ex) => fail(ex)
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.subaccountList(MSubaccountList(q = "test",key="invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.subaccountList(MSubaccountList(q = "test",key="invalid")))
   }
 
 
   "SubaccountDelete" should "work getting a valid MSubaccountsResponse (async client)" in {
-    val res = Await.result(MandrillAsyncClient.subaccountDelete(MSubaccountInfo(id = validSubaccount.id)), DefaultConfig.defaultTimeout)
+    val res = Await.result(mandrillAsyncClient.subaccountDelete(MSubaccountInfo(id = validSubaccount.id)), DefaultConfig.defaultTimeout)
     res.getClass shouldBe classOf[MSubaccountsResponse]
     res.id shouldBe validSubaccount.id
     res.name shouldBe validSubaccount.name
   }
   it should "work getting a valid MSubaccountsResponse (blocking client)" in {
-    MandrillBlockingClient.subaccountDelete(MSubaccountInfo(id = validSubaccount2.id)) match {
+    mandrillBlockingClient.subaccountDelete(MSubaccountInfo(id = validSubaccount2.id)) match {
       case Success(res) =>
         res.getClass shouldBe classOf[MSubaccountsResponse]
         res.id shouldBe validSubaccount2.id
@@ -156,7 +156,7 @@ class SubaccountCallsTest extends FlatSpec with Matchers with SimpleLogger {
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.subaccountDelete(MSubaccountInfo(id = validSubaccount.id,key="invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.subaccountDelete(MSubaccountInfo(id = validSubaccount.id,key="invalid")))
   }
 
 }

@@ -19,7 +19,7 @@ trait ScamandrillSendReceive extends SimpleLogger {
 
   type Entity = Either[Throwable, HttpEntity]
 
-  implicit lazy val system: ActorSystem = ActorSystem("scamandrill")
+  implicit val system: ActorSystem
   import system.dispatcher
 
 
@@ -51,7 +51,7 @@ trait ScamandrillSendReceive extends SimpleLogger {
   /**
    * Asks all the underlying actors to close (waiting for 1 second)
    * and then shut down the system. Because the blocking client is
-   * basically a wrapper of the async one, bot the async and blocking
+   * basically a wrapper of the async one, both the async and blocking
    * client are supposed to call this method when they are not required
    * or the application using them exit.
    */

@@ -1,7 +1,7 @@
 package com.joypeg.scamandrill
 
 import com.joypeg.scamandrill.models._
-import com.joypeg.scamandrill.client.{MandrillError, MandrillResponseException}
+import com.joypeg.scamandrill.client.{MandrillBlockingClient, MandrillAsyncClient, MandrillError, MandrillResponseException}
 import org.scalatest.Matchers
 import scala.util.{Failure, Success, Try}
 import com.joypeg.scamandrill.models.MSearch
@@ -9,9 +9,12 @@ import scala.util.Success
 import com.joypeg.scamandrill.models.MSearchTimeSeries
 import com.joypeg.scamandrill.models.MTo
 import scala.util.Failure
-import com.joypeg.scamandrill.client.MandrillError
 
 object MandrillTestUtils extends Matchers {
+
+  val mandrillAsyncClient = new MandrillAsyncClient()
+  val mandrillBlockingClient = new MandrillBlockingClient(mandrillAsyncClient.system)
+
 
   /**
    * A simple fuction to check equality of the errors from mandrill, but it also

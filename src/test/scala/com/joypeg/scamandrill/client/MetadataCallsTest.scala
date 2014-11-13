@@ -19,7 +19,7 @@ class MetadataCallsTest  extends FlatSpec with Matchers with SimpleLogger {
 //    res.view_template shouldBe "test"
 //  }
   "MetadataAdd" should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.metadataAdd(MMeteadatapAdd(name = "testingmetadata", view_template = "test", key="invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.metadataAdd(MMeteadatapAdd(name = "testingmetadata", view_template = "test", key="invalid")))
   }
 
 //  "MetadataUpdate" should "work getting a valid MIMetadataResponse" in {
@@ -27,7 +27,7 @@ class MetadataCallsTest  extends FlatSpec with Matchers with SimpleLogger {
 //    res.name shouldBe "testingmetadata"
 //  }
   "MetadataUpdate" should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.metadataUpdate(MMeteadatapAdd(name = "testingmetadata", view_template = "test", key="invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.metadataUpdate(MMeteadatapAdd(name = "testingmetadata", view_template = "test", key="invalid")))
   }
 
 //  "MetadataList" should "work getting a valid List[MIMetadataResponse]" in {
@@ -35,7 +35,7 @@ class MetadataCallsTest  extends FlatSpec with Matchers with SimpleLogger {
 //    res.head.name shouldBe "testingmetadata"
 //  }
   "MetadataList" should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.metadataList(MKey(key="invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.metadataList(MKey(key="invalid")))
   }
 
 
@@ -44,7 +44,7 @@ class MetadataCallsTest  extends FlatSpec with Matchers with SimpleLogger {
 //    res.name shouldBe "testingmetadata"
 //  }
   "MetadataDelete" should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.metadataDelete(MMeteadatapDelete(name = "testingmetadata", key="invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.metadataDelete(MMeteadatapDelete(name = "testingmetadata", key="invalid")))
   }
 
 
