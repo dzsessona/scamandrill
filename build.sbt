@@ -32,7 +32,7 @@ libraryDependencies ++= {
     "com.typesafe.akka" %% "akka-actor"       % akkaV,
     "com.typesafe.akka" %% "akka-testkit"     % akkaV,
     "com.typesafe"      % "config"            % "1.2.1",
-    "ch.qos.logback"    % "logback-classic"   % "1.0.6"
+    "ch.qos.logback"    % "logback-classic"   % "1.1.2"
   ) ++ Seq(
     "org.specs2"        %%  "specs2"          % "2.3.13"    % "test",
     "org.scalatest"     %%  "scalatest"       % "2.1.6"     % "test->*"
