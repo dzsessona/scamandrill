@@ -118,10 +118,10 @@ object MandrillTestUtils extends Matchers {
     from_email = "scamandrill@test.com",
     from_name = "Scamandrill",
     to = List(MTo("test@recipient.com")),
-    bcc_address = "somebcc@address.com",
-    tracking_domain = "fromname",
-    signing_domain = "fromname",
-    return_path_domain = "fromname"
+    bcc_address = Some("somebcc@address.com"),
+    tracking_domain = Some("fromname"),
+    signing_domain = Some("fromname"),
+    return_path_domain = Some("fromname")
   )
 
   val validSearch = MSearch(
