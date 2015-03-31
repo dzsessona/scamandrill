@@ -330,8 +330,8 @@ object MandrillBlockingClient extends MandrillClient {
     Await.result(MandrillAsyncClient.inboundDeleteRoute(inbound), DefaultConfig.defaultTimeout)
   }
 
-  override def inboudSendRaw(inbound: MInboundRaw): Try[List[MInboundRawResponse]] = Try {
-    Await.result(MandrillAsyncClient.inboudSendRaw(inbound), DefaultConfig.defaultTimeout)
+  override def inboundSendRaw(inbound: MInboundRaw): Try[List[MInboundRawResponse]] = Try {
+    Await.result(MandrillAsyncClient.inboundSendRaw(inbound), DefaultConfig.defaultTimeout)
   }
 
   ////////////////////////////////////////////////////////////
