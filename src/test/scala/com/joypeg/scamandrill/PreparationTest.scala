@@ -49,10 +49,10 @@ class PreparationTest extends FlatSpec with Matchers with BeforeAndAfterAll with
       from_email = "scamandrill@test.com",
       from_name = "Scamandrill",
       to = List(MTo("test@example.com")),
-      bcc_address = "",
-      tracking_domain = "fromname",
-      signing_domain = "fromname",
-      return_path_domain = "fromname",
+      bcc_address = Some(""),
+      tracking_domain = Some("fromname"),
+      signing_domain = Some("fromname"),
+      return_path_domain = Some("fromname"),
       tags = List("exampletag1", "exampletag2")
     )
     MandrillBlockingClient.messagesSend(MSendMessage(message = msg, key = realKey)) match {
