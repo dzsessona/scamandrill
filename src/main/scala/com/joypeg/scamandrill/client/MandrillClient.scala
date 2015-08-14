@@ -543,7 +543,7 @@ trait MandrillClient {
    * @param inbound - raw MIME document
    * @return an array of the information for each recipient in the message (usually one) that matched an inbound route
    */
-  def inboudSendRaw(inbound: MInboundRaw): Any
+  def inboundSendRaw(inbound: MInboundRaw): Any
 
   ////////////////////////////////////////////////////////////
   //EXPORT https://mandrillapp.com/api/docs/exports.JSON.html

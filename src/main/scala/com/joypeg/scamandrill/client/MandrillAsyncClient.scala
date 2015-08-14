@@ -332,7 +332,7 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
     executeQuery[MInboundRouteResponse](Endpoints.inbdelroute.endpoint, marshal(inbound))(unmarshal[MInboundRouteResponse])
   }
 
-  override def inboudSendRaw(inbound: MInboundRaw): Future[List[MInboundRawResponse]] = {
+  override def inboundSendRaw(inbound: MInboundRaw): Future[List[MInboundRawResponse]] = {
     executeQuery[List[MInboundRawResponse]](Endpoints.inbraw.endpoint, marshal(inbound))(unmarshal[List[MInboundRawResponse]])
   }
 
