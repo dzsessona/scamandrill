@@ -335,7 +335,7 @@ class MandrillBlockingClient(system: ActorSystem = ActorSystem("scamandrill")) e
   override def inboudSendRaw(inbound: MInboundRaw): Try[List[MInboundRawResponse]] = Try {
     Await.result(mandrillAsyncClient.inboudSendRaw(inbound), DefaultConfig.defaultTimeout)
   }
-
+  
   ////////////////////////////////////////////////////////////
   //EXPORT https://mandrillapp.com/api/docs/exports.JSON.html
   ////////////////////////////////////////////////////////////
