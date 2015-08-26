@@ -1,5 +1,6 @@
 package com.joypeg.scamandrill.client
 
+import com.joypeg.scamandrill.client.UnsuccessfulResponseException
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers
 import scala.concurrent.Await
@@ -31,7 +32,7 @@ class SubaccountCallsTest extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.subaccountAdd(validSubaccount) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", -2, "ValidationError", "Validation error: {\"id\":\"A subaccount with id testingsubaccount already exists\"}")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))

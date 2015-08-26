@@ -1,5 +1,7 @@
 package com.joypeg.scamandrill.client
 
+import com.joypeg.scamandrill
+import com.joypeg.scamandrill.client.UnsuccessfulResponseException
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers
 import scala.concurrent.Await
@@ -32,7 +34,7 @@ class TemplateCallsTest extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.templateAdd(validNonPublidhedTemplate) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 6, "Invalid_Template", "A template with name \"templatetest\" already exists")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
@@ -65,7 +67,7 @@ class TemplateCallsTest extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.templatePublish(MTemplateInfo(name = "nonexisting")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 5, "Unknown_Template", "No such template \"nonexisting\"")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
@@ -99,7 +101,7 @@ class TemplateCallsTest extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.templateInfo(MTemplateInfo(name = "nonexisting")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 5, "Unknown_Template", "No such template \"nonexisting\"")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
@@ -186,7 +188,7 @@ class TemplateCallsTest extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.templateRender(validTemplateRender.copy(template_name = "nonexsting")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 5, "Unknown_Template", "No such template \"nonexsting\"")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))

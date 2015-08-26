@@ -1,5 +1,7 @@
 package com.joypeg.scamandrill.client
 
+import com.joypeg.scamandrill
+import com.joypeg.scamandrill.client.UnsuccessfulResponseException
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers
 import scala.concurrent.Await
@@ -30,7 +32,7 @@ class IspCallsTest  extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.ispInfo(MIspIp(ip = "123.123.123.123")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 13, "Unknown_IP", "No dedicated IP exists with the address '123.123.123.123'")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
@@ -46,7 +48,7 @@ class IspCallsTest  extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.ispStartWarmup(MIspIp(ip = "123.123.123.123")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 13, "Unknown_IP", "No dedicated IP exists with the address '123.123.123.123'")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
@@ -63,7 +65,7 @@ class IspCallsTest  extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.ispCancelWarmup(MIspIp(ip = "123.123.123.123")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 13, "Unknown_IP", "No dedicated IP exists with the address '123.123.123.123'")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
@@ -80,7 +82,7 @@ class IspCallsTest  extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.ispDelete(MIspIp(ip = "123.123.123.123")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 13, "Unknown_IP", "No dedicated IP exists with the address '123.123.123.123'")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
@@ -141,7 +143,7 @@ class IspCallsTest  extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.ispSetPool(MIspSetPool(pool = "test", ip="123.123.123.123", create_pool = false)) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 13, "Unknown_IP", "No dedicated IP exists with the address '123.123.123.123'")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
@@ -155,7 +157,7 @@ class IspCallsTest  extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.ispProvision(MIspPool(pool = "test", warmup=false)) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 10, "PaymentRequired", "Dedicated IP provisioning is only available for accounts with a positive balance.")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))

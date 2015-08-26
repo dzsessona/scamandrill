@@ -1,5 +1,7 @@
 package com.joypeg.scamandrill.client
 
+import com.joypeg.scamandrill
+import com.joypeg.scamandrill.client.UnsuccessfulResponseException
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers
 import scala.concurrent.Await
@@ -49,7 +51,7 @@ class MessageCallsTest extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.messagesSend(MSendMessage(message = invalidMessage)) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 12, "Unknown_Subaccount", "No subaccount exists with the id 'nonexisting'")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
@@ -61,7 +63,7 @@ class MessageCallsTest extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.messagesSend(MSendMessage(send_at=Some("3000-01-01 00:00:00"), message = validMessage)) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error",
           10, "PaymentRequired", "Email scheduling is only available for accounts with a positive balance.")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
@@ -107,7 +109,7 @@ class MessageCallsTest extends FlatSpec with Matchers with SimpleLogger {
       message = validMessage))match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error",
           5, "Unknown_Template", """No such template "invalid"""")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
@@ -172,7 +174,7 @@ class MessageCallsTest extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.messagesInfo(MMessageInfo(id = "invalid")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 11, "Unknown_Message", """No message exists with the id 'invalid'""")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
@@ -207,7 +209,7 @@ class MessageCallsTest extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.messagesContent(MMessageInfo(id = "invalid")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 11, "Unknown_Message", """No message exists with the id 'invalid'""")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
@@ -270,7 +272,7 @@ class MessageCallsTest extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.messagesCancelSchedule(MCancelSchedule(id = "invalid")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 11, "Unknown_Message", """No message exists with the id 'invalid'""")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
@@ -286,7 +288,7 @@ class MessageCallsTest extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.messagesReschedule(MReSchedule(id = "invalid", send_at = "20120-06-01 08:15:01")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", -2, "ValidationError", """Validation error: {"send_at":"Please enter a valid date\/time"}""")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
@@ -298,7 +300,7 @@ class MessageCallsTest extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.messagesReschedule(MReSchedule(id = "invalid", send_at = "2012-06-01 08:15:01")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 11, "Unknown_Message", """No message exists with the id 'invalid'""")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))

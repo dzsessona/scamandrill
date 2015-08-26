@@ -1,6 +1,8 @@
 package com.joypeg.scamandrill.client
 
 
+import com.joypeg.scamandrill
+import com.joypeg.scamandrill.client.UnsuccessfulResponseException
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers
 import scala.concurrent.Await
@@ -86,7 +88,7 @@ class InboundCallsTest extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.inboundAddRoute(validRoute) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 8, "Unknown_InboundDomain", "Unknown Inbound Domain: example.com")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
@@ -102,7 +104,7 @@ class InboundCallsTest extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.inboundDeleteRoute(MInboundDelRoute(id = "nonexisting")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 22, "Unknown_InboundRoute", "No route exists with the id 'nonexisting'")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
@@ -118,7 +120,7 @@ class InboundCallsTest extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.inboundUpdateRoute(MInboundUpdateRoute(id ="nonexisting", pattern="", url = "example")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 22, "Unknown_InboundRoute", "No route exists with the id 'nonexisting'")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
@@ -134,7 +136,7 @@ class InboundCallsTest extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.inboundRoutes(MInboundDomain(domain = "testingdomain")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 8, "Unknown_InboundDomain", "Unknown Inbound Domain: testingdomain")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))

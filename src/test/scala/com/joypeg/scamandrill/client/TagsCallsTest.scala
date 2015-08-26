@@ -1,5 +1,7 @@
 package com.joypeg.scamandrill.client
 
+import com.joypeg.scamandrill
+import com.joypeg.scamandrill.client.UnsuccessfulResponseException
 import org.scalatest.{Matchers, FlatSpec}
 import com.joypeg.scamandrill.utils.SimpleLogger
 import scala.concurrent.Await
@@ -51,7 +53,7 @@ class TagsCallsTest extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.tagDelete(MTagRequest(tag = "invalid")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 1, "Invalid_Tag_Name", "no such tag \"invalid\"")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
@@ -79,7 +81,7 @@ class TagsCallsTest extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.tagInfo(MTagRequest(tag = "invalid")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 1, "Invalid_Tag_Name", "no such tag \"invalid\"")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
@@ -106,7 +108,7 @@ class TagsCallsTest extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.tagTimeSeries(MTagRequest(tag = "invalid")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 1, "Invalid_Tag_Name", "no such tag \"invalid\"")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))

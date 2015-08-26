@@ -1,5 +1,7 @@
 package com.joypeg.scamandrill.client
 
+import com.joypeg.scamandrill
+import com.joypeg.scamandrill.client.UnsuccessfulResponseException
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers
 import scala.concurrent.Await
@@ -59,7 +61,7 @@ class UrlCallsTest extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.urlsTimeSeries(MUrlTimeSeries(url = "http://example.com/example")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 7, "Unknown_Url", "Unknown URL")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
@@ -121,7 +123,7 @@ class UrlCallsTest extends FlatSpec with Matchers with SimpleLogger {
     mandrillBlockingClient.urlsCheckTrackingDomain(MUrlDomain(domain= "track.example.com")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 21, "Unknown_TrackingDomain", "No tracking domain exists with the name 'track.example.com'")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))

@@ -1,19 +1,23 @@
 package com.joypeg.scamandrill
 
 import com.joypeg.scamandrill.models._
-import com.joypeg.scamandrill.client.{MandrillBlockingClient, MandrillAsyncClient, MandrillError, MandrillResponseException}
+import com.joypeg.scamandrill.client.{MandrillBlockingClient, MandrillAsyncClient, MandrillError, MandrillResponseException, UnsuccessfulResponseException}
 import org.scalatest.Matchers
+import scala.concurrent.{Await, Future}
 import scala.util.{Failure, Success, Try}
 import com.joypeg.scamandrill.models.MSearch
 import scala.util.Success
 import com.joypeg.scamandrill.models.MSearchTimeSeries
 import com.joypeg.scamandrill.models.MTo
 import scala.util.Failure
+import scala.concurrent.duration._
 
 object MandrillTestUtils extends Matchers {
 
   val mandrillAsyncClient = new MandrillAsyncClient()
   val mandrillBlockingClient = new MandrillBlockingClient(mandrillAsyncClient.system)
+  implicit val mat = mandrillAsyncClient.materializer
+  implicit val ec = mandrillAsyncClient.system.dispatcher
 
 
   /**
@@ -23,7 +27,8 @@ object MandrillTestUtils extends Matchers {
    * @param expected - the expected error
    * @param response - the error return from Mandrill
    */
-  def checkError(expected: MandrillResponseException, response: MandrillResponseException): Unit = {
+  def checkError(expected: MandrillResponseException, responseF: Future[MandrillResponseException]): Unit = {
+    val response = Await.result(responseF, 10 seconds)
     expected.httpCode shouldBe response.httpCode
     expected.httpReason shouldBe response.httpReason
     expected.mandrillError.code shouldBe response.mandrillError.code
@@ -39,11 +44,13 @@ object MandrillTestUtils extends Matchers {
   def checkFailedBecauseOfInvalidKey(response: Try[Any]): Unit = response match {
     case Success(res) =>
       fail("This operation should be unsuccessful")
-    case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+    case Failure(ex: UnsuccessfulResponseException) =>
       val inernalError = MandrillError("error", -1, "Invalid_Key", "Invalid API key")
       val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
       checkError(expected, MandrillResponseException(ex))
     case Failure(ex) =>
+      println(s"Failure is ${ex}")
+      println(s"of class ${ex.getClass}")
       fail("should return an UnsuccessfulResponseException that can be parsed as MandrillResponseException")
   }
 

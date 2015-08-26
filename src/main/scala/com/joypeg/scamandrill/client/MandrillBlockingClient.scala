@@ -332,8 +332,8 @@ class MandrillBlockingClient(system: ActorSystem = ActorSystem("scamandrill")) e
     Await.result(mandrillAsyncClient.inboundDeleteRoute(inbound), DefaultConfig.defaultTimeout)
   }
 
-  override def inboudSendRaw(inbound: MInboundRaw): Try[List[MInboundRawResponse]] = Try {
-    Await.result(mandrillAsyncClient.inboudSendRaw(inbound), DefaultConfig.defaultTimeout)
+  override def inboundSendRaw(inbound: MInboundRaw): Try[List[MInboundRawResponse]] = Try {
+    Await.result(mandrillAsyncClient.inboundSendRaw(inbound), DefaultConfig.defaultTimeout)
   }
   
   ////////////////////////////////////////////////////////////
