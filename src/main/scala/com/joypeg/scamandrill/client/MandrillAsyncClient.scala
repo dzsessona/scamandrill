@@ -1,14 +1,21 @@
 package com.joypeg.scamandrill.client
 
-import scala.concurrent.Future
-import spray.httpx.marshalling._
-import spray.client.pipelining._
+import akka.actor.ActorSystem
+import akka.http.scaladsl.marshalling.Marshal
+import akka.http.scaladsl.model.{HttpResponse, _}
+import akka.http.scaladsl.unmarshalling.Unmarshaller._
+import akka.http.scaladsl.unmarshalling._
 import com.joypeg.scamandrill.models._
+import spray.json.RootJsonFormat
 
-object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
+import scala.concurrent.Future
 
-  import spray.httpx.SprayJsonSupport._
+class MandrillAsyncClient(val system: ActorSystem = ActorSystem("scamandrill")) extends MandrillClient with ScamandrillSendReceive {
+
+  import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport._
   import com.joypeg.scamandrill.models.MandrillJsonProtocol._
+
+  implicit val ec = system.dispatcher
 
   /**
    * Asks all the underlying actors to close (waiting for 1 second)
@@ -18,6 +25,11 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
    * or the application using them exit.
    * @see [[com.joypeg.scamandrill.client.ScamandrillSendReceive]]
    */
+
+  def marshal[T: RootJsonFormat](value: T): Future[MessageEntity] = Marshal(value).to[MessageEntity]
+
+  def unmarshal[T: FromResponseUnmarshaller]: HttpResponse => Future[T] = response => Unmarshal(response).to[T]
+
   override def shutdownSystem(): Unit = shutdown()
 
   /////////////////////////////////////////////////////////////
@@ -25,7 +37,7 @@ object MandrillAsyncClient extends MandrillClient with ScamandrillSendReceive {
   /////////////////////////////////////////////////////////////
 
   override def usersPing(ping: MKey): Future[MPingResponse] = {
-    executeQuery[MPingResponse](Endpoints.ping.endpoint, marshal(ping))(unmarshal[String].andThen(MPingResponse))
+    executeQuery[MPingResponse](Endpoints.ping.endpoint, marshal(ping)){resp => Unmarshal(resp).to[String].map(MPingResponse.apply(_))}
   }
 
   override def usersPing2(ping: MKey): Future[MPingResponse] = {

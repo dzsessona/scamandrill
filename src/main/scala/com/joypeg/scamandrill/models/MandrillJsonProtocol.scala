@@ -36,9 +36,9 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
         "subject" -> JsString(msg.subject),
         "from_email" -> JsString(msg.from_email),
         "from_name" -> JsString(msg.from_name),
-        "to" -> JsArray(msg.to.map(_.toJson)),
+        "to" -> JsArray(msg.to.map(_.toJson):_*),
         "header" -> (msg.headers match {
-          case Some(value) => JsArray(value.map(_.toJson))
+          case Some(value) => JsArray(value.map(_.toJson):_*)
           case _ => JsNull
         }),
         "important" -> JsBoolean(msg.important),
@@ -55,16 +55,22 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
         "signing_domain" -> msg.signing_domain.map(JsString(_)).getOrElse(JsNull),
         "return_path_domain" -> msg.return_path_domain.map(JsString(_)).getOrElse(JsNull),
         "merge" -> JsBoolean(msg.merge),
-        "global_merge_vars" -> JsArray(msg.global_merge_vars.map(_.toJson)),
-        "merge_vars" -> JsArray(msg.merge_vars.map(_.toJson)),
-        "tags" -> JsArray(msg.tags.map(JsString(_))),
-        "subaccount" -> msg.subaccount.map(JsString(_)).getOrElse(JsNull),
-        "google_analytics_domains" -> JsArray(msg.google_analytics_domains.map(JsString(_))),
-        "google_analytics_campaign" -> msg.google_analytics_campaign.map(JsString(_)).getOrElse(JsNull),
-        "metadata" -> JsArray(msg.metadata.map(_.toJson)),
-        "recipient_metadata" -> JsArray(msg.recipient_metadata.map(_.toJson)),
-        "attachments" -> JsArray(msg.attachments.map(_.toJson)),
-        "images" -> JsArray(msg.images.map(_.toJson))
+        "global_merge_vars" -> JsArray(msg.global_merge_vars.map(_.toJson):_*),
+        "merge_vars" -> JsArray(msg.merge_vars.map(_.toJson):_*),
+        "tags" -> JsArray(msg.tags.map(JsString(_)):_*),
+        "subaccount" -> (msg.subaccount match {
+          case Some(value) => JsString(value)
+          case _ => JsNull
+        }),
+        "google_analytics_domains" -> JsArray(msg.google_analytics_domains.map(JsString(_)):_*),
+        "google_analytics_campaign" -> (msg.google_analytics_campaign match {
+          case Some(value) => JsString(value)
+          case _ => JsNull
+        }),
+        "metadata" -> JsArray(msg.metadata.map(_.toJson):_*),
+        "recipient_metadata" -> JsArray(msg.recipient_metadata.map(_.toJson):_*),
+        "attachments" -> JsArray(msg.attachments.map(_.toJson):_*),
+        "images" -> JsArray(msg.images.map(_.toJson):_*)
       )
 
     def read(value: JsValue) = value.asJsObject.getFields("html",

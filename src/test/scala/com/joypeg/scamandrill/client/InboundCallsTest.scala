@@ -1,6 +1,8 @@
 package com.joypeg.scamandrill.client
 
 
+import com.joypeg.scamandrill
+import com.joypeg.scamandrill.client.UnsuccessfulResponseException
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers
 import scala.concurrent.Await
@@ -14,12 +16,12 @@ import scala.util.Success
 class InboundCallsTest extends FlatSpec with Matchers with SimpleLogger {
 
   "InboundAddDomains" should "work getting a valid MInboundDomainResponse (async client)" in {
-    val res = Await.result(MandrillAsyncClient.inboundAddDomain(MInboundDomain(domain = "testingdomain")), DefaultConfig.defaultTimeout)
+    val res = Await.result(mandrillAsyncClient.inboundAddDomain(MInboundDomain(domain = "testingdomain")), DefaultConfig.defaultTimeout)
     res.domain shouldBe "testingdomain"
     res.valid_mx shouldBe false
   }
   it should "work getting a valid  MInboundDomainResponse (blocking client)" in {
-    MandrillBlockingClient.inboundAddDomain(MInboundDomain(domain = "testingdomain2")) match {
+    mandrillBlockingClient.inboundAddDomain(MInboundDomain(domain = "testingdomain2")) match {
       case Success(res) =>
         res.domain shouldBe "testingdomain2"
         res.valid_mx shouldBe false
@@ -27,33 +29,33 @@ class InboundCallsTest extends FlatSpec with Matchers with SimpleLogger {
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.inboundAddDomain(MInboundDomain(domain = "testingdomain", key="invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.inboundAddDomain(MInboundDomain(domain = "testingdomain", key="invalid")))
   }
 
 
   "InboundDomains" should "work getting a valid List[MInboundDomainResponse] (async client)" in {
-    val res = Await.result(MandrillAsyncClient.inboundDomains(MKey()), DefaultConfig.defaultTimeout)
+    val res = Await.result(mandrillAsyncClient.inboundDomains(MKey()), DefaultConfig.defaultTimeout)
     res.head.getClass shouldBe classOf[MInboundDomainResponse]
   }
   it should "work getting a valid  List[MInboundDomainResponse] (blocking client)" in {
-    MandrillBlockingClient.inboundDomains(MKey()) match {
+    mandrillBlockingClient.inboundDomains(MKey()) match {
       case Success(res) =>
         res.head.getClass shouldBe classOf[MInboundDomainResponse]
       case Failure(ex) => fail(ex)
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.inboundDomains(MKey(key="invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.inboundDomains(MKey(key="invalid")))
   }
 
 
   "InboundCheckDomain" should "work getting a valid MInboundDomainResponse (async client)" in {
-    val res = Await.result(MandrillAsyncClient.inboundCheckDomain(MInboundDomain(domain = "testingdomain")), DefaultConfig.defaultTimeout)
+    val res = Await.result(mandrillAsyncClient.inboundCheckDomain(MInboundDomain(domain = "testingdomain")), DefaultConfig.defaultTimeout)
     res.domain shouldBe "testingdomain"
     res.valid_mx shouldBe false
   }
   it should "work getting a valid  MInboundDomainResponse (blocking client)" in {
-    MandrillBlockingClient.inboundCheckDomain(MInboundDomain(domain = "testingdomain2")) match {
+    mandrillBlockingClient.inboundCheckDomain(MInboundDomain(domain = "testingdomain2")) match {
       case Success(res) =>
         res.domain shouldBe "testingdomain2"
         res.valid_mx shouldBe false
@@ -61,17 +63,17 @@ class InboundCallsTest extends FlatSpec with Matchers with SimpleLogger {
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.inboundCheckDomain(MInboundDomain(domain = "testingdomain", key="invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.inboundCheckDomain(MInboundDomain(domain = "testingdomain", key="invalid")))
   }
 
 
   "InboundDeleteDomains" should "work getting a valid MInboundDomainResponse (async client)" in {
-    val res = Await.result(MandrillAsyncClient.inboundDeleteDomain(MInboundDomain(domain = "testingdomain")), DefaultConfig.defaultTimeout)
+    val res = Await.result(mandrillAsyncClient.inboundDeleteDomain(MInboundDomain(domain = "testingdomain")), DefaultConfig.defaultTimeout)
     res.domain shouldBe "testingdomain"
     res.valid_mx shouldBe false
   }
   it should "work getting a valid  MInboundDomainResponse (blocking client)" in {
-    MandrillBlockingClient.inboundDeleteDomain(MInboundDomain(domain = "testingdomain2")) match {
+    mandrillBlockingClient.inboundDeleteDomain(MInboundDomain(domain = "testingdomain2")) match {
       case Success(res) =>
         res.domain shouldBe "testingdomain2"
         res.valid_mx shouldBe false
@@ -79,14 +81,14 @@ class InboundCallsTest extends FlatSpec with Matchers with SimpleLogger {
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.inboundDeleteDomain(MInboundDomain(domain = "testingdomain", key="invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.inboundDeleteDomain(MInboundDomain(domain = "testingdomain", key="invalid")))
   }
 
   "InboundAddRoute" should "fail if the key is not valid, with an , with an 'Unknown_InboundDomain' code" in {
-    MandrillBlockingClient.inboundAddRoute(validRoute) match {
+    mandrillBlockingClient.inboundAddRoute(validRoute) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 8, "Unknown_InboundDomain", "Unknown Inbound Domain: example.com")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
@@ -95,14 +97,14 @@ class InboundCallsTest extends FlatSpec with Matchers with SimpleLogger {
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.inboundAddRoute(validRoute.copy(key = "invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.inboundAddRoute(validRoute.copy(key = "invalid")))
   }
 
   "InboundDeleteRoute" should "fail if the key is not valid, with an , with an 'Unknown_InboundRoute' code" in {
-    MandrillBlockingClient.inboundDeleteRoute(MInboundDelRoute(id = "nonexisting")) match {
+    mandrillBlockingClient.inboundDeleteRoute(MInboundDelRoute(id = "nonexisting")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 22, "Unknown_InboundRoute", "No route exists with the id 'nonexisting'")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
@@ -111,14 +113,14 @@ class InboundCallsTest extends FlatSpec with Matchers with SimpleLogger {
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.inboundDeleteRoute(MInboundDelRoute(id = "nonexisting",key = "invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.inboundDeleteRoute(MInboundDelRoute(id = "nonexisting",key = "invalid")))
   }
 
   "InboundUpdateRoute" should "fail if the key is not valid, with an , with an 'Unknown_InboundRoute' code" in {
-    MandrillBlockingClient.inboundUpdateRoute(MInboundUpdateRoute(id ="nonexisting", pattern="", url = "example")) match {
+    mandrillBlockingClient.inboundUpdateRoute(MInboundUpdateRoute(id ="nonexisting", pattern="", url = "example")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 22, "Unknown_InboundRoute", "No route exists with the id 'nonexisting'")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
@@ -127,14 +129,14 @@ class InboundCallsTest extends FlatSpec with Matchers with SimpleLogger {
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.inboundUpdateRoute(MInboundUpdateRoute(id ="nonexisting", pattern="", url = "example",key = "invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.inboundUpdateRoute(MInboundUpdateRoute(id ="nonexisting", pattern="", url = "example",key = "invalid")))
   }
 
   "InboundRoutes" should "fail if the key is not valid, with an , with an 'Unknown_InboundDomain' code" in {
-    MandrillBlockingClient.inboundRoutes(MInboundDomain(domain = "testingdomain")) match {
+    mandrillBlockingClient.inboundRoutes(MInboundDomain(domain = "testingdomain")) match {
       case Success(res) =>
         fail("This operation should be unsuccessful")
-      case Failure(ex: spray.httpx.UnsuccessfulResponseException) =>
+      case Failure(ex: UnsuccessfulResponseException) =>
         val inernalError = MandrillError("error", 8, "Unknown_InboundDomain", "Unknown Inbound Domain: testingdomain")
         val expected = new MandrillResponseException(500, "Internal Server Error", inernalError)
         checkError(expected, MandrillResponseException(ex))
@@ -143,7 +145,7 @@ class InboundCallsTest extends FlatSpec with Matchers with SimpleLogger {
     }
   }
   it should "fail if the key passed is invalid, with an 'Invalid_Key' code" in {
-    checkFailedBecauseOfInvalidKey(MandrillBlockingClient.inboundRoutes(MInboundDomain(domain = "testingdomain", key = "invalid")))
+    checkFailedBecauseOfInvalidKey(mandrillBlockingClient.inboundRoutes(MInboundDomain(domain = "testingdomain", key = "invalid")))
   }
 }
 

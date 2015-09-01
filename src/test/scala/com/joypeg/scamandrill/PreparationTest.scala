@@ -22,7 +22,7 @@ class PreparationTest extends FlatSpec with Matchers with BeforeAndAfterAll with
   val realKey = "REPLACEME" //ADD YOUR REAL (NON TESTING) KEY HERE
 
   ignore should "create the testing template" in {
-    MandrillBlockingClient.templateAdd(MTemplate(
+    mandrillBlockingClient.templateAdd(MTemplate(
       key = realKey,
       name = "testtemplate",
       from_email = "from_email@example.com",
@@ -55,7 +55,7 @@ class PreparationTest extends FlatSpec with Matchers with BeforeAndAfterAll with
       return_path_domain = Some("fromname"),
       tags = List("exampletag1", "exampletag2")
     )
-    MandrillBlockingClient.messagesSend(MSendMessage(message = msg, key = realKey)) match {
+    mandrillBlockingClient.messagesSend(MSendMessage(message = msg, key = realKey)) match {
       case Success(res) =>
         println("your id of the mail just sent is the following: " + res.head._id +
           " you should set the value of MandrillTestUtils.idOfMailForInfoTest to this value")

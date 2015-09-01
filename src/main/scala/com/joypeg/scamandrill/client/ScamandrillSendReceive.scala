@@ -1,14 +1,11 @@
 package com.joypeg.scamandrill.client
 
 import akka.actor.ActorSystem
-import akka.pattern.ask
-import akka.io.IO
-import scala.concurrent.Future
+import akka.http.scaladsl._
+import akka.http.scaladsl.model._
+import akka.stream.ActorMaterializer
+import scala.concurrent.{Await, Future}
 import scala.concurrent.duration._
-import spray.client.pipelining._
-import spray.http.{HttpRequest, HttpResponse, HttpEntity}
-import spray.can.Http
-import spray.util._
 import com.joypeg.scamandrill.utils.SimpleLogger
 
 /**
@@ -17,9 +14,11 @@ import com.joypeg.scamandrill.utils.SimpleLogger
  */
 trait ScamandrillSendReceive extends SimpleLogger {
 
-  type Entity = Either[Throwable, HttpEntity]
+  type Entity = Either[Throwable, RequestEntity]
 
-  implicit lazy val system: ActorSystem = ActorSystem("scamandrill")
+  implicit val system: ActorSystem
+  implicit val materializer = ActorMaterializer()
+
   import system.dispatcher
 
 
@@ -35,29 +34,33 @@ trait ScamandrillSendReceive extends SimpleLogger {
    * @note as from the api documentation, all requests are POST, and You can consider any non-200 HTTP
    *       response code an error - the returned data will contain more detailed information
    */
-  def executeQuery[S ](endpoint: String, reqBody: Entity)(handler:(HttpResponse => S)): Future[S] = {
+  def executeQuery[S ](endpoint: String, reqBodyF: Future[RequestEntity])(handler:(HttpResponse => Future[S])): Future[S] = {
 
     //TODO: reqbody <: MandrillResponse and S :< MandrillRequest
-    val pipeline: HttpRequest => Future[HttpResponse] = sendReceive
-    val query = Post("https://mandrillapp.com/api/1.0" + endpoint, reqBody)
-    logger.debug("Request: " + query)
-
-    pipeline(query).transform(
-      ok => {logger.debug("Response OK: " + ok); ok ~> handler},
-      ko => {logger.debug("Response OK: " + ko); ko}
-    )
+    val resp = reqBodyF.flatMap{reqBody =>
+      val request = HttpRequest(
+      method = HttpMethods.POST,
+      uri = Uri("https://mandrillapp.com/api/1.0"+endpoint),
+      entity = reqBody
+      )
+      Http().singleRequest(request).flatMap { resp =>
+        if(resp.status.isSuccess()) handler(resp)
+        else Future.failed(new UnsuccessfulResponseException(resp))
+      }
+    }
+    resp
   }
 
   /**
    * Asks all the underlying actors to close (waiting for 1 second)
    * and then shut down the system. Because the blocking client is
-   * basically a wrapper of the async one, bot the async and blocking
+   * basically a wrapper of the async one, both the async and blocking
    * client are supposed to call this method when they are not required
    * or the application using them exit.
    */
   def shutdown(): Unit = {
     logger.info("asking all actor to close")
-    IO(Http).ask(Http.CloseAll)(1.second).await
+    Await.ready(Http().shutdownAllConnectionPools(), 1 second)
     system.shutdown()
     logger.info("actor system shut down")
   }
