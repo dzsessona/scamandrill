@@ -21,15 +21,14 @@ resolvers ++= Seq("spray repo" at "http://repo.spray.io/")
 parallelExecution in Test := true
 
 libraryDependencies ++= {
-  val akkaV = "2.3.12"
-  val sprayV = "1.3.2"
+  val akkaV = "2.4.2"
   Seq(
     "io.spray"          %% "spray-json"       % "1.3.2",
     "com.typesafe.akka" %% "akka-actor"       % akkaV,
-    "com.typesafe.akka" %% "akka-http-experimental" % "1.0",
-    "com.typesafe.akka" %% "akka-http-spray-json-experimental" % "1.0",
-    "com.typesafe"      % "config"            % "1.2.1",
-    "org.slf4j"         % "slf4j-api"         % "1.7.7"
+    "com.typesafe.akka" %% "akka-http-experimental" % "2.4.2",
+    "com.typesafe.akka" %% "akka-http-spray-json-experimental" % "2.4.2",
+    "com.typesafe"      % "config"            % "1.3.0",
+    "org.slf4j"         % "slf4j-api"         % "1.7.14"
   ) ++ Seq(
     "org.specs2"        %%  "specs2"          % "2.3.13"    % "test",
     "org.scalatest"     %%  "scalatest"       % "2.1.6"     % "test->*",
