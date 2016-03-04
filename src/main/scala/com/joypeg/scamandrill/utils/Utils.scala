@@ -5,7 +5,7 @@ import com.typesafe.config.ConfigFactory
 
 object `package` {
   lazy val config = {
-    ConfigFactory.load("application.conf")
+    ConfigFactory.load()
   }
 }
 
