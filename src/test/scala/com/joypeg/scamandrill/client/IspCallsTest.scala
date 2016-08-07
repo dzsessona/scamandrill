@@ -1,7 +1,5 @@
 package com.joypeg.scamandrill.client
 
-import com.joypeg.scamandrill
-import com.joypeg.scamandrill.client.UnsuccessfulResponseException
 import org.scalatest.FlatSpec
 import org.scalatest.Matchers
 import scala.concurrent.Await
