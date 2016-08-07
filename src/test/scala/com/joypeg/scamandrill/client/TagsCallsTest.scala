@@ -1,15 +1,10 @@
 package com.joypeg.scamandrill.client
 
-import com.joypeg.scamandrill
-import com.joypeg.scamandrill.client.UnsuccessfulResponseException
 import org.scalatest.{Matchers, FlatSpec}
 import com.joypeg.scamandrill.utils.SimpleLogger
 import scala.concurrent.Await
 import com.joypeg.scamandrill.models._
-import scala.util.{Failure, Success}
 import com.joypeg.scamandrill.MandrillTestUtils._
-import scala.util.Failure
-import scala.util.Success
 import com.joypeg.scamandrill.models.MKey
 import scala.util.Failure
 import com.joypeg.scamandrill.models.MTagResponse

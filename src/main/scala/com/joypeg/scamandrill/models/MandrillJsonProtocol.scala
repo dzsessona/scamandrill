@@ -16,7 +16,31 @@ object MandrillJsonProtocol extends DefaultJsonProtocol {
   implicit val MUserInfoResponseJson  = jsonFormat7(MInfoResponse)
 
   implicit val MAttachmetOrImageJson  = jsonFormat3(MAttachmetOrImage)
-  implicit val MVarsJson              = jsonFormat2(MVars)
+  implicit val StringMVarsJson        = jsonFormat2(StringMVars)
+  implicit val SeqMVarsJson           = jsonFormat2(SeqMVars)
+  implicit val MVarJson: RootJsonFormat[MVars] = new RootJsonFormat[MVars] {
+    override def read(json: JsValue): MVars = json match {
+      case obj: JsObject =>
+        obj.getFields("name", "content") match {
+          case Seq(JsString(name: String), JsArray(values: Vector[JsValue])) =>
+            val strings: Vector[String] = values
+              .collect { case jsString: JsString => jsString.value }
+
+            SeqMVars(name, strings)
+          case Seq(JsString(name), JsString(value)) =>
+            StringMVars(name, value)
+          case _ =>
+            throw new IllegalArgumentException("JsObject should be an json object with property name and value")
+        }
+      case _ =>
+        throw new IllegalArgumentException("JsObject should be an json object with property name and value")
+    }
+
+    override def write(obj: MVars): JsValue = obj match {
+      case old: StringMVars => StringMVarsJson.write(old)
+      case custom :SeqMVars => SeqMVarsJson.write(custom)
+    }
+  }
   implicit val MMergeVarsJson         = jsonFormat2(MMergeVars)
   implicit val MToJson                = jsonFormat3(MTo)
   implicit val MSendResponseJson      = jsonFormat4(MSendResponse)

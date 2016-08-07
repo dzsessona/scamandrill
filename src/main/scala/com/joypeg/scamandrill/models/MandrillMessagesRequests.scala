@@ -235,12 +235,27 @@ case class MAttachmetOrImage(`type`: String, name: String, content: String)
  */
 case class MMergeVars(rcpt: String, vars: List[MVars])
 
+sealed trait MVars
+
+/*** A single merge variable
+  *
+  * @param name - the merge variable's name. Merge variable names are case-insensitive and may not start with _
+  * @param content - the merge variable's content
+  */
+case class StringMVars(name: String, content: String) extends MVars
+
 /**
- * A single merge variable
- * @param name - the merge variable's name. Merge variable names are case-insensitive and may not start with _
- * @param content - the merge variable's content
- */
-case class MVars(name: String, content: String)
+  * A sequence of string merge variable
+  *
+  * @param name - the merge variable's name. Merge variable names are case-insensitive and may not start with _
+  * @param content - a sequence of variable string content
+  */
+case class SeqMVars(name: String, content: Seq[String]) extends MVars
+
+object MVars {
+  def apply(name: String, content: String): MVars = StringMVars(name, content)
+  def apply(name: String, content: Seq[String]): MVars = SeqMVars(name, content)
+}
 
 /**
  * A single recipient's information.
