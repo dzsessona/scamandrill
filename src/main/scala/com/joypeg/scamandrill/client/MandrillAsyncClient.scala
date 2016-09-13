@@ -15,8 +15,6 @@ class MandrillAsyncClient(val system: ActorSystem = ActorSystem("scamandrill")) 
   import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport._
   import com.joypeg.scamandrill.models.MandrillJsonProtocol._
 
-  implicit val ec = system.dispatcher
-
   /**
    * Asks all the underlying actors to close (waiting for 1 second)
    * and then shut down the system. Because the blocking client is
