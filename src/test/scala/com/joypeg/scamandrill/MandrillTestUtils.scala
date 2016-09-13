@@ -17,7 +17,7 @@ object MandrillTestUtils extends Matchers {
   val mandrillAsyncClient = new MandrillAsyncClient()
   val mandrillBlockingClient = new MandrillBlockingClient(mandrillAsyncClient.system)
   implicit val mat = mandrillAsyncClient.materializer
-  implicit val ec = mandrillAsyncClient.system.dispatcher
+  implicit val ec = mandrillAsyncClient.executionContext
 
 
   /**
